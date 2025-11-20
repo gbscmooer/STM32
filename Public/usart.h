@@ -2,6 +2,7 @@
 #define __usart_H
 
 #include "system.h" 
+#include <stdio.h>
 
 #define USART1_REC_LEN		200  	//定义最大接收字节数 200
 
@@ -10,6 +11,7 @@ extern u16 USART1_RX_STA;         		//接收状态标记
 
 
 void USART1_Init(u32 bound);
+char USART1_GetChar(void);
 
 
 #endif

@@ -3,6 +3,14 @@
 
 最新改动记录：
 
+2025-11-20 重要修复：
+1. 修复printf/scanf重定向问题：
+   - 在usart.c中添加fputc和fgetc函数实现
+   - 在usart.h中添加stdio.h头文件包含
+   - 注意：Keil工程需要勾选"Use MicroLIB"选项才能使用printf
+   - 路径：Target Options -> C/C++ -> Use MicroLIB
+2. PC_Usart宏实际调用printf，现在已可正常使用
+
 2025-11-20 重要修改：
 1. 项目使用STM32标准外设库（不是HAL库），LED控制使用GPIO_SetBits/GPIO_ResetBits
 2. 新增三个WiFi功能函数到wifi_function.c：

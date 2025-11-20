@@ -33,5 +33,6 @@
 .\objects\wifi_function.o: ..\APP\esp8266\wifi_config.h
 .\objects\wifi_function.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\wifi_function.o: ..\Public\SysTick.h
-.\objects\wifi_function.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\wifi_function.o: ..\Public\usart.h
 .\objects\wifi_function.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\wifi_function.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

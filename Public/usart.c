@@ -94,7 +94,50 @@ void USART1_IRQHandler(void)                	//串口1中断服务程序
 	} 
 } 	
 
- 
+/**
+  * @brief  重定向printf函数到USART1
+  * @param  ch: 要输出的字符
+  * @param  f: 文件指针
+  * @retval 输出的字符
+  */
+int fputc(int ch, FILE *f)
+{
+	// 等待发送缓冲区为空
+	while(USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET);
+	// 发送一个字节数据
+	USART_SendData(USART1, (u8)ch);
+	return ch;
+}
 
+/**
+  * @brief  重定向scanf函数到USART1
+  * @param  f: 文件指针
+  * @retval 接收到的字符
+  */
+int fgetc(FILE *f)
+{
+	// 等待接收到数据
+	while(USART_GetFlagStatus(USART1, USART_FLAG_RXNE) == RESET);
+	// 读取接收到的数据
+	return (int)USART_ReceiveData(USART1);
+}
 
-
+/**
+  * @brief  从USART1读取一个字符（忽略换行和回车）
+  * @param  无
+  * @retval 读取到的有效字符
+  */
+char USART1_GetChar(void)
+{
+	char ch;
+	do {
+		// 等待接收到数据
+		while(USART_GetFlagStatus(USART1, USART_FLAG_RXNE) == RESET);
+		// 读取接收到的数据
+		ch = USART_ReceiveData(USART1);
+		// 回显字符
+		USART_SendData(USART1, ch);
+		while(USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET);
+	} while(ch == '\r' || ch == '\n');  // 忽略回车和换行
+	return ch;
+}

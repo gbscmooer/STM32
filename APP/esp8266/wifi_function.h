@@ -16,7 +16,7 @@
 #define     ESP8266_RST_HIGH_LEVEL()            GPIO_SetBits( GPIOA, GPIO_Pin_15 )
 #define     ESP8266_RST_LOW_LEVEL()             GPIO_ResetBits( GPIOA, GPIO_Pin_15 )
 
-
+void        ESP8266_Scan_AP                     ( void );
 void        ESP8266_Choose                      ( FunctionalState enumChoose );
 void        ESP8266_Rst                         ( void );
 void        ESP8266_AT_Test                     ( void );
@@ -37,6 +37,10 @@ void        ESP8266_StaTcpClient_ApTcpServer    ( void );
 bool        WiFi_Connect_Default                ( void );
 bool        WiFi_Connect_Menu                   ( void );
 bool        WiFi_Ping_Test                      ( char *target );
+bool        ESP8266_HTTP_Request                ( char *host, u16 port, char *path, char *response, u16 max_len );
+bool        ESP8266_TCP_Connect                 ( char *ip, u16 port );
+bool        ESP8266_TCP_Send                    ( char *data, u16 len );
+bool        ESP8266_TCP_Disconnect              ( void );
 
 
 #endif    /* __WIFI_FUNCTION_H */
