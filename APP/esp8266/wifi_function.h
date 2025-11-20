@@ -34,6 +34,10 @@ void        ESP8266_STA_TCP_Client              ( void );
 void        ESP8266_AP_TCP_Server               ( void );
 void        ESP8266_StaTcpClient_ApTcpServer    ( void );
 
+bool        WiFi_Connect_Default                ( void );
+bool        WiFi_Connect_Menu                   ( void );
+bool        WiFi_Ping_Test                      ( char *target );
+
 
 #endif    /* __WIFI_FUNCTION_H */
 

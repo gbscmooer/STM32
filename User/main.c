@@ -7,210 +7,137 @@
 #include <string.h>
 #include <stdio.h>
 
-
-void (*pNet_Test)(void);
-
-int main()
+/**
+  * @brief  main 主函数
+  * @param  无
+  * @retval 无
+  */
+int main(void)
 {
-	char cCh;	
+	bool wifi_connected = false;
+	bool ping_test_passed = false;
 	
+	// ========== 第1步：系统初始化 ==========
+	PC_Usart("\r\n");
+	PC_Usart("================================================\r\n");
+	PC_Usart("    STM32 ESP8266 WiFi天气站系统启动中...    \r\n");
+	PC_Usart("================================================\r\n");
+	
+	// 初始化系统时钟和基本外设
 	SysTick_Init(72);
-	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);  //中断优先级分组 分2组
+	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+	PC_Usart("? 系统时钟初始化完成\r\n");
+	
+	// 初始化串口
 	USART1_Init(115200);
+	PC_Usart("? 串口初始化完成(波特率:115200)\r\n");
+	
+	// 初始化LED
 	LED_Init();
+	LED1 = 0;  // 点亮LED1表示系统正在运行
+	PC_Usart("? LED初始化完成\r\n");
+	
+	// 初始化WiFi配置
 	WiFi_Config();
+	PC_Usart("? WiFi串口配置完成\r\n");
 	
 	// 初始化ESP8266模块
-	delay_ms(1000);  // 等待模块稳定
-	ESP8266_Choose(ENABLE);  // 使能ESP8266
+	PC_Usart("\r\n=== 初始化ESP8266模块 ===\r\n");
+	delay_ms(1000);
+	ESP8266_Choose(ENABLE);
+	PC_Usart("? ESP8266模块使能\r\n");
 	delay_ms(500);
-	// ESP8266_Auto_BaudRate_Test();  // 波特率自动检测（函数未实现，已注释）
-	ESP8266_AT_Test();  // AT测试
 	
-	PC_Usart("\r\n普中PZ-ESP8266 WiFi模块测试例程\r\n"); //打印测试例程提示信息
-	PC_Usart("\r\nESP8266模块初始化完成！\r\n");
-	PC_Usart ( "\r\n请输入模块的测试模式的编号，编号如下：\
-              \r\n1.STA模式： TCP Client\
-              \r\n2.AP模式： AP Server\
-              \r\n3.STA+AP模式： (STA)TCP Client + (AP)TCP Server\
-              \r\n4.简单WiFi连接测试\
-              \r\n5.简单TCP连接测试（单连接）\
-              \r\n输入格式为：编号+空格，点击发送\r\n" );
+	ESP8266_AT_Test();
+	PC_Usart("? ESP8266模块AT测试通过\r\n");
 	
-	scanf("%c", &cCh );
-	PC_Usart("\r\n收到输入: %c\r\n", cCh);
+	// 设置为STA模式
+	ESP8266_Net_Mode_Choose(STA);
+	PC_Usart("? ESP8266设置为STA模式\r\n");
 	
-	switch(cCh)
+	PC_Usart("\r\n=== ESP8266模块初始化完成 ===\r\n");
+	LED1 = 1;  // 熄灭LED1
+	LED2 = 0;  // 点亮LED2表示WiFi模块就绪
+	
+	// ========== 第2步：连接WiFi网络 ==========
+	// 首先尝试连接默认WiFi
+	wifi_connected = WiFi_Connect_Default();
+	
+	// 如果连接失败，进入菜单处理
+	if(!wifi_connected)
 	{
-		case '1':
-			pNet_Test = ESP8266_STA_TCP_Client;
-			PC_Usart("\r\n即将进行的测试是：1.STA模式： TCP Client\r\n");
-			delay_ms(1000);  // 给用户时间看到消息
-		  break;
-		
-		case '2':
-			pNet_Test = ESP8266_AP_TCP_Server;
-			PC_Usart("\r\n即将进行的测试是：2.AP模式： TCP Server\r\n");
-			delay_ms(1000);
-		  break;
-
-		case '3':
-			pNet_Test = ESP8266_StaTcpClient_ApTcpServer;
-			PC_Usart("\r\n即将进行的测试是：3.STA+AP模式： (STA)TCP Client + (AP)TCP Server\r\n");
-			delay_ms(1000);
-		  break;
-		
-		case '4':
-			pNet_Test = NULL;  // 不使用预定义函数，直接在这里处理
-			PC_Usart("\r\n即将进行简单WiFi连接测试...\r\n");
-			delay_ms(1000);
-			
-			// 简单WiFi连接测试
-			ESP8266_Net_Mode_Choose(STA);
-			ESP8266_Cmd("AT+CWLAP", "OK", 0, 5000);
-			
-			PC_Usart("\r\n建议选择以下英文WiFi网络进行测试：\r\n");
-			PC_Usart("1. Xiaomi_CAEE\r\n");
-			PC_Usart("2. TP-LINK_E45C\r\n");
-			PC_Usart("\r\n请输入要连接的WiFi名称和密钥，输入格式为：名称,密钥 或 名称:密钥，点击发送\r\n");
-			
-			{
-				char cStrInput[100] = {0};
-				char *pStrDelimiter[2];
-				char *pBuf, *pStr;
-				u8 uc = 0;
-				
-				scanf("%s", cStrInput);
-				PC_Usart("\r\n稍等片刻 ……\r\n");
-				
-				// 先尝试用逗号分割
-				pBuf = cStrInput;
-				uc = 0;
-				while ((pStr = strtok(pBuf, ",")) != NULL) {
-					pStrDelimiter[uc++] = pStr;
-					pBuf = NULL;
-				}
-				
-				// 如果逗号分割失败，尝试用冒号分割
-				if(uc < 2) {
-					pBuf = cStrInput;
-					uc = 0;
-					while ((pStr = strtok(pBuf, ":")) != NULL) {
-						pStrDelimiter[uc++] = pStr;
-						pBuf = NULL;
-					}
-				}
-				
-				if(uc >= 2) {
-					ESP8266_JoinAP(pStrDelimiter[0], pStrDelimiter[1]);
-				}
-				else {
-					PC_Usart("输入格式错误！\r\n");
-				}
-			}
-		  break;
-		
-		case '5':
-			pNet_Test = NULL;  // 简单TCP连接测试
-			PC_Usart("\r\n即将进行简单TCP连接测试...\r\n");
-			delay_ms(1000);
-			
-			// 首先检查WiFi连接状态
-			ESP8266_Cmd("AT+CWJAP?", "OK", NULL, 2000);
-			ESP8266_Cmd("AT+CIFSR", "OK", NULL, 2000);
-			
-			// 设置为单连接模式
-			ESP8266_Enable_MultipleId(DISABLE);
-			
-			PC_Usart("\r\n请确保电脑上的TCP服务器已启动！\r\n");
-			PC_Usart("请输入电脑的IP和端口号，输入格式为：IP:端口 或 IP,端口，点击发送\r\n");
-			
-			{
-				char cStrInput[100] = {0};
-				char *pStrDelimiter[2];
-				char *pBuf, *pStr;
-				char *response;
-				u8 uc = 0;
-				
-				scanf("%s", cStrInput);
-				PC_Usart("\r\n稍等片刻 ……\r\n");
-				
-				// 先尝试用冒号分割
-				pBuf = cStrInput;
-				uc = 0;
-				while ((pStr = strtok(pBuf, ":")) != NULL) {
-					pStrDelimiter[uc++] = pStr;
-					pBuf = NULL;
-				}
-				
-				// 如果冒号分割失败，尝试用逗号分割
-				if(uc < 2) {
-					pBuf = cStrInput;
-					uc = 0;
-					while ((pStr = strtok(pBuf, ",")) != NULL) {
-						pStrDelimiter[uc++] = pStr;
-						pBuf = NULL;
-					}
-				}
-				
-				if(uc >= 2) {
-					// 尝试单个TCP连接
-					if(ESP8266_Link_Server(enumTCP, pStrDelimiter[0], pStrDelimiter[1], Single_ID_0))
-					{
-						PC_Usart("\r\n? TCP连接建立成功！可以开始数据通信测试\r\n");
-						
-						// 简单的数据发送测试
-						PC_Usart("发送测试消息...\r\n");
-						ESP8266_SendString(DISABLE, "Hello from ESP8266!", 19, Single_ID_0);
-						
-						PC_Usart("等待服务器响应...\r\n");
-						response = ESP8266_ReceiveString(DISABLE);
-						if(response) {
-							PC_Usart("收到服务器响应: %s\r\n", response);
-						}
-					}
-					else {
-						PC_Usart("\r\n? TCP连接失败！请检查:\r\n");
-						PC_Usart("1. 服务器是否启动\r\n");
-						PC_Usart("2. IP地址是否正确\r\n");
-						PC_Usart("3. 端口号是否正确\r\n");
-						PC_Usart("4. 防火墙设置\r\n");
-					}
-				}
-				else {
-					PC_Usart("输入格式错误！\r\n");
-				}
-			}
-		  break;
-
-		default:
-			pNet_Test = NULL;
-			PC_Usart("\r\n输入错误，不进行测试！收到字符码: 0x%02X\r\n", cCh);
-		  break;		
-			
+		wifi_connected = WiFi_Connect_Menu();
 	}
-	if(pNet_Test)
+	
+	// 检查WiFi是否最终连接成功
+	if(!wifi_connected)
 	{
-		PC_Usart("\r\n开始执行选定的测试模式...\r\n");
-		
-		// 再次确认ESP8266模块通信正常
-		if(!ESP8266_Cmd("AT", "OK", NULL, 1000))
+		PC_Usart("\r\n? 未能连接到WiFi网络，系统停止\r\n");
+		LED2 = 1;  // 熄灭LED2
+		LED1 = 0;  // 点亮LED1表示错误
+		while(1)
 		{
-			PC_Usart("\r\n警告：ESP8266模块通信异常，尝试重新初始化...\r\n");
-			// ESP8266_Auto_BaudRate_Test();  // 函数未实现，已注释
-			ESP8266_AT_Test();
+			LED1 = !LED1;  // LED1闪烁表示错误状态
+			delay_ms(500);
 		}
-		else
-		{
-			PC_Usart("\r\nESP8266模块通信正常，开始测试...\r\n");
-		}
-		
-		pNet_Test();
+	}
+	
+	PC_Usart("\r\n? WiFi连接成功，准备进行网络测试\r\n");
+	LED2 = 1;  // 熄灭LED2
+	
+	// ========== 第3步：执行Ping测试 ==========
+	PC_Usart("\r\n=== 开始网络连通性测试 ===\r\n");
+	
+	// Ping 1.1.1.1 (Cloudflare DNS)
+	bool ping1 = WiFi_Ping_Test("1.1.1.1");
+	delay_ms(1000);
+	
+	// Ping 8.8.8.8 (Google DNS)
+	bool ping2 = WiFi_Ping_Test("8.8.8.8");
+	delay_ms(1000);
+	
+	// 判断Ping测试结果
+	if(ping1 && ping2)
+	{
+		ping_test_passed = true;
+		PC_Usart("\r\n? 网络连通性测试通过！\r\n");
+		PC_Usart("? 两个DNS服务器都可以正常访问\r\n");
+		LED1 = 0;  // 点亮LED1表示成功
+	}
+	else if(ping1 || ping2)
+	{
+		ping_test_passed = true;
+		PC_Usart("\r\n? 网络连通性测试部分通过\r\n");
+		PC_Usart("? 至少一个DNS服务器可以访问\r\n");
+		LED1 = 0;  // 点亮LED1表示基本成功
 	}
 	else
 	{
-		PC_Usart("\r\n未选择有效的测试模式\r\n");
+		PC_Usart("\r\n? 网络连通性测试失败！\r\n");
+		PC_Usart("? 无法访问外部网络\r\n");
+		PC_Usart("可能的原因：\r\n");
+		PC_Usart("1. 路由器未连接到互联网\r\n");
+		PC_Usart("2. 网络防火墙阻止了ICMP包\r\n");
+		PC_Usart("3. DNS服务器地址无法访问\r\n");
 	}
 	
-	while(1);
+	// ========== 系统就绪 ==========
+	PC_Usart("\r\n");
+	PC_Usart("================================================\r\n");
+	PC_Usart("        系统初始化完成，进入主循环          \r\n");
+	PC_Usart("================================================\r\n");
+	PC_Usart("WiFi连接状态: %s\r\n", wifi_connected ? "已连接" : "未连接");
+	PC_Usart("网络测试状态: %s\r\n", ping_test_passed ? "通过" : "失败");
+	PC_Usart("\r\n等待后续功能开发...\r\n");
+	
+	// 主循环
+	while(1)
+	{
+		// LED闪烁表示系统正常运行
+		LED2 = !LED2;
+		delay_ms(1000);
+		
+		// 这里可以添加后续的功能代码
+		// 例如：获取天气信息、显示数据等
+	}
 }

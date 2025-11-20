@@ -849,5 +849,130 @@ void ESP8266_StaTcpClient_ApTcpServer ( void )
 	
 }
 
+/**
+  * @brief  WiFi_Connect_Default 连接默认WiFi网络
+  * @param  无
+  * @retval true：连接成功，false：连接失败
+  */
+bool WiFi_Connect_Default(void)
+{
+	PC_Usart("\r\n=== 尝试连接默认WiFi网络 ===\r\n");
+	PC_Usart("WiFi名称: OPPOx\r\n");
+	
+	if(ESP8266_JoinAP("OPPOx", "huangzixuan"))
+	{
+		PC_Usart("? 默认WiFi连接成功！\r\n");
+		return true;
+	}
+	else
+	{
+		PC_Usart("? 默认WiFi连接失败！\r\n");
+		return false;
+	}
+}
+
+/**
+  * @brief  WiFi_Connect_Menu WiFi连接失败后的菜单处理
+  * @param  无
+  * @retval true：最终连接成功，false：用户放弃连接
+  */
+bool WiFi_Connect_Menu(void)
+{
+	char choice;
+	
+	while(1)
+	{
+		PC_Usart("\r\n=== WiFi连接失败处理菜单 ===\r\n");
+		PC_Usart("1. 重新连接默认WiFi\r\n");
+		PC_Usart("2. 扫描并连接其他WiFi\r\n");
+		PC_Usart("请输入选项(1或2): ");
+		
+		scanf("%c", &choice);
+		PC_Usart("%c\r\n", choice);
+		
+		if(choice == '1')
+		{
+			if(WiFi_Connect_Default())
+			{
+				return true;
+			}
+		}
+		else if(choice == '2')
+		{
+			PC_Usart("\r\n=== 扫描可用WiFi网络 ===\r\n");
+			ESP8266_Cmd("AT+CWLAP", "OK", NULL, 8000);
+			
+			PC_Usart("\r\n请输入要连接的WiFi信息\r\n");
+			PC_Usart("格式: WiFi名称,密码 或 WiFi名称:密码\r\n");
+			PC_Usart("例如: TP-LINK_5G,12345678\r\n");
+			PC_Usart("请输入: ");
+			
+			char input[100] = {0};
+			char *pStrDelimiter[2];
+			char *pBuf, *pStr;
+			u8 uc = 0;
+			
+			scanf("%s", input);
+			PC_Usart("%s\r\n", input);
+			
+			pBuf = input;
+			uc = 0;
+			while ((pStr = strtok(pBuf, ",")) != NULL) {
+				pStrDelimiter[uc++] = pStr;
+				pBuf = NULL;
+			}
+			
+			if(uc < 2) {
+				pBuf = input;
+				uc = 0;
+				while ((pStr = strtok(pBuf, ":")) != NULL) {
+					pStrDelimiter[uc++] = pStr;
+					pBuf = NULL;
+				}
+			}
+			
+			if(uc >= 2 && pStrDelimiter[0] != NULL && pStrDelimiter[1] != NULL)
+			{
+				if(ESP8266_JoinAP(pStrDelimiter[0], pStrDelimiter[1]))
+				{
+					return true;
+				}
+			}
+			else
+			{
+				PC_Usart("? 输入格式错误！\r\n");
+			}
+		}
+		else
+		{
+			PC_Usart("? 无效选项，请重新选择\r\n");
+		}
+	}
+}
+
+/**
+  * @brief  WiFi_Ping_Test 执行Ping测试
+  * @param  target：目标地址字符串
+  * @retval true：Ping成功，false：Ping失败
+  */
+bool WiFi_Ping_Test(char *target)
+{
+	char cmd[100];
+	
+	PC_Usart("\r\n正在Ping %s...\r\n", target);
+	sprintf(cmd, "AT+PING=\"%s\"", target);
+	
+	if(ESP8266_Cmd(cmd, "OK", "+", 5000))
+	{
+		PC_Usart("? Ping %s 成功！\r\n", target);
+		return true;
+	}
+	else
+	{
+		PC_Usart("? Ping %s 失败！\r\n", target);
+		return false;
+	}
+}
+
 
 

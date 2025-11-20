@@ -1,3 +1,23 @@
+特别注意：
+不要在main.c中定义函数，main中只调用其他文件中的函数，以保持代码结构清晰。请阅读readme后在做改动，改动后写入readme以便他人了解你的改动。
+
+最新改动记录：
+
+2025-11-20 重要修改：
+1. 项目使用STM32标准外设库（不是HAL库），LED控制使用GPIO_SetBits/GPIO_ResetBits
+2. 新增三个WiFi功能函数到wifi_function.c：
+   - WiFi_Connect_Default(): 连接默认WiFi(OPPOx)
+   - WiFi_Connect_Menu(): WiFi连接失败菜单处理
+   - WiFi_Ping_Test(): 执行网络Ping测试
+3. main.c重构为自动WiFi连接和网络测试流程：
+   - 步骤1：初始化系统、串口、LED、ESP8266
+   - 步骤2：自动连接WiFi，失败时提供交互菜单
+   - 步骤3：执行1.1.1.1和8.8.8.8的Ping测试验证网络
+4. LED状态指示：
+   - LED1：系统初始化时点亮，测试通过后点亮表示成功
+   - LED2：WiFi模块就绪时点亮，主循环中闪烁表示运行
+5. 注意：ESP8266串口波特率为115200（已从9600修改）
+
 STM32天气项目结构说明
 
 一、项目简介
@@ -46,7 +66,7 @@ STM32天气项目结构说明
 三、主要功能说明
 
 1. WiFi通信功能
-   通过USART3与ESP8266模块通信，波特率9600，支持STA模式、AP模式和STA加AP混合模式，可实现TCP客户端和服务器功能。
+   通过USART3与ESP8266模块通信，波特率115200，支持STA模式、AP模式和STA加AP混合模式，可实现TCP客户端和服务器功能。
 
 2. 串口调试功能
    使用USART1进行PC串口调试，波特率115200，已重定向printf和scanf函数。
@@ -150,7 +170,7 @@ bool ESP8266_Cmd(char *cmd, char *reply1, char *reply2, u32 waittime)
    - 使用串口助手查看调试信息
 
 2. WiFi调试
-   - ESP8266模块使用USART3通信，波特率9600
+   - 115200
    - 可通过串口助手查看ESP8266返回信息
    - 注意CH引脚PA4用于模块使能，RST引脚PA15用于复位
 
