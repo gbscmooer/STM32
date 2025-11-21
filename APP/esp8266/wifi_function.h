@@ -54,6 +54,7 @@ bool        ESP8266_TCP_Send                    ( char *data, u16 len );
 bool        ESP8266_TCP_Disconnect              ( void );
 bool        Weather_Get_Data                    ( WeatherData *weather );
 void        Weather_Display                     ( WeatherData *weather );
+void        WiFi_Set_Log                        ( bool enable );
 void        ESP8266_Simple_TCP_Test             ( void );
 
 

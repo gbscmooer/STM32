@@ -6,6 +6,19 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdbool.h>
+
+// 全局变量控制日志输出
+static bool g_wifi_log_enable = true;
+
+// 设置日志输出状态
+void WiFi_Set_Log(bool enable)
+{
+	g_wifi_log_enable = enable;
+}
+
+// 内部日志宏，受g_wifi_log_enable控制
+#define WIFI_LOG(...) if(g_wifi_log_enable) PC_Usart(__VA_ARGS__)
+
 /*
  * 函数名：ESP8266_Choose
  * 描述  ：使能/禁用WF-ESP8266模块
@@ -166,7 +179,7 @@ bool ESP8266_Cmd ( char * cmd, char * reply1, char * reply2, u32 waittime )
 	strEsp8266_Fram_Record .InfBit .FramFinishFlag = 0;           //清除接收完成标志
 	memset(strEsp8266_Fram_Record .Data_RX_BUF, 0, RX_BUF_MAX_LEN); //清空接收缓冲区
 
-	PC_Usart ("\r\n[发送AT指令]: %s\r\n", cmd);  // 显示发送的指令
+	WIFI_LOG ("\r\n[发送AT指令]: %s\r\n", cmd);  // 显示发送的指令
 	ESP8266_Usart ( "%s\r\n", cmd );
 
 	if ( ( reply1 == 0 ) && ( reply2 == 0 ) )                      //不需要接收数据
@@ -195,7 +208,7 @@ bool ESP8266_Cmd ( char * cmd, char * reply1, char * reply2, u32 waittime )
 			// 检查是否busy
 			if(strstr(strEsp8266_Fram_Record.Data_RX_BUF, "busy"))
 			{
-				PC_Usart ("[警告]: ESP8266模块忙碌，等待2秒后重试...\r\n");
+				WIFI_LOG ("[警告]: ESP8266模块忙碌，等待2秒后重试...\r\n");
 				delay_ms(2000);
 				// 清除缓冲区并重新发送
 				strEsp8266_Fram_Record .InfBit .FramLength = 0;
@@ -222,9 +235,9 @@ bool ESP8266_Cmd ( char * cmd, char * reply1, char * reply2, u32 waittime )
 		u8 wifi_count = 0;
 		
 		// 先显示原始数据长度用于调试
-		PC_Usart ("[接收数据长度]: %d字节\r\n", strEsp8266_Fram_Record .InfBit .FramLength);
+		WIFI_LOG ("[接收数据长度]: %d字节\r\n", strEsp8266_Fram_Record .InfBit .FramLength);
 		
-		PC_Usart ("[扫描到的WiFi网络]:\r\n");
+		WIFI_LOG ("[扫描到的WiFi网络]:\r\n");
 		// 查找并显示英文WiFi名称
 		ptr = strEsp8266_Fram_Record .Data_RX_BUF;
 		while((ptr = strstr(ptr, "+CWLAP:")) != NULL)
@@ -250,7 +263,7 @@ bool ESP8266_Cmd ( char * cmd, char * reply1, char * reply2, u32 waittime )
 					if(is_ascii && (ssid_end - ssid_start) > 0)
 					{
 						*ssid_end = '\0';
-						PC_Usart ("  %d. %s\r\n", ++wifi_count, ssid_start);
+						WIFI_LOG ("  %d. %s\r\n", ++wifi_count, ssid_start);
 						*ssid_end = '"';
 					}
 				}
@@ -259,13 +272,13 @@ bool ESP8266_Cmd ( char * cmd, char * reply1, char * reply2, u32 waittime )
 		}
 		if(wifi_count == 0)
 		{
-			PC_Usart ("  未发现英文名称的WiFi网络\r\n");
-			PC_Usart ("  (可能都是中文名称或扫描超时)\r\n");
+			WIFI_LOG ("  未发现英文名称的WiFi网络\r\n");
+			WIFI_LOG ("  (可能都是中文名称或扫描超时)\r\n");
 		}
 	}
 	else
 	{
-		PC_Usart ("[ESP8266回复]: %s\r\n", strEsp8266_Fram_Record .Data_RX_BUF);
+		WIFI_LOG ("[ESP8266回复]: %s\r\n", strEsp8266_Fram_Record .Data_RX_BUF);
 	}
   
 	return found;
@@ -335,8 +348,8 @@ bool ESP8266_JoinAP ( char * pSSID, char * pPassWord )
 	// 连接前额外延迟，确保模块空闲
 	delay_ms(500);
 	
-	// 增加等待时间到20秒，因为WiFi连接可能需要更长时间
-	result = ESP8266_Cmd ( cCmd, "OK", "WIFI GOT IP", 20000 );
+	// 增加等待时间到10秒，因为WiFi连接可能需要更长时间
+	result = ESP8266_Cmd ( cCmd, "OK", "WIFI GOT IP", 10000 );
 	
 	if(result) 
 	{
@@ -1063,37 +1076,37 @@ bool ESP8266_TCP_Connect(char *ip, u16 port)
 {
 	char cmd[120];
 	
-	PC_Usart("\r\n正在连接TCP服务器 %s:%d...\r\n", ip, port);
+	WIFI_LOG("\r\n正在连接TCP服务器 %s:%d...\r\n", ip, port);
 	
 	// 1. 尝试关闭可能存在的旧连接（容错处理，ERROR是正常的）
-	PC_Usart("[步骤1] 清理旧连接...\r\n");
+	WIFI_LOG("[步骤1] 清理旧连接...\r\n");
 	ESP8266_Cmd("AT+CIPCLOSE", "OK", "ERROR", 1000);
 	delay_ms(500);  // 等待ESP8266处理完毕
 	
 	// 2. 设置单连接模式
-	PC_Usart("[步骤2] 设置单连接模式...\r\n");
+	WIFI_LOG("[步骤2] 设置单连接模式...\r\n");
 	if(!ESP8266_Cmd("AT+CIPMUX=0", "OK", NULL, 2000))
 	{
-		PC_Usart("? 设置单连接模式失败\r\n");
+		WIFI_LOG("? 设置单连接模式失败\r\n");
 		return false;
 	}
-	PC_Usart("? 单连接模式设置成功\r\n");
+	WIFI_LOG("? 单连接模式设置成功\r\n");
 	delay_ms(500);  // 等待设置生效
 	
 	// 3. 连接TCP服务器
-	PC_Usart("[步骤3] 发送TCP连接命令...\r\n");
+	WIFI_LOG("[步骤3] 发送TCP连接命令...\r\n");
 	sprintf(cmd, "AT+CIPSTART=\"TCP\",\"%s\",%d", ip, port);
 	
 	// 等待CONNECT响应（不使用OK，因为有些固件只返回CONNECT）
 	if(ESP8266_Cmd(cmd, "CONNECT", "OK", 10000))
 	{
-		PC_Usart("? TCP连接成功！\r\n");
+		WIFI_LOG("? TCP连接成功！\r\n");
 		delay_ms(1000);  // 连接成功后等待，让ESP8266状态稳定，避免下一个命令太快
 		return true;
 	}
 	else
 	{
-		PC_Usart("? TCP连接失败！\r\n");
+		WIFI_LOG("? TCP连接失败！\r\n");
 		return false;
 	}
 }
@@ -1173,13 +1186,13 @@ bool ESP8266_TCP_Send(char *data, u16 len)
 	strEsp8266_Fram_Record.Data_RX_BUF[strEsp8266_Fram_Record.InfBit.FramLength] = '\0';
 	if(strstr(strEsp8266_Fram_Record.Data_RX_BUF, "SEND OK"))
 	{
-		PC_Usart("? 数据发送成功 (SEND OK)\r\n");
+		WIFI_LOG("? 数据发送成功 (SEND OK)\r\n");
 		delay_ms(200);  // SEND OK后稍等，让ESP8266准备接收服务器响应
 		return true;
 	}
 	else
 	{
-		PC_Usart("? 未收到SEND OK (收到: %s)\r\n", strEsp8266_Fram_Record.Data_RX_BUF);
+		WIFI_LOG("? 未收到SEND OK (收到: %s)\r\n", strEsp8266_Fram_Record.Data_RX_BUF);
 		delay_ms(200);
 		return true;  // 即使没收到也继续，因为数据可能已发送
 	}
@@ -1192,16 +1205,16 @@ bool ESP8266_TCP_Send(char *data, u16 len)
   */
 bool ESP8266_TCP_Disconnect(void)
 {
-	PC_Usart("\r\n正在关闭TCP连接...\r\n");
+	WIFI_LOG("\r\n正在关闭TCP连接...\r\n");
 	
 	if(ESP8266_Cmd("AT+CIPCLOSE", "OK", "CLOSED", 2000))
 	{
-		PC_Usart("? TCP连接已关闭\r\n");
+		WIFI_LOG("? TCP连接已关闭\r\n");
 		return true;
 	}
 	else
 	{
-		PC_Usart("? 关闭TCP连接失败\r\n");
+		WIFI_LOG("? 关闭TCP连接失败\r\n");
 		return false;
 	}
 }
@@ -1220,8 +1233,8 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 	char http_request[512];
 	u16 len;
 	
-	PC_Usart("\r\n=== 发送HTTP请求 ===\r\n");
-	PC_Usart("目标: http://%s:%d%s\r\n", host, port, path);
+	WIFI_LOG("\r\n=== 发送HTTP请求 ===\r\n");
+	WIFI_LOG("目标: http://%s:%d%s\r\n", host, port, path);
 	
 	// 1. 连接TCP服务器
 	if(!ESP8266_TCP_Connect(host, port))
@@ -1239,7 +1252,7 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 		path, host);
 	
 	len = strlen(http_request);
-	PC_Usart("发送HTTP请求 (%d字节):\r\n%s\r\n", len, http_request);
+	WIFI_LOG("发送HTTP请求 (%d字节):\r\n%s\r\n", len, http_request);
 	
 	// 3. 清空接收缓冲区准备接收HTTP响应
 	strEsp8266_Fram_Record.InfBit.FramLength = 0;
@@ -1250,15 +1263,15 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 	// 4. 发送HTTP请求
 	if(!ESP8266_TCP_Send(http_request, len))
 	{
-		PC_Usart("? 发送HTTP请求失败\r\n");
+		WIFI_LOG("? 发送HTTP请求失败\r\n");
 		ESP8266_TCP_Disconnect();
 		return false;
 	}
 	
-	PC_Usart("? HTTP请求已发送\r\n");
+	WIFI_LOG("? HTTP请求已发送\r\n");
 	
 	// 5. 等待并接收响应（改进：动态等待直到数据稳定或连接关闭）
-	PC_Usart("等待服务器响应...\r\n");
+	WIFI_LOG("等待服务器响应...\r\n");
 	u8 retry = 0;
 	bool got_data = false;
 	u16 last_len = 0;
@@ -1283,7 +1296,7 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 				if(strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "+IPD") ||
 				   strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "HTTP/"))
 				{
-					PC_Usart("? 开始接收数据 (%d字节)...\r\n", strEsp8266_Fram_Record.InfBit.FramLength);
+					WIFI_LOG("? 开始接收数据 (%d字节)...\r\n", strEsp8266_Fram_Record.InfBit.FramLength);
 					got_data = true;
 					last_len = strEsp8266_Fram_Record.InfBit.FramLength;
 				}
@@ -1298,7 +1311,7 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 				// 连续5次(1秒)长度不变，认为接收完成
 				if(stable_cnt >= 5)
 				{
-					PC_Usart("? 数据接收稳定 (%d字节)\r\n", last_len);
+					WIFI_LOG("? 数据接收稳定 (%d字节)\r\n", last_len);
 					break;
 				}
 			}
@@ -1306,13 +1319,13 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 			{
 				last_len = strEsp8266_Fram_Record.InfBit.FramLength;
 				stable_cnt = 0;
-				// PC_Usart("  接收中... (%d字节)\r\n", last_len);
+				// WIFI_LOG("  接收中... (%d字节)\r\n", last_len);
 			}
 			
 			// 检查是否包含 CLOSED (服务器主动关闭连接)
 			if(strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "CLOSED"))
 			{
-				 PC_Usart("? 检测到连接关闭，接收结束\r\n");
+				 WIFI_LOG("? 检测到连接关闭，接收结束\r\n");
 				 break;
 			}
 		}
@@ -1320,13 +1333,13 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 		retry++;
 		if(retry % 5 == 0 && !got_data)
 		{
-			PC_Usart("等待中... %d秒\r\n", retry / 5);
+			WIFI_LOG("等待中... %d秒\r\n", retry / 5);
 		}
 	}
 	
 	if(!got_data && retry >= 50)
 	{
-		PC_Usart("? 等待超时！\r\n");
+		WIFI_LOG("? 等待超时！\r\n");
 		ESP8266_TCP_Disconnect();
 		return false;
 	}
@@ -1360,12 +1373,12 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 		if(http_start == NULL)
 		{
 			// 没找到HTTP响应头，直接复制所有数据
-			PC_Usart("? 未找到HTTP响应头，使用原始数据\r\n");
+			WIFI_LOG("? 未找到HTTP响应头，使用原始数据\r\n");
 			http_start = (char*)strEsp8266_Fram_Record.Data_RX_BUF;
 		}
 		else
 		{
-			PC_Usart("? 找到HTTP响应，偏移量: %d字节\r\n", http_start - (char*)strEsp8266_Fram_Record.Data_RX_BUF);
+			WIFI_LOG("? 找到HTTP响应，偏移量: %d字节\r\n", http_start - (char*)strEsp8266_Fram_Record.Data_RX_BUF);
 		}
 		
 		// 计算实际HTTP数据长度
@@ -1374,24 +1387,24 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 		if(copy_len > max_len - 1)
 		{
 			copy_len = max_len - 1;
-			PC_Usart("? 响应数据过大，截断至 %d 字节\r\n", copy_len);
+			WIFI_LOG("? 响应数据过大，截断至 %d 字节\r\n", copy_len);
 		}
 		
 		memcpy(response, http_start, copy_len);
 		response[copy_len] = '\0';
 		
-		PC_Usart("? 接收到HTTP响应 (%d字节)\r\n", copy_len);
+		WIFI_LOG("? 接收到HTTP响应 (%d字节)\r\n", copy_len);
 		// 只显示前200字节，避免刷屏
 		if(copy_len > 200)
 		{
 			char preview[201];
 			memcpy(preview, response, 200);
 			preview[200] = '\0';
-			PC_Usart("响应预览(前200字节):\r\n%s...\r\n", preview);
+			WIFI_LOG("响应预览(前200字节):\r\n%s...\r\n", preview);
 		}
 		else
 		{
-			PC_Usart("完整响应:\r\n%s\r\n", response);
+			WIFI_LOG("完整响应:\r\n%s\r\n", response);
 		}
 		
 		// 检查是否已经关闭连接（通过检查是否包含CLOSED）
@@ -1399,14 +1412,14 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 		// 但我们在上面已经处理了CLOSED并截断了长度，所以如果closed_ptr不为空，说明已关闭
 		if(closed_ptr != NULL)
 		{
-			PC_Usart("? 连接已由服务器关闭，无需发送CIPCLOSE\r\n");
+			WIFI_LOG("? 连接已由服务器关闭，无需发送CIPCLOSE\r\n");
 		}
 		else
 		{
 			// 再次检查缓冲区中是否包含CLOSED，以防万一
 			if(strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "CLOSED"))
 			{
-				PC_Usart("? 检测到CLOSED，无需发送CIPCLOSE\r\n");
+				WIFI_LOG("? 检测到CLOSED，无需发送CIPCLOSE\r\n");
 			}
 			else
 			{
@@ -1418,7 +1431,7 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 	}
 	else
 	{
-		PC_Usart("? 未接收到响应\r\n");
+		WIFI_LOG("? 未接收到响应\r\n");
 		ESP8266_TCP_Disconnect();
 		return false;
 	}
@@ -1451,13 +1464,13 @@ bool Weather_Get_Data(WeatherData *weather)
 	memset(weather->description, 0, sizeof(weather->description));
 	memset(weather->last_update, 0, sizeof(weather->last_update));
 	
-	PC_Usart("\r\n=== 获取天气数据 ===\r\n");
+	WIFI_LOG("\r\n=== 获取天气数据 ===\r\n");
 	
 	// 直接使用IP地址，避免域名解析延迟
 	// 服务器IP: 47.83.221.161
 	if(!ESP8266_HTTP_Request("47.83.221.161", 80, "/api/weather/", g_weather_http_response, sizeof(g_weather_http_response)))
 	{
-		PC_Usart("? HTTP请求失败\r\n");
+		WIFI_LOG("? HTTP请求失败\r\n");
 		return false;
 	}
 	
@@ -1480,7 +1493,7 @@ bool Weather_Get_Data(WeatherData *weather)
 	
 	if(json_start == NULL)
 	{
-		PC_Usart("? 未找到JSON数据\r\n");
+		WIFI_LOG("? 未找到JSON数据\r\n");
 		return false;
 	}
 	
@@ -1492,22 +1505,22 @@ bool Weather_Get_Data(WeatherData *weather)
 	}
 	else
 	{
-		PC_Usart("? 未找到JSON结束符\r\n");
+		WIFI_LOG("? 未找到JSON结束符\r\n");
 		// 尝试继续解析，也许只是缺少结束符
 	}
 	
-	PC_Usart("解析JSON数据...\r\n");
-	PC_Usart("待解析的JSON内容:\r\n%s\r\n", json_start); // 打印完整JSON内容以便调试
+	WIFI_LOG("解析JSON数据...\r\n");
+	WIFI_LOG("待解析的JSON内容:\r\n%s\r\n", json_start); // 打印完整JSON内容以便调试
 	
 	// 解析JSON
 	root = cJSON_Parse(json_start);
 	if(root == NULL)
 	{
-		PC_Usart("? JSON解析失败\r\n");
+		WIFI_LOG("? JSON解析失败\r\n");
 		const char *error_ptr = cJSON_GetErrorPtr();
 		if(error_ptr != NULL)
 		{
-			PC_Usart("错误位置: %s\r\n", error_ptr);
+			WIFI_LOG("错误位置: %s\r\n", error_ptr);
 		}
 		return false;
 	}
@@ -1519,7 +1532,7 @@ bool Weather_Get_Data(WeatherData *weather)
 		if(strcmp(item->valuestring, "success") != 0)
 		{
 			// 服务器返回错误状态
-			PC_Usart("? API返回错误状态: %s\r\n", item->valuestring);
+			WIFI_LOG("? API返回错误状态: %s\r\n", item->valuestring);
 			
 			// 尝试获取错误消息
 			cJSON *msg_item = cJSON_GetObjectItem(root, "msg");
@@ -1530,12 +1543,12 @@ bool Weather_Get_Data(WeatherData *weather)
 				if(strstr(msg_item->valuestring, "\xE4\xB8\x8A\xE6\xB8\xB8") != NULL || 
 				   strstr(msg_item->valuestring, "unavailable") != NULL)
 				{
-					PC_Usart("提示: 上游服务器不可用，请稍后重试\r\n");
+					WIFI_LOG("提示: 上游服务器不可用，请稍后重试\r\n");
 				}
 				else
 				{
 					// 其他错误信息，直接打印（可能包含UTF-8字符导致乱码）
-					PC_Usart("错误信息(UTF-8): %s\r\n", msg_item->valuestring);
+					WIFI_LOG("错误信息(UTF-8): %s\r\n", msg_item->valuestring);
 				}
 			}
 			
@@ -1545,7 +1558,7 @@ bool Weather_Get_Data(WeatherData *weather)
 	}
 	else
 	{
-		PC_Usart("? 未找到status字段或格式错误\r\n");
+		WIFI_LOG("? 未找到status字段或格式错误\r\n");
 		cJSON_Delete(root);
 		return false;
 	}
@@ -1554,7 +1567,7 @@ bool Weather_Get_Data(WeatherData *weather)
 	data = cJSON_GetObjectItem(root, "data");
 	if(data == NULL)
 	{
-		PC_Usart("? 未找到data字段\r\n");
+		WIFI_LOG("? 未找到data字段\r\n");
 		cJSON_Delete(root);
 		return false;
 	}
@@ -1599,7 +1612,7 @@ bool Weather_Get_Data(WeatherData *weather)
 	weather->valid = true;
 	result = true;
 	
-	PC_Usart("? 天气数据解析成功\r\n");
+	WIFI_LOG("? 天气数据解析成功\r\n");
 	
 	// 释放JSON对象
 	cJSON_Delete(root);

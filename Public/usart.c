@@ -51,14 +51,15 @@ void USART1_Init(u32 bound)
 	
 	USART_ClearFlag(USART1, USART_FLAG_TC);
 		
-	USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);//开启相关中断
+	// 禁用USART1接收中断，改用查询方式，以支持scanf和getchar
+	// USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);//开启相关中断
 
 	//Usart1 NVIC 配置
-	NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;//串口1中断通道
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=3;//抢占优先级3
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority =3;		//子优先级3
-	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			//IRQ通道使能
-	NVIC_Init(&NVIC_InitStructure);	//根据指定的参数初始化VIC寄存器、	
+	// NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;//串口1中断通道
+	// NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=3;//抢占优先级3
+	// NVIC_InitStructure.NVIC_IRQChannelSubPriority =3;		//子优先级3
+	// NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			//IRQ通道使能
+	// NVIC_Init(&NVIC_InitStructure);	//根据指定的参数初始化VIC寄存器、	
 }
 
 /*******************************************************************************

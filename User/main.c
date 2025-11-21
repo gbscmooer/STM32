@@ -114,6 +114,7 @@ int main(void)
 	u32 last_update_time = 0;
 	u32 current_time = 0;
 	u32 update_interval = 60000;  // 默认60秒
+	bool first_success = false;   // 标记是否首次成功
 	
 	// 首次获取天气数据
 	if(Weather_Get_Data(&weather))
@@ -121,6 +122,13 @@ int main(void)
 		Weather_Display(&weather);
 		LED2 = 0;  // 点亮LED2表示成功
 		update_interval = 60000; // 成功后60秒更新
+		
+		if(!first_success)
+		{
+			first_success = true;
+			PC_Usart("? 首次更新成功，后续将隐藏详细调试信息\r\n");
+			WiFi_Set_Log(false); // 关闭详细日志
+		}
 	}
 	else
 	{
@@ -139,7 +147,8 @@ int main(void)
 		// 检查是否到达更新间隔
 		if(current_time - last_update_time >= update_interval)
 		{
-			PC_Usart("\r\n>>> 定时更新天气数据 (间隔: %d秒) <<<\r\n", update_interval/1000);
+			// 只有在开启日志时才打印这条提示，或者保留它作为心跳
+			// PC_Usart("\r\n>>> 定时更新天气数据 (间隔: %d秒) <<<\r\n", update_interval/1000);
 			
 			// 获取并显示天气数据
 			if(Weather_Get_Data(&weather))
@@ -148,9 +157,17 @@ int main(void)
 				LED2 = 0;  // 点亮LED2表示成功
 				LED1 = 1;  // 熄灭LED1
 				update_interval = 60000; // 成功后60秒更新
+				
+				if(!first_success)
+				{
+					first_success = true;
+					PC_Usart("? 更新成功，后续将隐藏详细调试信息\r\n");
+					WiFi_Set_Log(false); // 关闭详细日志
+				}
 			}
 			else
 			{
+				// 失败时可能需要重新开启日志以便调试，或者仅打印简单错误
 				PC_Usart("? 获取天气数据失败，5秒后重试\r\n");
 				LED1 = 0;  // 点亮LED1表示失败
 				update_interval = 5000; // 失败后5秒重试
