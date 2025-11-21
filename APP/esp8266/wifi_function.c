@@ -2,11 +2,10 @@
 #include "wifi_config.h"
 #include "SysTick.h"
 #include "usart.h"
-#include <string.h> 
-#include <stdio.h>  
+#include "../cJSON/cJSON.h"
+#include <string.h>
+#include <stdio.h>
 #include <stdbool.h>
-
-
 /*
  * 函数名：ESP8266_Choose
  * 描述  ：使能/禁用WF-ESP8266模块
@@ -153,8 +152,14 @@ void ESP8266_AT_Test ( void )
  */
 bool ESP8266_Cmd ( char * cmd, char * reply1, char * reply2, u32 waittime )
 {    
+	u32 start_time = 0;
+	bool found = false;
+	u32 elapsed_time = 0;
+	u16 last_length = 0;
+	u8 stable_count = 0;
+	
 	// 命令前短暂延迟，避免指令过密
-	delay_ms(100);
+	delay_ms(300);
 	
 	// 清除接收缓冲区
 	strEsp8266_Fram_Record .InfBit .FramLength = 0;               //从新开始接收新的数据包
@@ -167,24 +172,44 @@ bool ESP8266_Cmd ( char * cmd, char * reply1, char * reply2, u32 waittime )
 	if ( ( reply1 == 0 ) && ( reply2 == 0 ) )                      //不需要接收数据
 		return true;
 	
-	delay_ms ( waittime );                 //延时
+	// 改进：循环检查是否收到期望的响应
+	start_time = 0;
+	while(start_time < waittime)
+	{
+		delay_ms(50);  // 每50ms检查一次
+		start_time += 50;
+		
+		// 临时添加结束符以便strstr查找
+		if(strEsp8266_Fram_Record.InfBit.FramLength > 0)
+		{
+			strEsp8266_Fram_Record.Data_RX_BUF[strEsp8266_Fram_Record.InfBit.FramLength] = '\0';
+			
+			// 检查是否收到期望的响应
+			if((reply1 && strstr(strEsp8266_Fram_Record.Data_RX_BUF, reply1)) || 
+			   (reply2 && strstr(strEsp8266_Fram_Record.Data_RX_BUF, reply2)))
+			{
+				found = true;
+				break;
+			}
+			
+			// 检查是否busy
+			if(strstr(strEsp8266_Fram_Record.Data_RX_BUF, "busy"))
+			{
+				PC_Usart ("[警告]: ESP8266模块忙碌，等待2秒后重试...\r\n");
+				delay_ms(2000);
+				// 清除缓冲区并重新发送
+				strEsp8266_Fram_Record .InfBit .FramLength = 0;
+				strEsp8266_Fram_Record .InfBit .FramFinishFlag = 0;
+				memset(strEsp8266_Fram_Record .Data_RX_BUF, 0, RX_BUF_MAX_LEN);
+				
+				ESP8266_Usart ( "%s\r\n", cmd );
+				start_time = 0; // 重置计时器
+				continue;
+			}
+		}
+	}
 	
 	strEsp8266_Fram_Record .Data_RX_BUF [ strEsp8266_Fram_Record .InfBit .FramLength ]  = '\0';
-
-	// 检查是否busy
-	if(strstr(strEsp8266_Fram_Record .Data_RX_BUF, "busy"))
-	{
-		PC_Usart ("[警告]: ESP8266模块忙碌，等待2秒后重试...\r\n");
-		delay_ms(2000);
-		// 清除缓冲区并重新发送
-		strEsp8266_Fram_Record .InfBit .FramLength = 0;
-		strEsp8266_Fram_Record .InfBit .FramFinishFlag = 0;
-		memset(strEsp8266_Fram_Record .Data_RX_BUF, 0, RX_BUF_MAX_LEN);
-		
-		ESP8266_Usart ( "%s\r\n", cmd );
-		delay_ms ( waittime );
-		strEsp8266_Fram_Record .Data_RX_BUF [ strEsp8266_Fram_Record .InfBit .FramLength ]  = '\0';
-	}
 
 	// 特殊处理CWLAP命令的输出，提取英文WiFi名称
 	if(strstr(cmd, "CWLAP")) 
@@ -243,15 +268,7 @@ bool ESP8266_Cmd ( char * cmd, char * reply1, char * reply2, u32 waittime )
 		PC_Usart ("[ESP8266回复]: %s\r\n", strEsp8266_Fram_Record .Data_RX_BUF);
 	}
   
-	if ( ( reply1 != 0 ) && ( reply2 != 0 ) )
-		return ( ( bool ) strstr ( strEsp8266_Fram_Record .Data_RX_BUF, reply1 ) || 
-						 ( bool ) strstr ( strEsp8266_Fram_Record .Data_RX_BUF, reply2 ) ); 
- 	
-	else if ( reply1 != 0 )
-		return ( ( bool ) strstr ( strEsp8266_Fram_Record .Data_RX_BUF, reply1 ) );
-	
-	else
-		return ( ( bool ) strstr ( strEsp8266_Fram_Record .Data_RX_BUF, reply2 ) );
+	return found;
 	
 }
 
@@ -292,7 +309,9 @@ bool ESP8266_Net_Mode_Choose ( ENUM_Net_ModeTypeDef enumMode )
  */
 void ESP8266_Scan_AP ( void )
 {
-	ESP8266_Cmd ( "AT+CWLAP", "OK", NULL, 15000 );  // 增加到15秒等待时间
+	PC_Usart("开始扫描WiFi网络（预计需要10-15秒）...\r\n");
+	delay_ms(3000);  // 扫描前等待3秒，让ESP8266完全就绪
+	ESP8266_Cmd ( "AT+CWLAP", "OK", NULL, 15000 );  // 等待15秒扫描完成
 }
 
 /*
@@ -899,7 +918,6 @@ void ESP8266_StaTcpClient_ApTcpServer ( void )
 bool WiFi_Connect_Default(void)
 {
 	PC_Usart("\r\n=== 尝试连接默认WiFi网络 ===\r\n");
-	PC_Usart("WiFi名称: OPPOx\r\n");
 	
 	if(ESP8266_JoinAP("OPPOx", "huangzixuan"))
 	{
@@ -1047,16 +1065,30 @@ bool ESP8266_TCP_Connect(char *ip, u16 port)
 	
 	PC_Usart("\r\n正在连接TCP服务器 %s:%d...\r\n", ip, port);
 	
-	// 关闭多连接模式
-	ESP8266_Cmd("AT+CIPMUX=0", "OK", NULL, 1000);
-	delay_ms(100);
+	// 1. 尝试关闭可能存在的旧连接（容错处理，ERROR是正常的）
+	PC_Usart("[步骤1] 清理旧连接...\r\n");
+	ESP8266_Cmd("AT+CIPCLOSE", "OK", "ERROR", 1000);
+	delay_ms(500);  // 等待ESP8266处理完毕
 	
-	// 连接TCP服务器
+	// 2. 设置单连接模式
+	PC_Usart("[步骤2] 设置单连接模式...\r\n");
+	if(!ESP8266_Cmd("AT+CIPMUX=0", "OK", NULL, 2000))
+	{
+		PC_Usart("? 设置单连接模式失败\r\n");
+		return false;
+	}
+	PC_Usart("? 单连接模式设置成功\r\n");
+	delay_ms(500);  // 等待设置生效
+	
+	// 3. 连接TCP服务器
+	PC_Usart("[步骤3] 发送TCP连接命令...\r\n");
 	sprintf(cmd, "AT+CIPSTART=\"TCP\",\"%s\",%d", ip, port);
 	
+	// 等待CONNECT响应（不使用OK，因为有些固件只返回CONNECT）
 	if(ESP8266_Cmd(cmd, "CONNECT", "OK", 10000))
 	{
 		PC_Usart("? TCP连接成功！\r\n");
+		delay_ms(1000);  // 连接成功后等待，让ESP8266状态稳定，避免下一个命令太快
 		return true;
 	}
 	else
@@ -1075,24 +1107,82 @@ bool ESP8266_TCP_Connect(char *ip, u16 port)
 bool ESP8266_TCP_Send(char *data, u16 len)
 {
 	char cmd[32];
+	u8 retry = 0;
+	u16 last_length = 0;
+	u8 stable_count = 0;
 	
-	// 发送CIPSEND命令
+	PC_Usart("\r\n准备发送TCP数据 (%d字节)...\r\n", len);
+	
+	// 1. 发送CIPSEND命令，等待>提示符
 	sprintf(cmd, "AT+CIPSEND=%d", len);
 	
-	if(!ESP8266_Cmd(cmd, ">", NULL, 2000))
+	if(!ESP8266_Cmd(cmd, ">", NULL, 3000))
 	{
-		PC_Usart("? 准备发送失败\r\n");
+		PC_Usart("? 未收到>提示符，发送准备失败\r\n");
 		return false;
 	}
 	
-	// 发送实际数据
-	delay_ms(100);
+	PC_Usart("? 收到>提示符\r\n");
+	delay_ms(100);  // 等待ESP8266完全准备好接收数据
+	
+	// 2. 清空缓冲区准备接收SEND OK
+	strEsp8266_Fram_Record.InfBit.FramLength = 0;
+	strEsp8266_Fram_Record.InfBit.FramFinishFlag = 0;
+	memset(strEsp8266_Fram_Record.Data_RX_BUF, 0, RX_BUF_MAX_LEN);
+	
+	// 3. 发送实际数据
+	PC_Usart("正在发送数据...\r\n");
 	ESP8266_Usart("%s", data);
 	
-	// 等待发送完成
-	delay_ms(1000);
+	// 4. 等待发送完成确认（改进：循环检查而非固定延时）
+	while(retry < 40)  // 最多等待2秒
+	{
+		delay_ms(50);
+		
+		// 实时检查是否收到SEND OK
+		if(strEsp8266_Fram_Record.InfBit.FramLength > 0)
+		{
+			strEsp8266_Fram_Record.Data_RX_BUF[strEsp8266_Fram_Record.InfBit.FramLength] = '\0';
+			if(strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "SEND OK"))
+			{
+				break; // 收到确认，提前结束等待
+			}
+		}
+		
+		// 检查数据长度稳定性
+		if(strEsp8266_Fram_Record.InfBit.FramLength > 0)
+		{
+			if(strEsp8266_Fram_Record.InfBit.FramLength == last_length)
+			{
+				stable_count++;
+				if(stable_count >= 4)  // 连续4次(200ms)长度不变
+				{
+					break;  // 接收完成
+				}
+			}
+			else
+			{
+				stable_count = 0;
+				last_length = strEsp8266_Fram_Record.InfBit.FramLength;
+			}
+		}
+		retry++;
+	}
 	
-	return true;
+	// 5. 检查是否收到SEND OK
+	strEsp8266_Fram_Record.Data_RX_BUF[strEsp8266_Fram_Record.InfBit.FramLength] = '\0';
+	if(strstr(strEsp8266_Fram_Record.Data_RX_BUF, "SEND OK"))
+	{
+		PC_Usart("? 数据发送成功 (SEND OK)\r\n");
+		delay_ms(200);  // SEND OK后稍等，让ESP8266准备接收服务器响应
+		return true;
+	}
+	else
+	{
+		PC_Usart("? 未收到SEND OK (收到: %s)\r\n", strEsp8266_Fram_Record.Data_RX_BUF);
+		delay_ms(200);
+		return true;  // 即使没收到也继续，因为数据可能已发送
+	}
 }
 
 /**
@@ -1151,31 +1241,114 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 	len = strlen(http_request);
 	PC_Usart("发送HTTP请求 (%d字节):\r\n%s\r\n", len, http_request);
 	
-	// 3. 发送HTTP请求
+	// 3. 清空接收缓冲区准备接收HTTP响应
+	strEsp8266_Fram_Record.InfBit.FramLength = 0;
+	strEsp8266_Fram_Record.InfBit.FramFinishFlag = 0;
+	memset(strEsp8266_Fram_Record.Data_RX_BUF, 0, RX_BUF_MAX_LEN);
+	delay_ms(100);
+	
+	// 4. 发送HTTP请求
 	if(!ESP8266_TCP_Send(http_request, len))
 	{
+		PC_Usart("? 发送HTTP请求失败\r\n");
 		ESP8266_TCP_Disconnect();
 		return false;
 	}
 	
-	// 4. 等待并接收响应
-	PC_Usart("等待服务器响应...\r\n");
-	delay_ms(3000);  // 等待3秒接收数据
+	PC_Usart("? HTTP请求已发送\r\n");
 	
-	// 5. 读取响应数据
-	if(strEsp8266_Fram_Record.InfBit.FramLength > 0)
+	// 5. 等待并接收响应（分步检查）
+	PC_Usart("等待服务器响应...\r\n");
+	u8 retry = 0;
+	bool got_data = false;
+	while(retry < 30)  // 最多等待30次 x 200ms = 6秒
 	{
-		u16 copy_len = strEsp8266_Fram_Record.InfBit.FramLength;
+		delay_ms(200);
+		
+		// 检查是否接收到数据（查找+IPD或HTTP响应）
+		if(strEsp8266_Fram_Record.InfBit.FramLength > 10)
+		{
+			// 确保字符串结束符，防止strstr越界
+			strEsp8266_Fram_Record.Data_RX_BUF[strEsp8266_Fram_Record.InfBit.FramLength] = '\0';
+			
+			// 检查是否包含+IPD或HTTP响应头
+			if(strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "+IPD") ||
+			   strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "HTTP/"))
+			{
+				PC_Usart("? 已接收数据 (%d字节)\r\n", strEsp8266_Fram_Record.InfBit.FramLength);
+				got_data = true;
+				delay_ms(500);  // 再等待一段时间确保数据接收完整
+				break;
+			}
+		}
+		
+		retry++;
+		if(retry % 5 == 0)  // 每1秒显示一次进度
+		{
+			PC_Usart("等待中... %d秒 (已接收%d字节)\r\n", retry / 5, strEsp8266_Fram_Record.InfBit.FramLength);
+		}
+	}
+	
+	if(!got_data && retry >= 30)
+	{
+		PC_Usart("? 等待超时！接收到%d字节\r\n", strEsp8266_Fram_Record.InfBit.FramLength);
+		if(strEsp8266_Fram_Record.InfBit.FramLength > 0)
+		{
+			PC_Usart("接收到的原始数据:\r\n%s\r\n", strEsp8266_Fram_Record.Data_RX_BUF);
+		}
+		ESP8266_TCP_Disconnect();
+		return false;
+	}
+	
+	// 6. 处理响应数据（去除+IPD前缀）
+	if(got_data && strEsp8266_Fram_Record.InfBit.FramLength > 0)
+	{
+		char *http_start = NULL;
+		
+		// 查找HTTP响应的开始位置（跳过+IPD前缀）
+		http_start = strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "HTTP/");
+		if(http_start == NULL)
+		{
+			// 如果没找到HTTP/，查找{（JSON直接开始的情况）
+			http_start = strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "{");
+		}
+		
+		if(http_start == NULL)
+		{
+			// 没找到HTTP响应头，直接复制所有数据
+			PC_Usart("? 未找到HTTP响应头，使用原始数据\r\n");
+			http_start = (char*)strEsp8266_Fram_Record.Data_RX_BUF;
+		}
+		else
+		{
+			PC_Usart("? 找到HTTP响应，偏移量: %d字节\r\n", http_start - (char*)strEsp8266_Fram_Record.Data_RX_BUF);
+		}
+		
+		// 计算实际HTTP数据长度
+		u16 http_len = strEsp8266_Fram_Record.InfBit.FramLength - (http_start - (char*)strEsp8266_Fram_Record.Data_RX_BUF);
+		u16 copy_len = http_len;
 		if(copy_len > max_len - 1)
 		{
 			copy_len = max_len - 1;
+			PC_Usart("? 响应数据过大，截断至 %d 字节\r\n", copy_len);
 		}
 		
-		memcpy(response, strEsp8266_Fram_Record.Data_RX_BUF, copy_len);
+		memcpy(response, http_start, copy_len);
 		response[copy_len] = '\0';
 		
-		PC_Usart("? 接收到响应 (%d字节):\r\n", copy_len);
-		PC_Usart("%s\r\n", response);
+		PC_Usart("? 接收到HTTP响应 (%d字节)\r\n", copy_len);
+		// 只显示前200字节，避免刷屏
+		if(copy_len > 200)
+		{
+			char preview[201];
+			memcpy(preview, response, 200);
+			preview[200] = '\0';
+			PC_Usart("响应预览(前200字节):\r\n%s...\r\n", preview);
+		}
+		else
+		{
+			PC_Usart("完整响应:\r\n%s\r\n", response);
+		}
 		
 		ESP8266_TCP_Disconnect();
 		return true;
@@ -1188,5 +1361,333 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 	}
 }
 
+// 定义全局缓冲区，避免栈溢出
+static char g_weather_http_response[2048];
+
+/**
+  * @brief  Weather_Get_Data 获取天气数据
+  * @param  weather：存储天气数据的结构体指针
+  * @retval true：获取成功，false：获取失败
+  */
+bool Weather_Get_Data(WeatherData *weather)
+{
+	// 使用全局缓冲区代替栈变量
+	// char http_response[2048]; 
+	char *json_start;
+	cJSON *root = NULL;
+	cJSON *data = NULL;
+	cJSON *item = NULL;
+	bool result = false;
+	
+	// 初始化天气数据
+	weather->valid = false;
+	memset(weather->location, 0, sizeof(weather->location));
+	memset(weather->temperature, 0, sizeof(weather->temperature));
+	memset(weather->humidity, 0, sizeof(weather->humidity));
+	memset(weather->weather, 0, sizeof(weather->weather));
+	memset(weather->description, 0, sizeof(weather->description));
+	memset(weather->last_update, 0, sizeof(weather->last_update));
+	
+	PC_Usart("\r\n=== 获取天气数据 ===\r\n");
+	
+	// 直接使用IP地址，避免域名解析延迟
+	// 服务器IP: 47.83.221.161
+	if(!ESP8266_HTTP_Request("47.83.221.161", 80, "/api/weather/", g_weather_http_response, sizeof(g_weather_http_response)))
+	{
+		PC_Usart("? HTTP请求失败\r\n");
+		return false;
+	}
+	
+	// 查找JSON数据起始位置（跳过HTTP头）
+	json_start = strstr(g_weather_http_response, "\r\n\r\n");
+	if(json_start == NULL)
+	{
+		json_start = strstr(g_weather_http_response, "{");
+	}
+	else
+	{
+		json_start += 4;  // 跳过 \r\n\r\n
+	}
+	
+	if(json_start == NULL)
+	{
+		PC_Usart("? 未找到JSON数据\r\n");
+		return false;
+	}
+	
+	PC_Usart("解析JSON数据...\r\n");
+	
+	// 解析JSON
+	root = cJSON_Parse(json_start);
+	if(root == NULL)
+	{
+		PC_Usart("? JSON解析失败\r\n");
+		const char *error_ptr = cJSON_GetErrorPtr();
+		if(error_ptr != NULL)
+		{
+			PC_Usart("错误位置: %s\r\n", error_ptr);
+		}
+		return false;
+	}
+	
+	// 检查status字段
+	item = cJSON_GetObjectItem(root, "status");
+	if(item != NULL && cJSON_IsString(item))
+	{
+		if(strcmp(item->valuestring, "success") != 0)
+		{
+			// 服务器返回错误状态
+			PC_Usart("? API返回错误状态: %s\r\n", item->valuestring);
+			
+			// 尝试获取错误消息
+			cJSON *msg_item = cJSON_GetObjectItem(root, "msg");
+			if(msg_item != NULL && cJSON_IsString(msg_item))
+			{
+				PC_Usart("错误信息: %s\r\n", msg_item->valuestring);
+				
+				// 检查是否是上游服务器不可用
+				if(strstr(msg_item->valuestring, "上游") != NULL || 
+				   strstr(msg_item->valuestring, "不可用") != NULL ||
+				   strstr(msg_item->valuestring, "unavailable") != NULL)
+				{
+					PC_Usart("提示: 天气数据源暂时不可用，请稍后重试\r\n");
+				}
+			}
+			
+			cJSON_Delete(root);
+			return false;
+		}
+	}
+	else
+	{
+		PC_Usart("? 未找到status字段或格式错误\r\n");
+		cJSON_Delete(root);
+		return false;
+	}
+	
+	// 获取data对象
+	data = cJSON_GetObjectItem(root, "data");
+	if(data == NULL)
+	{
+		PC_Usart("? 未找到data字段\r\n");
+		cJSON_Delete(root);
+		return false;
+	}
+	
+	// 提取各个字段
+	item = cJSON_GetObjectItem(data, "location");
+	if(item != NULL && cJSON_IsString(item))
+	{
+		strncpy(weather->location, item->valuestring, sizeof(weather->location) - 1);
+	}
+	
+	item = cJSON_GetObjectItem(data, "temperature");
+	if(item != NULL && cJSON_IsString(item))
+	{
+		strncpy(weather->temperature, item->valuestring, sizeof(weather->temperature) - 1);
+	}
+	
+	item = cJSON_GetObjectItem(data, "humidity");
+	if(item != NULL && cJSON_IsString(item))
+	{
+		strncpy(weather->humidity, item->valuestring, sizeof(weather->humidity) - 1);
+	}
+	
+	item = cJSON_GetObjectItem(data, "weather");
+	if(item != NULL && cJSON_IsString(item))
+	{
+		strncpy(weather->weather, item->valuestring, sizeof(weather->weather) - 1);
+	}
+	
+	item = cJSON_GetObjectItem(data, "description");
+	if(item != NULL && cJSON_IsString(item))
+	{
+		strncpy(weather->description, item->valuestring, sizeof(weather->description) - 1);
+	}
+	
+	item = cJSON_GetObjectItem(data, "last_update");
+	if(item != NULL && cJSON_IsString(item))
+	{
+		strncpy(weather->last_update, item->valuestring, sizeof(weather->last_update) - 1);
+	}
+	
+	weather->valid = true;
+	result = true;
+	
+	PC_Usart("? 天气数据解析成功\r\n");
+	
+	// 释放JSON对象
+	cJSON_Delete(root);
+	
+	return result;
+}
+
+/**
+  * @brief  Weather_Display 显示天气数据
+  * @param  weather：天气数据结构体指针
+  * @retval 无
+  */
+void Weather_Display(WeatherData *weather)
+{
+	if(!weather->valid)
+	{
+		PC_Usart("\r\n[天气数据无效]\r\n");
+		return;
+	}
+	
+	PC_Usart("\r\n╔════════════════════════════════╗\r\n");
+	PC_Usart("║      天气信息显示              ║\r\n");
+	PC_Usart("╠════════════════════════════════╣\r\n");
+	PC_Usart("║ 位置: %-24s ║\r\n", weather->location);
+	PC_Usart("║ 温度: %-24s ║\r\n", weather->temperature);
+	PC_Usart("║ 湿度: %-24s ║\r\n", weather->humidity);
+	PC_Usart("║ 天气: %-24s ║\r\n", weather->weather);
+	PC_Usart("║ 描述: %-24s ║\r\n", weather->description);
+	PC_Usart("╠════════════════════════════════╣\r\n");
+	PC_Usart("║ 更新: %-24s ║\r\n", weather->last_update);
+	PC_Usart("╚════════════════════════════════╝\r\n");
+}
+
+/**
+  * @brief  ESP8266_Simple_TCP_Test 简单TCP连接测试
+  * @param  无
+  * @retval 测试结果说明字符串
+  * @note   用于诊断TCP连接和数据接收问题
+  */
+void ESP8266_Simple_TCP_Test(void)
+{
+	char cmd[64];
+	
+	PC_Usart("\r\n╔══════════════════════════════════════╗\r\n");
+	PC_Usart("║    ESP8266 TCP连接诊断测试           ║\r\n");
+	PC_Usart("╚══════════════════════════════════════╝\r\n");
+	
+	// 1. 关闭旧连接
+	PC_Usart("\r\n[1] 关闭旧连接...\r\n");
+	ESP8266_Cmd("AT+CIPCLOSE", "OK", "CLOSED", 1000);
+	delay_ms(500);
+	
+	// 2. 设置单连接模式
+	PC_Usart("\r\n[2] 设置单连接模式...\r\n");
+	if(!ESP8266_Cmd("AT+CIPMUX=0", "OK", NULL, 1000))
+	{
+		PC_Usart("? 设置单连接模式失败\r\n");
+		return;
+	}
+	delay_ms(500);
+	
+	// 3. 连接服务器
+	PC_Usart("\r\n[3] 连接服务器 47.83.221.161:80...\r\n");
+	sprintf(cmd, "AT+CIPSTART=\"TCP\",\"47.83.221.161\",80");
+	if(!ESP8266_Cmd(cmd, "CONNECT", "OK", 10000))
+	{
+		PC_Usart("? TCP连接失败\r\n");
+		return;
+	}
+	delay_ms(1000);
+	
+	// 4. 检查连接状态
+	PC_Usart("\r\n[4] 检查连接状态...\r\n");
+	ESP8266_Cmd("AT+CIPSTATUS", "OK", NULL, 1000);
+	delay_ms(500);
+	
+	// 5. 构造简单HTTP请求
+	PC_Usart("\r\n[5] 发送HTTP请求...\r\n");
+	char http_req[] = "GET /api/weather/ HTTP/1.1\r\nHost: 47.83.221.161\r\nConnection: close\r\n\r\n";
+	u16 req_len = strlen(http_req);
+	
+	sprintf(cmd, "AT+CIPSEND=%d", req_len);
+	if(!ESP8266_Cmd(cmd, ">", NULL, 2000))
+	{
+		PC_Usart("? 进入发送模式失败\r\n");
+		ESP8266_Cmd("AT+CIPCLOSE", "OK", NULL, 1000);
+		return;
+	}
+	
+	// 6. 发送数据
+	PC_Usart("\r\n[6] 发送数据...\r\n");
+	PC_Usart("请求内容:\r\n%s\r\n", http_req);
+	
+	// 清空缓冲区
+	strEsp8266_Fram_Record.InfBit.FramLength = 0;
+	memset(strEsp8266_Fram_Record.Data_RX_BUF, 0, RX_BUF_MAX_LEN);
+	
+	ESP8266_Usart("%s", http_req);
+	delay_ms(500);
+	
+	// 7. 等待响应
+	PC_Usart("\r\n[7] 等待响应 (10秒)...\r\n");
+	u8 wait_count = 0;
+	while(wait_count < 50)  // 50 x 200ms = 10秒
+	{
+		delay_ms(200);
+		
+		if(strEsp8266_Fram_Record.InfBit.FramLength > 0)
+		{
+			PC_Usart("\r\n? 收到数据！长度: %d 字节\r\n", strEsp8266_Fram_Record.InfBit.FramLength);
+			PC_Usart("\r\n接收到的原始数据:\r\n");
+			PC_Usart("─────────────────────────────────\r\n");
+			
+			// 显示前500字节
+			if(strEsp8266_Fram_Record.InfBit.FramLength > 500)
+			{
+				char preview[501];
+				memcpy(preview, strEsp8266_Fram_Record.Data_RX_BUF, 500);
+				preview[500] = '\0';
+				PC_Usart("%s\r\n...(数据过长，仅显示前500字节)\r\n", preview);
+			}
+			else
+			{
+				PC_Usart("%s\r\n", strEsp8266_Fram_Record.Data_RX_BUF);
+			}
+			PC_Usart("─────────────────────────────────\r\n");
+			
+			// 分析数据格式
+			PC_Usart("\r\n[数据格式分析]\r\n");
+			if(strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "+IPD"))
+			{
+				PC_Usart("? 包含 +IPD 前缀\r\n");
+			}
+			if(strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "HTTP/"))
+			{
+				PC_Usart("? 包含 HTTP 响应头\r\n");
+			}
+			if(strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "{"))
+			{
+				PC_Usart("? 包含 JSON 数据\r\n");
+			}
+			if(strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "SEND OK"))
+			{
+				PC_Usart("? 包含 SEND OK 确认\r\n");
+			}
+			
+			break;
+		}
+		
+		wait_count++;
+		if(wait_count % 5 == 0)
+		{
+			PC_Usart("  等待... %d秒 (已收到%d字节)\r\n", 
+				wait_count / 5 * 2, 
+				strEsp8266_Fram_Record.InfBit.FramLength);
+		}
+	}
+	
+	if(wait_count >= 50)
+	{
+		PC_Usart("\r\n? 等待超时，未收到响应\r\n");
+		PC_Usart("可能原因:\r\n");
+		PC_Usart("  1. 服务器未响应\r\n");
+		PC_Usart("  2. ESP8266固件问题\r\n");
+		PC_Usart("  3. USART3中断未正常工作\r\n");
+		PC_Usart("  4. 网络连接已断开\r\n");
+	}
+	
+	// 8. 关闭连接
+	PC_Usart("\r\n[8] 关闭连接...\r\n");
+	ESP8266_Cmd("AT+CIPCLOSE", "OK", "CLOSED", 2000);
+	
+	PC_Usart("\r\n测试完成！\r\n");
+}
 
 

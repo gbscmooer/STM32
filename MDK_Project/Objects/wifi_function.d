@@ -35,4 +35,6 @@
 .\objects\wifi_function.o: ..\Public\SysTick.h
 .\objects\wifi_function.o: ..\Public\usart.h
 .\objects\wifi_function.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\wifi_function.o: ..\APP\esp8266\../cJSON/cJSON.h
+.\objects\wifi_function.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\wifi_function.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

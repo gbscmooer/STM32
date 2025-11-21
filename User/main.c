@@ -55,9 +55,10 @@ int main(void)
 	LED1 = 1;  // 熄灭LED1
 	LED2 = 0;  // 点亮LED2表示WiFi模块就绪
 
-	// 注释掉自动扫描，避免busy冲突
-	// ESP8266_Scan_AP();
-	// PC_Usart("? 扫描周围WiFi完成\r\n");
+	// 扫描周围WiFi网络
+	PC_Usart("\r\n=== 扫描周围WiFi网络 ===\r\n");
+	ESP8266_Scan_AP();
+	PC_Usart("? 扫描周围WiFi完成\r\n");
 	
 	// 等待ESP8266完全就绪
 	delay_ms(2000);
@@ -105,15 +106,59 @@ int main(void)
 		PC_Usart("\r\n? Ping测试失败，网络连接异常\r\n");
 	}
 
+	// ========== 主循环：定时获取天气数据 ==========
+	PC_Usart("\r\n=== 进入天气监测主循环 ===\r\n");
+	PC_Usart("每60秒更新一次天气数据\r\n\r\n");
+	
+	WeatherData weather;
+	u32 last_update_time = 0;
+	u32 current_time = 0;
+	const u32 UPDATE_INTERVAL = 60000;  // 60秒 = 60000毫秒
+	
+	// 首次获取天气数据
+	if(Weather_Get_Data(&weather))
+	{
+		Weather_Display(&weather);
+		LED2 = 0;  // 点亮LED2表示成功
+	}
+	else
+	{
+		PC_Usart("? 首次获取天气数据失败\r\n");
+		LED1 = 0;  // 点亮LED1表示失败
+	}
+	
+	last_update_time = 0;  // 重置计时器
 
 	while(1)
 	{
+		// 获取当前时间（毫秒）
+		current_time += 1000;  // 每次循环1秒
+		
+		// 检查是否到达更新间隔
+		if(current_time - last_update_time >= UPDATE_INTERVAL)
+		{
+			PC_Usart("\r\n>>> 定时更新天气数据 <<<\r\n");
+			
+			// 获取并显示天气数据
+			if(Weather_Get_Data(&weather))
+			{
+				Weather_Display(&weather);
+				LED2 = 0;  // 点亮LED2表示成功
+				LED1 = 1;  // 熄灭LED1
+			}
+			else
+			{
+				PC_Usart("? 获取天气数据失败，60秒后重试\r\n");
+				LED1 = 0;  // 点亮LED1表示失败
+			}
+			
+			last_update_time = current_time;
+		}
+		
 		// LED闪烁表示系统正常运行
 		LED2 = !LED2;
 		delay_ms(1000);
 		
-		// 这里可以添加后续的功能代码
-		// 例如：获取天气信息、显示数据等
 	}
 }
 

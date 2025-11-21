@@ -475,6 +475,16 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>cJSON</GroupName>
+          <Files>
+            <File>
+              <FileName>cJSON.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\cJSON\cJSON.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>Public</GroupName>
           <Files>
             <File>

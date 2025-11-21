@@ -15,6 +15,7 @@
 ".\objects\led.o"
 ".\objects\main.o"
 ".\objects\stm32f10x_it.o"
+".\objects\cjson.o"
 ".\objects\system.o"
 ".\objects\systick.o"
 ".\objects\usart.o"

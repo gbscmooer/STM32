@@ -6,6 +6,17 @@
 #include "wifi_config.h"
 #include <stdbool.h>
 
+// 天气数据结构
+typedef struct {
+	char location[32];       // 位置
+	char temperature[16];    // 温度
+	char humidity[16];       // 湿度
+	char weather[32];        // 天气状况
+	char description[64];    // 详细描述
+	char last_update[32];    // 最后更新时间
+	bool valid;              // 数据有效性
+} WeatherData;
+
 
 #define     ESP8266_Usart( fmt, ... )           USART3_printf (USART3, fmt, ##__VA_ARGS__ ) 
 #define     PC_Usart( fmt, ... )                printf ( fmt, ##__VA_ARGS__ )
@@ -41,6 +52,9 @@ bool        ESP8266_HTTP_Request                ( char *host, u16 port, char *pa
 bool        ESP8266_TCP_Connect                 ( char *ip, u16 port );
 bool        ESP8266_TCP_Send                    ( char *data, u16 len );
 bool        ESP8266_TCP_Disconnect              ( void );
+bool        Weather_Get_Data                    ( WeatherData *weather );
+void        Weather_Display                     ( WeatherData *weather );
+void        ESP8266_Simple_TCP_Test             ( void );
 
 
 #endif    /* __WIFI_FUNCTION_H */

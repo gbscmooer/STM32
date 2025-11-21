@@ -1,0 +1,202 @@
+═══════════════════════════════════════════════════════
+  调试代码片段 - 临时测试使用
+═══════════════════════════════════════════════════════
+
+如果天气获取功能一直卡死，可以使用以下代码替换main.c中的天气获取部分
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+方案1：运行简单TCP测试（推荐首先尝试）
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+在main.c的 while(1) 循环前添加：
+
+```c
+// 运行一次TCP诊断测试
+printf("\r\n准备运行TCP诊断测试...\r\n");
+printf("按任意键开始测试\r\n");
+USART1_GetChar();  // 等待按键
+
+ESP8266_Simple_TCP_Test();  // 运行诊断测试
+
+printf("\r\n诊断测试完成！\r\n");
+printf("根据上面的输出判断问题所在\r\n");
+
+// 然后进入死循环，方便查看结果
+while(1)
+{
+    LED2_TOGGLE;
+    delay_ms(1000);
+}
+```
+
+这段代码会执行详细的TCP连接测试，并显示：
+- 连接是否成功
+- 数据发送是否成功
+- 是否收到响应
+- 响应数据的格式和内容
+
+根据输出可以判断问题在哪个环节。
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+方案2：简化版天气获取（仅首次，然后停止）
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+如果你想测试实际的天气获取，但防止卡死：
+
+```c
+// 在 while(1) 前添加一个标志
+static bool first_fetch_done = false;
+
+// 然后在while(1)中修改：
+while(1)
+{
+    current_time++;
+    
+    // 只在第一次执行（或每60秒）
+    if(!first_fetch_done)
+    {
+        printf("\r\n准备获取天气数据...\r\n");
+        printf("如果30秒内没有响应，请手动重启板子\r\n");
+        
+        if(Weather_Get_Data(&weather))
+        {
+            Weather_Display(&weather);
+            printf("\r\n? 首次获取成功！\r\n");
+        }
+        else
+        {
+            printf("\r\n? 首次获取失败\r\n");
+            LED1_ON;  // 点亮LED1表示失败
+        }
+        
+        first_fetch_done = true;
+        printf("\r\n后续不再自动获取，防止卡死\r\n");
+    }
+    
+    LED2_TOGGLE;
+    delay_ms(1000);
+}
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+方案3：手动分步测试
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+如果想手动控制每一步：
+
+```c
+// 在while(1)前：
+printf("\r\n=== 手动分步测试模式 ===\r\n");
+printf("1. 测试TCP连接\r\n");
+printf("2. 发送HTTP请求\r\n");
+printf("3. 接收响应\r\n");
+
+// 步骤1：测试TCP连接
+printf("\r\n[步骤1] 按任意键测试TCP连接...\r\n");
+USART1_GetChar();
+
+if(ESP8266_TCP_Connect("47.83.221.161", 80))
+{
+    printf("? TCP连接成功\r\n");
+    
+    // 步骤2：发送简单HTTP请求
+    printf("\r\n[步骤2] 按任意键发送HTTP请求...\r\n");
+    USART1_GetChar();
+    
+    char test_http[] = "GET /api/weather/ HTTP/1.1\r\nHost: 47.83.221.161\r\nConnection: close\r\n\r\n";
+    
+    // 清空缓冲区
+    strEsp8266_Fram_Record.InfBit.FramLength = 0;
+    memset(strEsp8266_Fram_Record.Data_RX_BUF, 0, RX_BUF_MAX_LEN);
+    
+    if(ESP8266_TCP_Send(test_http, strlen(test_http)))
+    {
+        printf("? HTTP请求发送成功\r\n");
+        
+        // 步骤3：等待并检查响应
+        printf("\r\n[步骤3] 等待响应 (10秒)...\r\n");
+        
+        u8 wait = 0;
+        while(wait < 50)
+        {
+            delay_ms(200);
+            
+            if(strEsp8266_Fram_Record.InfBit.FramLength > 0)
+            {
+                printf("\r\n? 收到响应！长度: %d 字节\r\n", 
+                    strEsp8266_Fram_Record.InfBit.FramLength);
+                
+                // 显示前200字节
+                char preview[201];
+                u16 len = strEsp8266_Fram_Record.InfBit.FramLength;
+                if(len > 200) len = 200;
+                memcpy(preview, strEsp8266_Fram_Record.Data_RX_BUF, len);
+                preview[len] = '\0';
+                printf("响应预览:\r\n%s\r\n", preview);
+                break;
+            }
+            
+            wait++;
+            if(wait % 5 == 0)
+            {
+                printf("  等待... %d秒\r\n", wait / 5 * 2);
+            }
+        }
+        
+        if(wait >= 50)
+        {
+            printf("\r\n? 等待超时，未收到响应\r\n");
+        }
+    }
+    else
+    {
+        printf("? HTTP请求发送失败\r\n");
+    }
+    
+    ESP8266_TCP_Disconnect();
+}
+else
+{
+    printf("? TCP连接失败\r\n");
+}
+
+printf("\r\n测试完成，进入死循环\r\n");
+
+// 死循环
+while(1)
+{
+    LED2_TOGGLE;
+    delay_ms(1000);
+}
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+使用建议：
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. 首先使用"方案1"的TCP诊断测试
+   - 可以看到详细的每一步执行情况
+   - 能准确定位问题在哪个环节
+   
+2. 如果TCP诊断测试成功收到数据
+   - 说明网络通信正常
+   - 问题可能在JSON解析部分
+   - 可以尝试原始的Weather_Get_Data()
+   
+3. 如果TCP诊断测试卡死或超时
+   - 问题在网络层
+   - 需要检查：
+     a) ESP8266模块是否正常工作
+     b) WiFi是否真的连接成功
+     c) 网络是否通畅
+     d) 服务器是否可访问
+
+4. 查看测试输出的关键信息：
+   - "TCP连接成功" → 连接OK
+   - "进入发送模式失败" → CIPSEND命令失败
+   - "收到数据" → 接收OK
+   - "包含 +IPD" → 数据格式正确
+   - "包含 HTTP" → HTTP响应正常
+   - "包含 JSON" → JSON数据存在
+
+═══════════════════════════════════════════════════════
