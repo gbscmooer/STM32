@@ -113,18 +113,20 @@ int main(void)
 	WeatherData weather;
 	u32 last_update_time = 0;
 	u32 current_time = 0;
-	const u32 UPDATE_INTERVAL = 60000;  // 60秒 = 60000毫秒
+	u32 update_interval = 60000;  // 默认60秒
 	
 	// 首次获取天气数据
 	if(Weather_Get_Data(&weather))
 	{
 		Weather_Display(&weather);
 		LED2 = 0;  // 点亮LED2表示成功
+		update_interval = 60000; // 成功后60秒更新
 	}
 	else
 	{
 		PC_Usart("? 首次获取天气数据失败\r\n");
 		LED1 = 0;  // 点亮LED1表示失败
+		update_interval = 5000; // 失败后5秒重试
 	}
 	
 	last_update_time = 0;  // 重置计时器
@@ -135,9 +137,9 @@ int main(void)
 		current_time += 1000;  // 每次循环1秒
 		
 		// 检查是否到达更新间隔
-		if(current_time - last_update_time >= UPDATE_INTERVAL)
+		if(current_time - last_update_time >= update_interval)
 		{
-			PC_Usart("\r\n>>> 定时更新天气数据 <<<\r\n");
+			PC_Usart("\r\n>>> 定时更新天气数据 (间隔: %d秒) <<<\r\n", update_interval/1000);
 			
 			// 获取并显示天气数据
 			if(Weather_Get_Data(&weather))
@@ -145,11 +147,13 @@ int main(void)
 				Weather_Display(&weather);
 				LED2 = 0;  // 点亮LED2表示成功
 				LED1 = 1;  // 熄灭LED1
+				update_interval = 60000; // 成功后60秒更新
 			}
 			else
 			{
-				PC_Usart("? 获取天气数据失败，60秒后重试\r\n");
+				PC_Usart("? 获取天气数据失败，5秒后重试\r\n");
 				LED1 = 0;  // 点亮LED1表示失败
+				update_interval = 5000; // 失败后5秒重试
 			}
 			
 			last_update_time = current_time;

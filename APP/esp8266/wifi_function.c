@@ -1257,53 +1257,97 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 	
 	PC_Usart("? HTTP请求已发送\r\n");
 	
-	// 5. 等待并接收响应（分步检查）
+	// 5. 等待并接收响应（改进：动态等待直到数据稳定或连接关闭）
 	PC_Usart("等待服务器响应...\r\n");
 	u8 retry = 0;
 	bool got_data = false;
-	while(retry < 30)  // 最多等待30次 x 200ms = 6秒
+	u16 last_len = 0;
+	u8 stable_cnt = 0;
+	
+	while(retry < 50)  // 最多等待10秒
 	{
 		delay_ms(200);
 		
-		// 检查是否接收到数据（查找+IPD或HTTP响应）
-		if(strEsp8266_Fram_Record.InfBit.FramLength > 10)
+		// 确保字符串结束符
+		if(strEsp8266_Fram_Record.InfBit.FramLength > 0)
 		{
-			// 确保字符串结束符，防止strstr越界
 			strEsp8266_Fram_Record.Data_RX_BUF[strEsp8266_Fram_Record.InfBit.FramLength] = '\0';
-			
-			// 检查是否包含+IPD或HTTP响应头
-			if(strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "+IPD") ||
-			   strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "HTTP/"))
+		}
+		
+		// 如果还没收到数据
+		if(!got_data)
+		{
+			if(strEsp8266_Fram_Record.InfBit.FramLength > 10)
 			{
-				PC_Usart("? 已接收数据 (%d字节)\r\n", strEsp8266_Fram_Record.InfBit.FramLength);
-				got_data = true;
-				delay_ms(500);  // 再等待一段时间确保数据接收完整
-				break;
+				// 检查是否包含+IPD或HTTP响应头
+				if(strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "+IPD") ||
+				   strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "HTTP/"))
+				{
+					PC_Usart("? 开始接收数据 (%d字节)...\r\n", strEsp8266_Fram_Record.InfBit.FramLength);
+					got_data = true;
+					last_len = strEsp8266_Fram_Record.InfBit.FramLength;
+				}
+			}
+		}
+		else
+		{
+			// 已收到数据，检查是否稳定
+			if(strEsp8266_Fram_Record.InfBit.FramLength == last_len)
+			{
+				stable_cnt++;
+				// 连续5次(1秒)长度不变，认为接收完成
+				if(stable_cnt >= 5)
+				{
+					PC_Usart("? 数据接收稳定 (%d字节)\r\n", last_len);
+					break;
+				}
+			}
+			else
+			{
+				last_len = strEsp8266_Fram_Record.InfBit.FramLength;
+				stable_cnt = 0;
+				// PC_Usart("  接收中... (%d字节)\r\n", last_len);
+			}
+			
+			// 检查是否包含 CLOSED (服务器主动关闭连接)
+			if(strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "CLOSED"))
+			{
+				 PC_Usart("? 检测到连接关闭，接收结束\r\n");
+				 break;
 			}
 		}
 		
 		retry++;
-		if(retry % 5 == 0)  // 每1秒显示一次进度
+		if(retry % 5 == 0 && !got_data)
 		{
-			PC_Usart("等待中... %d秒 (已接收%d字节)\r\n", retry / 5, strEsp8266_Fram_Record.InfBit.FramLength);
+			PC_Usart("等待中... %d秒\r\n", retry / 5);
 		}
 	}
 	
-	if(!got_data && retry >= 30)
+	if(!got_data && retry >= 50)
 	{
-		PC_Usart("? 等待超时！接收到%d字节\r\n", strEsp8266_Fram_Record.InfBit.FramLength);
-		if(strEsp8266_Fram_Record.InfBit.FramLength > 0)
-		{
-			PC_Usart("接收到的原始数据:\r\n%s\r\n", strEsp8266_Fram_Record.Data_RX_BUF);
-		}
+		PC_Usart("? 等待超时！\r\n");
 		ESP8266_TCP_Disconnect();
 		return false;
 	}
 	
-	// 6. 处理响应数据（去除+IPD前缀）
+	// 6. 处理响应数据（去除+IPD前缀和末尾的CLOSED）
 	if(got_data && strEsp8266_Fram_Record.InfBit.FramLength > 0)
 	{
 		char *http_start = NULL;
+		char *closed_ptr = NULL;
+		
+		// 确保结束符
+		strEsp8266_Fram_Record.Data_RX_BUF[strEsp8266_Fram_Record.InfBit.FramLength] = '\0';
+		
+		// 去除末尾的 CLOSED
+		closed_ptr = strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "CLOSED");
+		if(closed_ptr)
+		{
+			*closed_ptr = '\0';
+			// 更新长度（虽然下面计算http_len主要靠指针减法，但保持一致性）
+			strEsp8266_Fram_Record.InfBit.FramLength = closed_ptr - (char*)strEsp8266_Fram_Record.Data_RX_BUF;
+		}
 		
 		// 查找HTTP响应的开始位置（跳过+IPD前缀）
 		http_start = strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "HTTP/");
@@ -1325,7 +1369,7 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 		}
 		
 		// 计算实际HTTP数据长度
-		u16 http_len = strEsp8266_Fram_Record.InfBit.FramLength - (http_start - (char*)strEsp8266_Fram_Record.Data_RX_BUF);
+		u16 http_len = strlen(http_start); // 使用strlen因为我们已经处理了CLOSED并添加了\0
 		u16 copy_len = http_len;
 		if(copy_len > max_len - 1)
 		{
@@ -1350,7 +1394,26 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 			PC_Usart("完整响应:\r\n%s\r\n", response);
 		}
 		
-		ESP8266_TCP_Disconnect();
+		// 检查是否已经关闭连接（通过检查是否包含CLOSED）
+		// 注意：这里我们检查的是原始接收缓冲区，因为response已经被截断了
+		// 但我们在上面已经处理了CLOSED并截断了长度，所以如果closed_ptr不为空，说明已关闭
+		if(closed_ptr != NULL)
+		{
+			PC_Usart("? 连接已由服务器关闭，无需发送CIPCLOSE\r\n");
+		}
+		else
+		{
+			// 再次检查缓冲区中是否包含CLOSED，以防万一
+			if(strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "CLOSED"))
+			{
+				PC_Usart("? 检测到CLOSED，无需发送CIPCLOSE\r\n");
+			}
+			else
+			{
+				ESP8266_TCP_Disconnect();
+			}
+		}
+		
 		return true;
 	}
 	else
@@ -1400,13 +1463,19 @@ bool Weather_Get_Data(WeatherData *weather)
 	
 	// 查找JSON数据起始位置（跳过HTTP头）
 	json_start = strstr(g_weather_http_response, "\r\n\r\n");
-	if(json_start == NULL)
+	if(json_start != NULL)
 	{
-		json_start = strstr(g_weather_http_response, "{");
+		json_start += 4;  // 跳过 \r\n\r\n
+		// 再次确认是否以 { 开头
+		char *real_json_start = strchr(json_start, '{');
+		if(real_json_start != NULL)
+		{
+			json_start = real_json_start;
+		}
 	}
 	else
 	{
-		json_start += 4;  // 跳过 \r\n\r\n
+		json_start = strstr(g_weather_http_response, "{");
 	}
 	
 	if(json_start == NULL)
@@ -1415,7 +1484,20 @@ bool Weather_Get_Data(WeatherData *weather)
 		return false;
 	}
 	
+	// 查找JSON结束位置（最后一个 }）
+	char *json_end = strrchr(json_start, '}');
+	if(json_end != NULL)
+	{
+		*(json_end + 1) = '\0'; // 截断后续垃圾数据
+	}
+	else
+	{
+		PC_Usart("? 未找到JSON结束符\r\n");
+		// 尝试继续解析，也许只是缺少结束符
+	}
+	
 	PC_Usart("解析JSON数据...\r\n");
+	PC_Usart("待解析的JSON内容:\r\n%s\r\n", json_start); // 打印完整JSON内容以便调试
 	
 	// 解析JSON
 	root = cJSON_Parse(json_start);
@@ -1443,14 +1525,17 @@ bool Weather_Get_Data(WeatherData *weather)
 			cJSON *msg_item = cJSON_GetObjectItem(root, "msg");
 			if(msg_item != NULL && cJSON_IsString(msg_item))
 			{
-				PC_Usart("错误信息: %s\r\n", msg_item->valuestring);
-				
-				// 检查是否是上游服务器不可用
-				if(strstr(msg_item->valuestring, "上游") != NULL || 
-				   strstr(msg_item->valuestring, "不可用") != NULL ||
+				// 尝试检测特定的UTF-8错误信息 "上游服务器不可用"
+				// 使用十六进制匹配以避免编码问题: \xE4\xB8\x8A\xE6\xB8\xB8 (上游)
+				if(strstr(msg_item->valuestring, "\xE4\xB8\x8A\xE6\xB8\xB8") != NULL || 
 				   strstr(msg_item->valuestring, "unavailable") != NULL)
 				{
-					PC_Usart("提示: 天气数据源暂时不可用，请稍后重试\r\n");
+					PC_Usart("提示: 上游服务器不可用，请稍后重试\r\n");
+				}
+				else
+				{
+					// 其他错误信息，直接打印（可能包含UTF-8字符导致乱码）
+					PC_Usart("错误信息(UTF-8): %s\r\n", msg_item->valuestring);
 				}
 			}
 			
