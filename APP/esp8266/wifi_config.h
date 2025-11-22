@@ -9,7 +9,7 @@
 #endif
 
 
-//* Êý¾ÝÀàÐÍ */
+//* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 typedef enum{
 	STA,
   AP,
@@ -42,9 +42,9 @@ typedef enum{
 } ENUM_AP_PsdMode_TypeDef;
 
 
-#define RX_BUF_MAX_LEN     2048                                     //×î´ó½ÓÊÕ»º´æ×Ö½ÚÊý£¨Ôö´óÒÔ½ÓÊÕHTTPÏìÓ¦£©
+#define RX_BUF_MAX_LEN     2048                                     //ï¿½ï¿½ï¿½ï¿½ï¿½Õ»ï¿½ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½HTTPï¿½ï¿½Ó¦ï¿½ï¿½
 
-extern struct  STRUCT_USARTx_Fram                                  //´®¿ÚÊý¾ÝÖ¡µÄ´¦Àí½á¹¹Ìå
+extern struct  STRUCT_USARTx_Fram                                  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¡ï¿½Ä´ï¿½ï¿½ï¿½ï¿½á¹¹ï¿½ï¿½
 {
 	char  Data_RX_BUF[ RX_BUF_MAX_LEN ];
 	
@@ -62,3 +62,7 @@ extern struct  STRUCT_USARTx_Fram                                  //´®¿ÚÊý¾ÝÖ¡µ
 void WiFi_Config( void );
 void USART3_printf( USART_TypeDef* USARTx, char *Data, ... );
 #endif    /* __WIFI_CONFIG_H */
+
+
+#define macUser_ESP8266_ApSsid "OPPOx"
+#define macUser_ESP8266_ApPwd  "huangzixuan"

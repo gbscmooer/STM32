@@ -19,6 +19,9 @@ void WiFi_Set_Log(bool enable)
 // 内部日志宏，受g_wifi_log_enable控制
 #define WIFI_LOG(...) if(g_wifi_log_enable) PC_Usart(__VA_ARGS__)
 
+// HTTP响应缓冲区
+static char g_weather_http_response[1024];
+
 /*
  * 函数名：ESP8266_Choose
  * 描述  ：使能/禁用WF-ESP8266模块
@@ -591,364 +594,42 @@ char * ESP8266_ReceiveString ( FunctionalState enumEnUnvarnishTx )
 			pRecStr = strEsp8266_Fram_Record .Data_RX_BUF;
 
 	}
-
+	
 	return pRecStr;
-	
 }
 
-
-/*
- * 函数名：ESP8266_STA_TCP_Client
- * 描述  ：PZ-ESP8266模块进行STA TCP Clien测试
- * 输入  ：无
- * 返回  : 无
- * 调用  ：被外部调用
- */
-void ESP8266_STA_TCP_Client ( void )
+void ESP8266_STA_TCP_Client(void)
 {
-	char cStrInput [100] = { 0 }, * pStrDelimiter [2], * pBuf, * pStr;
-	u8 uc = 0;
-  u32 ul = 0;
-
-	ESP8266_Choose ( ENABLE );	
-
-  ESP8266_AT_Test ();
-	
-	ESP8266_Net_Mode_Choose ( STA );
-  
-	ESP8266_Cmd ( "AT+CWLAP", "OK", 0, 5000 );
-		
-  do
-	{
-		PC_Usart ( "\r\n请输入要连接的WiFi名称和密钥，输入格式为：名称字符+英文逗号+密钥字符+空格，点击发送\r\n" );
-
-		scanf ( "%s", cStrInput );
-
-		PC_Usart ( "\r\n稍等片刻 ……\r\n" );
-
-		pBuf = cStrInput;
-		uc = 0;
-		while ( ( pStr = strtok ( pBuf, "," ) ) != NULL )
-		{
-			pStrDelimiter [ uc ++ ] = pStr;
-			pBuf = NULL;
-		} 
-		
-  } while ( ! ESP8266_JoinAP ( pStrDelimiter [0], pStrDelimiter [1] ) );
-	
-	ESP8266_Enable_MultipleId ( ENABLE );
-	
-	do 
-	{
-		PC_Usart ( "\r\n请在电脑上将网络调试助手以TCP Server连接网络，并输入电脑的IP和端口号，输入格式为：电脑IP+英文逗号+端口号+空格，点击发送\r\n" );
-
-		scanf ( "%s", cStrInput );
-
-		PC_Usart ( "\r\n稍等片刻 ……\r\n" );
-
-		pBuf = cStrInput;
-		uc = 0;
-		while ( ( pStr = strtok ( pBuf, "," ) ) != NULL )
-		{
-			pStrDelimiter [ uc ++ ] = pStr;
-			pBuf = NULL;
-		} 
-		
-  } while ( ! ( ESP8266_Link_Server ( enumTCP, pStrDelimiter [0], pStrDelimiter [1], Multiple_ID_0 ) &&
-	              ESP8266_Link_Server ( enumTCP, pStrDelimiter [0], pStrDelimiter [1], Multiple_ID_1 ) &&
-	              ESP8266_Link_Server ( enumTCP, pStrDelimiter [0], pStrDelimiter [1], Multiple_ID_2 ) &&
-	              ESP8266_Link_Server ( enumTCP, pStrDelimiter [0], pStrDelimiter [1], Multiple_ID_3 ) &&
-	              ESP8266_Link_Server ( enumTCP, pStrDelimiter [0], pStrDelimiter [1], Multiple_ID_4 ) ) );
-
-  for ( uc = 0; uc < 5; uc ++ )
-	{
-		PC_Usart ( "\r\n请输入端口ID%d要发送的字符串，输入格式为：字符串（不含空格）+空格，点击发送\r\n", uc );
-
-		scanf ( "%s", cStrInput );
-
-		ul = strlen ( cStrInput );
-		
-		ESP8266_SendString ( DISABLE, cStrInput, ul, ( ENUM_ID_NO_TypeDef ) uc );
-		
-	}
-	
-	
-	PC_Usart ( "\r\n请在网络调试助手发送字符串\r\n" );
-	while (1)
-	{
-	  pStr = ESP8266_ReceiveString ( DISABLE );
-		PC_Usart ( "%s", pStr );
-	}
-
+    // Placeholder or empty if not used
 }
 
-
-/*
- * 函数名：ESP8266_AP_TCP_Server
- * 描述  ：PZ-ESP8266模块进行AP TCP Server测试
- * 输入  ：无
- * 返回  : 无
- * 调用  ：被外部调用
- */
-void ESP8266_AP_TCP_Server ( void )
+void ESP8266_AP_TCP_Server(void)
 {
-	char cStrInput [100] = { 0 }, * pStrDelimiter [3], * pBuf, * pStr;
-	u8 uc = 0;
-  u32 ul = 0;
-
-  ESP8266_Choose ( ENABLE );
-
-	ESP8266_AT_Test ();
-	
-	ESP8266_Net_Mode_Choose ( AP );
-
-
-	PC_Usart ( "\r\n请输入要创建的WiFi的名称、加密方式和密钥，加密方式的编号为：\
-              \r\n0 = OPEN\
-              \r\n1 = WEP\
-              \r\n2 = WPA_PSK\
-	            \r\n3 = WPA2_PSK\
-              \r\n4 = WPA_WPA2_PSK\
-							\r\n输入格式为：名称字符+英文逗号+加密方式编号+英文逗号+密钥字符+空格，点击发送\r\n" );
-
-	scanf ( "%s", cStrInput );
-
-	PC_Usart ( "\r\n稍等片刻 ……\r\n" );
-
-	pBuf = cStrInput;
-	uc = 0;
-	while ( ( pStr = strtok ( pBuf, "," ) ) != NULL )
-	{
-		pStrDelimiter [ uc ++ ] = pStr;
-		pBuf = NULL;
-	} 
-	
-	ESP8266_BuildAP ( pStrDelimiter [0], pStrDelimiter [2], pStrDelimiter [1] );
-	ESP8266_Cmd ( "AT+RST", "OK", "ready", 2500 ); //*
-		
-
-	ESP8266_Enable_MultipleId ( ENABLE );
-		
-	
-	PC_Usart ( "\r\n请输入服务器要开启的端口号和超时时间（0~28800，单位：秒），输入格式为：端口号字符+英文逗号+超时时间字符+空格，点击发送\r\n" );
-
-	scanf ( "%s", cStrInput );
-
-	PC_Usart ( "\r\n稍等片刻 ……\r\n" );
-
-	pBuf = cStrInput;
-	uc = 0;
-	while ( ( pStr = strtok ( pBuf, "," ) ) != NULL )
-	{
-		pStrDelimiter [ uc ++ ] = pStr;
-		pBuf = NULL;
-	} 
-
-	ESP8266_StartOrShutServer ( ENABLE, pStrDelimiter [0], pStrDelimiter [1] );
-	
-	
-	do
-	{
-		PC_Usart ( "\r\n正查询本模块IP……\r\n" );
-	  ESP8266_Cmd ( "AT+CIFSR", "OK", "Link", 500 );
-		
-		PC_Usart ( "\r\n请用手机连接刚才创建的WiFi，这里只连接一个手机，作为ID0，然后用手机网络调试助手以TCP Client连接刚才开启的服务器（AP IP）……\r\n" );
-		delay_ms ( 20000 ) ;
-	}	while ( ! ESP8266_Cmd ( "AT+CIPSTATUS", "+CIPSTATUS:0", 0, 500 ) );
-	
-
-	PC_Usart ( "\r\n请输入要向端口手机（ID0）发送的字符串，输入格式为：字符串（不含空格）+空格，点击发送\r\n" );
-
-	scanf ( "%s", cStrInput );
-
-	ul = strlen ( cStrInput );
-	
-	ESP8266_SendString ( DISABLE, cStrInput, ul, Multiple_ID_0 );
-
-	
-	PC_Usart ( "\r\n请在手机网络调试助手发送字符串\r\n" );
-	while (1)
-	{
-	  pStr = ESP8266_ReceiveString ( DISABLE );
-		PC_Usart ( "%s", pStr );
-	}
-
+    // Placeholder
 }
 
-
-/*
- * 函数名：ESP8266_StaTcpClient_ApTcpServer
- * 描述  ：PZ-ESP8266模块进行STA(TCP Client)+AP(TCP Server)测试
- * 输入  ：无
- * 返回  : 无
- * 调用  ：被外部调用
- */
-void ESP8266_StaTcpClient_ApTcpServer ( void )
+void ESP8266_StaTcpClient_ApTcpServer(void)
 {
-	char cStrInput [100] = { 0 }, * pStrDelimiter [3], * pBuf, * pStr;
-	u8 uc = 0;
-  u32 ul = 0;
-
-  ESP8266_Choose ( ENABLE );
-
-	ESP8266_AT_Test ();
-	
-	ESP8266_Net_Mode_Choose ( STA_AP );
-
-
-	PC_Usart ( "\r\n请输入要创建的WiFi的名称、加密方式和密钥，加密方式的编号为：\
-						\r\n0 = OPEN\
-						\r\n1  =WEP\
-						\r\n2 = WPA_PSK\
-						\r\n3 = WPA2_PSK\
-						\r\n4 = WPA_WPA2_PSK\
-						\r\n输入格式为：名称字符+英文逗号+加密方式编号+英文逗号+密钥字符+空格，点击发送\r\n" );
-
-	scanf ( "%s", cStrInput );
-
-	PC_Usart ( "\r\n稍等片刻 ……\r\n" );
-
-	pBuf = cStrInput;
-	uc = 0;
-	while ( ( pStr = strtok ( pBuf, "," ) ) != NULL )
-	{
-		pStrDelimiter [ uc ++ ] = pStr;
-		pBuf = NULL;
-	} 
-	
-	ESP8266_BuildAP ( pStrDelimiter [0], pStrDelimiter [2], pStrDelimiter [1] );
-	ESP8266_Cmd ( "AT+RST", "OK", "ready", 2500 ); //*
-	
-
-	ESP8266_Cmd ( "AT+CWLAP", "OK", 0, 5000 );
-		
-  do
-	{
-		PC_Usart ( "\r\n请输入要连接的WiFi名称和密钥，输入格式为：名称字符+英文逗号+密钥字符+空格，点击发送\r\n" );
-
-		scanf ( "%s", cStrInput );
-
-		PC_Usart ( "\r\n稍等片刻 ……\r\n" );
-
-		pBuf = cStrInput;
-		uc = 0;
-		while ( ( pStr = strtok ( pBuf, "," ) ) != NULL )
-		{
-			pStrDelimiter [ uc ++ ] = pStr;
-			pBuf = NULL;
-		} 
-		
-  } while ( ! ESP8266_JoinAP ( pStrDelimiter [0], pStrDelimiter [1] ) );
-
-	
-	ESP8266_Enable_MultipleId ( ENABLE );
-		
-	
-	PC_Usart ( "\r\n请输入服务器要开启的端口号和超时时间（0~28800，单位：秒），输入格式为：端口号字符+英文逗号+超时时间字符+空格，点击发送\r\n" );
-
-	scanf ( "%s", cStrInput );
-
-	PC_Usart ( "\r\n稍等片刻 ……\r\n" );
-
-	pBuf = cStrInput;
-	uc = 0;
-	while ( ( pStr = strtok ( pBuf, "," ) ) != NULL )
-	{
-		pStrDelimiter [ uc ++ ] = pStr;
-		pBuf = NULL;
-	} 
-
-	ESP8266_StartOrShutServer ( ENABLE, pStrDelimiter [0], pStrDelimiter [1] );
-	
-	
-	do 
-	{
-		PC_Usart ( "\r\n请在电脑上将网络调试助手以TCP Server连接网络，并输入电脑的IP和端口号，输入格式为：电脑IP+英文逗号+端口号+空格，点击发送\r\n" );
-
-		scanf ( "%s", cStrInput );
-
-		PC_Usart ( "\r\n稍等片刻 ……\r\n" );
-
-		pBuf = cStrInput;
-		uc = 0;
-		while ( ( pStr = strtok ( pBuf, "," ) ) != NULL )
-		{
-			pStrDelimiter [ uc ++ ] = pStr;
-			pBuf = NULL;
-		} 
-		
-  } while ( ! ( ESP8266_Link_Server ( enumTCP, pStrDelimiter [0], pStrDelimiter [1], Multiple_ID_0 ) &&
-	              ESP8266_Link_Server ( enumTCP, pStrDelimiter [0], pStrDelimiter [1], Multiple_ID_1 ) &&
-	              ESP8266_Link_Server ( enumTCP, pStrDelimiter [0], pStrDelimiter [1], Multiple_ID_2 ) ) );
-		
-	
-	do
-	{
-		PC_Usart ( "\r\n正查询本模块IP，前一个为AP IP，后一个为STA IP……\r\n" );
-	  ESP8266_Cmd ( "AT+CIFSR", "OK", "Link", 500 );
-		
-		PC_Usart ( "\r\n请用手机连接刚才创建的WiFi，这里只连接一个手机，作为ID3，然后用手机网络调试助手以TCP Client连接刚才开启的服务器（AP IP）……\r\n" );
-		delay_ms ( 20000 ) ;
-	}	while ( ! ESP8266_Cmd ( "AT+CIPSTATUS", "+CIPSTATUS:3", 0, 500 ) );
-	
-
-	for ( uc = 0; uc < 3; uc ++ )
-	{
-		PC_Usart ( "\r\n请输入端口ID%d要发送的字符串，输入格式为：字符串（不含空格）+空格，点击发送\r\n", uc );
-
-		scanf ( "%s", cStrInput );
-
-		ul = strlen ( cStrInput );
-		
-		ESP8266_SendString ( DISABLE, cStrInput, ul, ( ENUM_ID_NO_TypeDef ) uc );
-		
-	}
-	
-	
-	PC_Usart ( "\r\n请输入要向端口手机（ID3）发送的字符串，输入格式为：字符串（不含空格）+空格，点击发送\r\n" );
-
-	scanf ( "%s", cStrInput );
-
-	ul = strlen ( cStrInput );
-	
-	ESP8266_SendString ( DISABLE, cStrInput, ul, Multiple_ID_3 );
-
-	
-	PC_Usart ( "\r\n请在电脑网络调试助手或手机网络调试助手发送字符串……\r\n" );
-	while (1)
-	{
-	  pStr = ESP8266_ReceiveString ( DISABLE );
-		PC_Usart ( "%s", pStr );
-	}
-	
+    // Placeholder
 }
 
-/**
-  * @brief  WiFi_Connect_Default 连接默认WiFi网络
-  * @param  无
-  * @retval true：连接成功，false：连接失败
-  */
 bool WiFi_Connect_Default(void)
 {
-	PC_Usart("\r\n=== 尝试连接默认WiFi网络 ===\r\n");
+	WIFI_LOG("\r\n=== 尝试连接默认WiFi ===\r\n");
+	WIFI_LOG("SSID: %s\r\n", macUser_ESP8266_ApSsid);
 	
-	if(ESP8266_JoinAP("OPPOx", "huangzixuan"))
+	if(ESP8266_JoinAP(macUser_ESP8266_ApSsid, macUser_ESP8266_ApPwd))
 	{
-		PC_Usart(" 默认WiFi连接成功！\r\n");
+		WIFI_LOG("? 默认WiFi连接成功\r\n");
 		return true;
 	}
 	else
 	{
-		PC_Usart(" 默认WiFi连接失败！\r\n");
+		WIFI_LOG("? 默认WiFi连接失败\r\n");
 		return false;
 	}
 }
 
-/**
-  * @brief  WiFi_Connect_Menu WiFi连接失败后的菜单处理
-  * @param  无
-  * @retval true：最终连接成功，false：用户放弃连接
-  */
 bool WiFi_Connect_Menu(void)
 {
 	char choice;
@@ -973,7 +654,7 @@ bool WiFi_Connect_Menu(void)
 		else if(choice == '2')
 		{
 			PC_Usart("\r\n=== 扫描可用WiFi网络 ===\r\n");
-			ESP8266_Cmd("AT+CWLAP", "OK", NULL, 15000);  // 增加到15秒
+			ESP8266_Cmd("AT+CWLAP", "OK", NULL, 15000);
 			
 			PC_Usart("\r\n请输入要连接的WiFi信息\r\n");
 			PC_Usart("格式: WiFi名称,密码\r\n");
@@ -981,13 +662,9 @@ bool WiFi_Connect_Menu(void)
 			PC_Usart("请输入(以回车结束): ");
 			
 			char input[100] = {0};
-			char *pStrDelimiter[2];
-			char *pBuf, *pStr;
-			u8 uc = 0;
 			u8 idx = 0;
 			char ch;
 			
-			// 手动读取字符串直到回车
 			while(idx < 99)
 			{
 				while(USART_GetFlagStatus(USART1, USART_FLAG_RXNE) == RESET);
@@ -995,214 +672,72 @@ bool WiFi_Connect_Menu(void)
 				
 				if(ch == '\r' || ch == '\n')
 				{
-					if(idx > 0) break;  // 至少有一个字符才结束
-					else continue;  // 忽略开头的空白
+					if(idx > 0) break;
+					else continue;
 				}
 				
-				input[idx++] = ch;
-				// 回显
 				USART_SendData(USART1, ch);
 				while(USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET);
+				
+				input[idx++] = ch;
 			}
 			input[idx] = '\0';
-			PC_Usart("\r\n接收到: %s\r\n", input);
+			PC_Usart("\r\n");
 			
-			pBuf = input;
-			uc = 0;
-			while ((pStr = strtok(pBuf, ",")) != NULL) {
-				pStrDelimiter[uc++] = pStr;
-				pBuf = NULL;
-			}
-			
-			if(uc < 2) {
-				pBuf = input;
-				uc = 0;
-				while ((pStr = strtok(pBuf, ":")) != NULL) {
-					pStrDelimiter[uc++] = pStr;
-					pBuf = NULL;
-				}
-			}
-			
-			if(uc >= 2 && pStrDelimiter[0] != NULL && pStrDelimiter[1] != NULL)
+			char *comma = strchr(input, ',');
+			if(comma)
 			{
-				if(ESP8266_JoinAP(pStrDelimiter[0], pStrDelimiter[1]))
+				*comma = '\0';
+				char *ssid = input;
+				char *pwd = comma + 1;
+				
+				if(ESP8266_JoinAP(ssid, pwd))
 				{
+					PC_Usart("? WiFi连接成功\r\n");
 					return true;
+				}
+				else
+				{
+					PC_Usart("? WiFi连接失败\r\n");
 				}
 			}
 			else
 			{
-				PC_Usart("? 输入格式错误！\r\n");
+				PC_Usart("? 格式错误\r\n");
 			}
 		}
-		else
-		{
-			PC_Usart("? 无效选项，请重新选择\r\n");
-		}
 	}
 }
 
-/**
-  * @brief  WiFi_Ping_Test 执行Ping测试
-  * @param  target：目标地址字符串
-  * @retval true：Ping成功，false：Ping失败
-  */
 bool WiFi_Ping_Test(char *target)
 {
-	char cmd[100];
-	
-	PC_Usart("\r\n正在Ping %s...\r\n", target);
+	char cmd[64];
 	sprintf(cmd, "AT+PING=\"%s\"", target);
-	
-	if(ESP8266_Cmd(cmd, "OK", "+", 5000))
-	{
-		PC_Usart("? Ping %s 成功！\r\n", target);
-		return true;
-	}
-	else
-	{
-		PC_Usart("? Ping %s 失败！\r\n", target);
-		return false;
-	}
+	WIFI_LOG("Ping %s ...\r\n", target);
+	return ESP8266_Cmd(cmd, "OK", NULL, 5000);
 }
 
-/**
-  * @brief  ESP8266_TCP_Connect 连接TCP服务器
-  * @param  ip：服务器IP地址或域名
-  * @param  port：服务器端口号
-  * @retval true：连接成功，false：连接失败
-  */
 bool ESP8266_TCP_Connect(char *ip, u16 port)
 {
-	char cmd[120];
-	
-	WIFI_LOG("\r\n正在连接TCP服务器 %s:%d...\r\n", ip, port);
-	
-	// 1. 尝试关闭可能存在的旧连接（容错处理，ERROR是正常的）
-	WIFI_LOG("[步骤1] 清理旧连接...\r\n");
-	ESP8266_Cmd("AT+CIPCLOSE", "OK", "ERROR", 1000);
-	delay_ms(500);  // 等待ESP8266处理完毕
-	
-	// 2. 设置单连接模式
-	WIFI_LOG("[步骤2] 设置单连接模式...\r\n");
-	if(!ESP8266_Cmd("AT+CIPMUX=0", "OK", NULL, 2000))
-	{
-		WIFI_LOG("? 设置单连接模式失败\r\n");
-		return false;
-	}
-	WIFI_LOG("? 单连接模式设置成功\r\n");
-	delay_ms(500);  // 等待设置生效
-	
-	// 3. 连接TCP服务器
-	WIFI_LOG("[步骤3] 发送TCP连接命令...\r\n");
+	char cmd[64];
 	sprintf(cmd, "AT+CIPSTART=\"TCP\",\"%s\",%d", ip, port);
-	
-	// 等待CONNECT响应（不使用OK，因为有些固件只返回CONNECT）
-	if(ESP8266_Cmd(cmd, "CONNECT", "OK", 10000))
-	{
-		WIFI_LOG("? TCP连接成功！\r\n");
-		delay_ms(1000);  // 连接成功后等待，让ESP8266状态稳定，避免下一个命令太快
-		return true;
-	}
-	else
-	{
-		WIFI_LOG("? TCP连接失败！\r\n");
-		return false;
-	}
+	return ESP8266_Cmd(cmd, "OK", "CONNECT", 5000);
 }
 
-/**
-  * @brief  ESP8266_TCP_Send 发送TCP数据
-  * @param  data：要发送的数据
-  * @param  len：数据长度
-  * @retval true：发送成功，false：发送失败
-  */
 bool ESP8266_TCP_Send(char *data, u16 len)
 {
 	char cmd[32];
-	u8 retry = 0;
-	u16 last_length = 0;
-	u8 stable_count = 0;
-	
-	PC_Usart("\r\n准备发送TCP数据 (%d字节)...\r\n", len);
-	
-	// 1. 发送CIPSEND命令，等待>提示符
 	sprintf(cmd, "AT+CIPSEND=%d", len);
-	
-	if(!ESP8266_Cmd(cmd, ">", NULL, 3000))
+	if(ESP8266_Cmd(cmd, ">", NULL, 2000))
 	{
-		PC_Usart("? 未收到>提示符，发送准备失败\r\n");
-		return false;
+		// 发送数据，不等待特定响应，因为HTTP响应可能很快也可能很慢
+		// 这里我们只确保数据发送出去
+		ESP8266_Usart("%s", data);
+		return true; 
 	}
-	
-	PC_Usart("? 收到>提示符\r\n");
-	delay_ms(100);  // 等待ESP8266完全准备好接收数据
-	
-	// 2. 清空缓冲区准备接收SEND OK
-	strEsp8266_Fram_Record.InfBit.FramLength = 0;
-	strEsp8266_Fram_Record.InfBit.FramFinishFlag = 0;
-	memset(strEsp8266_Fram_Record.Data_RX_BUF, 0, RX_BUF_MAX_LEN);
-	
-	// 3. 发送实际数据
-	PC_Usart("正在发送数据...\r\n");
-	ESP8266_Usart("%s", data);
-	
-	// 4. 等待发送完成确认（改进：循环检查而非固定延时）
-	while(retry < 40)  // 最多等待2秒
-	{
-		delay_ms(50);
-		
-		// 实时检查是否收到SEND OK
-		if(strEsp8266_Fram_Record.InfBit.FramLength > 0)
-		{
-			strEsp8266_Fram_Record.Data_RX_BUF[strEsp8266_Fram_Record.InfBit.FramLength] = '\0';
-			if(strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "SEND OK"))
-			{
-				break; // 收到确认，提前结束等待
-			}
-		}
-		
-		// 检查数据长度稳定性
-		if(strEsp8266_Fram_Record.InfBit.FramLength > 0)
-		{
-			if(strEsp8266_Fram_Record.InfBit.FramLength == last_length)
-			{
-				stable_count++;
-				if(stable_count >= 4)  // 连续4次(200ms)长度不变
-				{
-					break;  // 接收完成
-				}
-			}
-			else
-			{
-				stable_count = 0;
-				last_length = strEsp8266_Fram_Record.InfBit.FramLength;
-			}
-		}
-		retry++;
-	}
-	
-	// 5. 检查是否收到SEND OK
-	strEsp8266_Fram_Record.Data_RX_BUF[strEsp8266_Fram_Record.InfBit.FramLength] = '\0';
-	if(strstr(strEsp8266_Fram_Record.Data_RX_BUF, "SEND OK"))
-	{
-		WIFI_LOG("? 数据发送成功 (SEND OK)\r\n");
-		delay_ms(200);  // SEND OK后稍等，让ESP8266准备接收服务器响应
-		return true;
-	}
-	else
-	{
-		WIFI_LOG("? 未收到SEND OK (收到: %s)\r\n", strEsp8266_Fram_Record.Data_RX_BUF);
-		delay_ms(200);
-		return true;  // 即使没收到也继续，因为数据可能已发送
-	}
+	return false;
 }
 
-/**
-  * @brief  ESP8266_TCP_Disconnect 断开TCP连接
-  * @param  无
-  * @retval true：断开成功，false：断开失败
-  */
 bool ESP8266_TCP_Disconnect(void)
 {
 	WIFI_LOG("\r\n正在关闭TCP连接...\r\n");
@@ -1219,15 +754,6 @@ bool ESP8266_TCP_Disconnect(void)
 	}
 }
 
-/**
-  * @brief  ESP8266_HTTP_Request 发送HTTP请求并接收响应
-  * @param  host：服务器域名或IP
-  * @param  port：服务器端口，通常80
-  * @param  path：请求路径，例如"/api/weather"
-  * @param  response：存储响应的缓冲区
-  * @param  max_len：缓冲区最大长度
-  * @retval true：请求成功，false：请求失败
-  */
 bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 max_len)
 {
 	char http_request[512];
@@ -1236,13 +762,11 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 	WIFI_LOG("\r\n=== 发送HTTP请求 ===\r\n");
 	WIFI_LOG("目标: http://%s:%d%s\r\n", host, port, path);
 	
-	// 1. 连接TCP服务器
 	if(!ESP8266_TCP_Connect(host, port))
 	{
 		return false;
 	}
 	
-	// 2. 构造HTTP GET请求
 	sprintf(http_request, 
 		"GET %s HTTP/1.1\r\n"
 		"Host: %s\r\n"
@@ -1250,6 +774,184 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 		"Connection: close\r\n"
 		"\r\n",
 		path, host);
+	
+	len = strlen(http_request);
+	WIFI_LOG("发送HTTP请求 (%d字节):\r\n%s\r\n", len, http_request);
+	
+	strEsp8266_Fram_Record.InfBit.FramLength = 0;
+	strEsp8266_Fram_Record.InfBit.FramFinishFlag = 0;
+	memset(strEsp8266_Fram_Record.Data_RX_BUF, 0, RX_BUF_MAX_LEN);
+	delay_ms(100);
+	
+	if(!ESP8266_TCP_Send(http_request, len))
+	{
+		WIFI_LOG("? 发送HTTP请求失败\r\n");
+		ESP8266_TCP_Disconnect();
+		return false;
+	}
+	
+	WIFI_LOG("? HTTP请求已发送\r\n");
+	WIFI_LOG("等待服务器响应...\r\n");
+	
+	u8 retry = 0;
+	bool got_data = false;
+	u16 last_len = 0;
+	u8 stable_cnt = 0;
+	
+	while(retry < 50)
+	{
+		delay_ms(200);
+		
+		if(strEsp8266_Fram_Record.InfBit.FramLength > 0)
+		{
+			strEsp8266_Fram_Record.Data_RX_BUF[strEsp8266_Fram_Record.InfBit.FramLength] = '\0';
+		}
+		
+		if(!got_data)
+		{
+			if(strEsp8266_Fram_Record.InfBit.FramLength > 10)
+			{
+				if(strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "+IPD") ||
+				   strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "HTTP/"))
+				{
+					WIFI_LOG("? 开始接收数据 (%d字节)...\r\n", strEsp8266_Fram_Record.InfBit.FramLength);
+					got_data = true;
+					last_len = strEsp8266_Fram_Record.InfBit.FramLength;
+				}
+			}
+		}
+		else
+		{
+			if(strEsp8266_Fram_Record.InfBit.FramLength == last_len)
+			{
+				stable_cnt++;
+				if(stable_cnt >= 5)
+				{
+					WIFI_LOG("? 数据接收稳定 (%d字节)\r\n", last_len);
+					break;
+				}
+			}
+			else
+			{
+				last_len = strEsp8266_Fram_Record.InfBit.FramLength;
+				stable_cnt = 0;
+			}
+			
+			if(strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "CLOSED"))
+			{
+				 WIFI_LOG("? 检测到连接关闭，接收结束\r\n");
+				 break;
+			}
+		}
+		
+		retry++;
+	}
+	
+	if(!got_data && retry >= 50)
+	{
+		WIFI_LOG("? 等待超时！\r\n");
+		ESP8266_TCP_Disconnect();
+		return false;
+	}
+	
+	if(got_data && strEsp8266_Fram_Record.InfBit.FramLength > 0)
+	{
+		char *http_start = NULL;
+		char *closed_ptr = NULL;
+		
+		strEsp8266_Fram_Record.Data_RX_BUF[strEsp8266_Fram_Record.InfBit.FramLength] = '\0';
+		
+		closed_ptr = strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "CLOSED");
+		if(closed_ptr)
+		{
+			*closed_ptr = '\0';
+			strEsp8266_Fram_Record.InfBit.FramLength = closed_ptr - (char*)strEsp8266_Fram_Record.Data_RX_BUF;
+		}
+		
+		http_start = strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "HTTP/");
+		if(http_start == NULL)
+		{
+			http_start = strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "{");
+		}
+		
+		if(http_start == NULL)
+		{
+			http_start = (char*)strEsp8266_Fram_Record.Data_RX_BUF;
+		}
+		
+		u16 http_len = strlen(http_start);
+		u16 copy_len = http_len;
+		if(copy_len > max_len - 1)
+		{
+			copy_len = max_len - 1;
+		}
+		
+		memcpy(response, http_start, copy_len);
+		response[copy_len] = '\0';
+		
+		WIFI_LOG("? 接收到HTTP响应 (%d字节)\r\n", copy_len);
+		
+		if(closed_ptr != NULL)
+		{
+			WIFI_LOG("? 连接已由服务器关闭\r\n");
+		}
+		else
+		{
+			if(strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "CLOSED"))
+			{
+				WIFI_LOG("? 检测到CLOSED\r\n");
+			}
+			else
+			{
+				ESP8266_TCP_Disconnect();
+			}
+		}
+		
+		return true;
+	}
+	else
+	{
+		WIFI_LOG("? 未接收到响应\r\n");
+		ESP8266_TCP_Disconnect();
+		return false;
+	}
+}
+
+/**
+  * @brief  ESP8266_HTTP_Post 发送HTTP POST请求并接收响应
+  * @param  host：服务器域名或IP
+  * @param  port：服务器端口，通常80
+  * @param  path：请求路径
+  * @param  body：POST请求体
+  * @param  response：存储响应的缓冲区
+  * @param  max_len：缓冲区最大长度
+  * @retval true：请求成功，false：请求失败
+  */
+bool ESP8266_HTTP_Post(char *host, u16 port, char *path, char *body, char *response, u16 max_len)
+{
+	char http_request[1024]; // 增加缓冲区大小以容纳body
+	u16 len;
+	
+	WIFI_LOG("\r\n=== 发送HTTP POST请求 ===\r\n");
+	WIFI_LOG("目标: http://%s:%d%s\r\n", host, port, path);
+	
+	// 1. 连接TCP服务器
+	if(!ESP8266_TCP_Connect(host, port))
+	{
+		return false;
+	}
+	
+	// 2. 构造HTTP POST请求
+	sprintf(http_request, 
+		"POST %s HTTP/1.1\r\n"
+		"Host: %s\r\n"
+		"User-Agent: ESP8266\r\n"
+		"Content-Type: application/json\r\n"
+		"Content-Length: %d\r\n"
+		"Connection: close\r\n"
+		"\r\n"
+		"%s",
+		path, host, strlen(body), body);
 	
 	len = strlen(http_request);
 	WIFI_LOG("发送HTTP请求 (%d字节):\r\n%s\r\n", len, http_request);
@@ -1270,7 +972,7 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 	
 	WIFI_LOG("? HTTP请求已发送\r\n");
 	
-	// 5. 等待并接收响应（改进：动态等待直到数据稳定或连接关闭）
+	// 5. 等待并接收响应
 	WIFI_LOG("等待服务器响应...\r\n");
 	u8 retry = 0;
 	bool got_data = false;
@@ -1319,7 +1021,6 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 			{
 				last_len = strEsp8266_Fram_Record.InfBit.FramLength;
 				stable_cnt = 0;
-				// WIFI_LOG("  接收中... (%d字节)\r\n", last_len);
 			}
 			
 			// 检查是否包含 CLOSED (服务器主动关闭连接)
@@ -1331,10 +1032,6 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 		}
 		
 		retry++;
-		if(retry % 5 == 0 && !got_data)
-		{
-			WIFI_LOG("等待中... %d秒\r\n", retry / 5);
-		}
 	}
 	
 	if(!got_data && retry >= 50)
@@ -1344,7 +1041,7 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 		return false;
 	}
 	
-	// 6. 处理响应数据（去除+IPD前缀和末尾的CLOSED）
+	// 6. 处理响应数据
 	if(got_data && strEsp8266_Fram_Record.InfBit.FramLength > 0)
 	{
 		char *http_start = NULL;
@@ -1358,68 +1055,43 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 		if(closed_ptr)
 		{
 			*closed_ptr = '\0';
-			// 更新长度（虽然下面计算http_len主要靠指针减法，但保持一致性）
 			strEsp8266_Fram_Record.InfBit.FramLength = closed_ptr - (char*)strEsp8266_Fram_Record.Data_RX_BUF;
 		}
 		
-		// 查找HTTP响应的开始位置（跳过+IPD前缀）
+		// 查找HTTP响应的开始位置
 		http_start = strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "HTTP/");
 		if(http_start == NULL)
 		{
-			// 如果没找到HTTP/，查找{（JSON直接开始的情况）
 			http_start = strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "{");
 		}
 		
 		if(http_start == NULL)
 		{
-			// 没找到HTTP响应头，直接复制所有数据
-			WIFI_LOG("? 未找到HTTP响应头，使用原始数据\r\n");
 			http_start = (char*)strEsp8266_Fram_Record.Data_RX_BUF;
-		}
-		else
-		{
-			WIFI_LOG("? 找到HTTP响应，偏移量: %d字节\r\n", http_start - (char*)strEsp8266_Fram_Record.Data_RX_BUF);
 		}
 		
 		// 计算实际HTTP数据长度
-		u16 http_len = strlen(http_start); // 使用strlen因为我们已经处理了CLOSED并添加了\0
+		u16 http_len = strlen(http_start);
 		u16 copy_len = http_len;
 		if(copy_len > max_len - 1)
 		{
 			copy_len = max_len - 1;
-			WIFI_LOG("? 响应数据过大，截断至 %d 字节\r\n", copy_len);
 		}
 		
 		memcpy(response, http_start, copy_len);
 		response[copy_len] = '\0';
 		
 		WIFI_LOG("? 接收到HTTP响应 (%d字节)\r\n", copy_len);
-		// 只显示前200字节，避免刷屏
-		if(copy_len > 200)
-		{
-			char preview[201];
-			memcpy(preview, response, 200);
-			preview[200] = '\0';
-			WIFI_LOG("响应预览(前200字节):\r\n%s...\r\n", preview);
-		}
-		else
-		{
-			WIFI_LOG("完整响应:\r\n%s\r\n", response);
-		}
 		
-		// 检查是否已经关闭连接（通过检查是否包含CLOSED）
-		// 注意：这里我们检查的是原始接收缓冲区，因为response已经被截断了
-		// 但我们在上面已经处理了CLOSED并截断了长度，所以如果closed_ptr不为空，说明已关闭
 		if(closed_ptr != NULL)
 		{
-			WIFI_LOG("? 连接已由服务器关闭，无需发送CIPCLOSE\r\n");
+			WIFI_LOG("? 连接已由服务器关闭\r\n");
 		}
 		else
 		{
-			// 再次检查缓冲区中是否包含CLOSED，以防万一
 			if(strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "CLOSED"))
 			{
-				WIFI_LOG("? 检测到CLOSED，无需发送CIPCLOSE\r\n");
+				WIFI_LOG("? 检测到CLOSED\r\n");
 			}
 			else
 			{
@@ -1436,9 +1108,6 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 		return false;
 	}
 }
-
-// 定义全局缓冲区，避免栈溢出
-static char g_weather_http_response[2048];
 
 /**
   * @brief  Weather_Get_Data 获取天气数据
@@ -1788,4 +1457,91 @@ void ESP8266_Simple_TCP_Test(void)
 	PC_Usart("\r\n测试完成！\r\n");
 }
 
-
+/**
+  * @brief  Weather_Update_Location 更新位置信息
+  * @param  无
+  * @retval true：更新成功，false：更新失败
+  */
+bool Weather_Update_Location(void)
+{
+	char city[64] = {0};
+	double lat = 0, lon = 0;
+	char *json_start;
+	cJSON *root = NULL;
+	cJSON *item = NULL;
+	
+	WIFI_LOG("\r\n=== 开始更新位置信息 ===\r\n");
+	
+	// 1. 获取本机IP
+	WIFI_LOG("1. 获取本机IP地址...\r\n");
+	ESP8266_Cmd("AT+CIFSR", "OK", NULL, 2000);
+	
+	// 2. 获取位置信息
+	WIFI_LOG("2. 从ip-api.com获取位置信息...\r\n");
+	
+	// 使用全局缓冲区
+	if(!ESP8266_HTTP_Request("ip-api.com", 80, "/json/", g_weather_http_response, sizeof(g_weather_http_response)))
+	{
+		WIFI_LOG("? 获取位置信息失败\r\n");
+		return false;
+	}
+	
+	// 解析JSON
+	json_start = strstr(g_weather_http_response, "{");
+	if(json_start == NULL)
+	{
+		WIFI_LOG("? 未找到JSON数据\r\n");
+		return false;
+	}
+	
+	root = cJSON_Parse(json_start);
+	if(root == NULL)
+	{
+		WIFI_LOG("? JSON解析失败\r\n");
+		return false;
+	}
+	
+	// 提取city, lat, lon
+	item = cJSON_GetObjectItem(root, "city");
+	if(item != NULL && cJSON_IsString(item))
+	{
+		strncpy(city, item->valuestring, sizeof(city)-1);
+	}
+	
+	item = cJSON_GetObjectItem(root, "lat");
+	if(item != NULL && cJSON_IsNumber(item))
+	{
+		lat = item->valuedouble;
+	}
+	
+	item = cJSON_GetObjectItem(root, "lon");
+	if(item != NULL && cJSON_IsNumber(item))
+	{
+		lon = item->valuedouble;
+	}
+	
+	cJSON_Delete(root);
+	
+	WIFI_LOG("获取到的位置: City=%s, Lat=%.4f, Lon=%.4f\r\n", city, lat, lon);
+	
+	if(strlen(city) == 0)
+	{
+		WIFI_LOG("? 位置信息无效\r\n");
+		return false;
+	}
+	
+	// 3. 上报位置信息
+	WIFI_LOG("3. 上报位置信息到服务器...\r\n");
+	char body[256];
+	sprintf(body, "{\"city\": \"%s\", \"lat\": %.4f, \"lon\": %.4f}", city, lat, lon);
+	
+	// 服务器IP: 47.83.221.161
+	if(!ESP8266_HTTP_Post("47.83.221.161", 80, "/api/weather/location", body, g_weather_http_response, sizeof(g_weather_http_response)))
+	{
+		WIFI_LOG("? 上报位置信息失败\r\n");
+		return false;
+	}
+	
+	WIFI_LOG("? 位置信息更新完成\r\n");
+	return true;
+}

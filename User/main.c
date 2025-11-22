@@ -101,6 +101,10 @@ int main(void)
 	if(ping1 || ping2){
 		LED2 = 0;  // 点亮LED2表示Ping测试成功
 		PC_Usart("\r\n? Ping测试成功，网络连接正常\r\n");
+		
+		// ========== 第4步：更新位置信息 ==========
+		Weather_Update_Location();
+		
 	}else{
 		LED1 = 0;  // 点亮LED1表示Ping测试失败
 		PC_Usart("\r\n? Ping测试失败，网络连接异常\r\n");

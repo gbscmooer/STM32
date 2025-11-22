@@ -6,15 +6,15 @@
 #include "wifi_config.h"
 #include <stdbool.h>
 
-// ÌìÆøÊý¾Ý½á¹¹
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý½á¹¹
 typedef struct {
-	char location[32];       // Î»ÖÃ
-	char temperature[16];    // ÎÂ¶È
-	char humidity[16];       // Êª¶È
-	char weather[32];        // ÌìÆø×´¿ö
-	char description[64];    // ÏêÏ¸ÃèÊö
-	char last_update[32];    // ×îºó¸üÐÂÊ±¼ä
-	bool valid;              // Êý¾ÝÓÐÐ§ÐÔ
+	char location[32];       // Î»ï¿½ï¿½
+	char temperature[16];    // ï¿½Â¶ï¿½
+	char humidity[16];       // Êªï¿½ï¿½
+	char weather[32];        // ï¿½ï¿½ï¿½ï¿½×´ï¿½ï¿½
+	char description[64];    // ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½
+	char last_update[32];    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+	bool valid;              // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½
 } WeatherData;
 
 
@@ -49,6 +49,7 @@ bool        WiFi_Connect_Default                ( void );
 bool        WiFi_Connect_Menu                   ( void );
 bool        WiFi_Ping_Test                      ( char *target );
 bool        ESP8266_HTTP_Request                ( char *host, u16 port, char *path, char *response, u16 max_len );
+bool        ESP8266_HTTP_Post                   ( char *host, u16 port, char *path, char *body, char *response, u16 max_len );
 bool        ESP8266_TCP_Connect                 ( char *ip, u16 port );
 bool        ESP8266_TCP_Send                    ( char *data, u16 len );
 bool        ESP8266_TCP_Disconnect              ( void );
@@ -56,6 +57,7 @@ bool        Weather_Get_Data                    ( WeatherData *weather );
 void        Weather_Display                     ( WeatherData *weather );
 void        WiFi_Set_Log                        ( bool enable );
 void        ESP8266_Simple_TCP_Test             ( void );
+bool        Weather_Update_Location             ( void );
 
 
 #endif    /* __WIFI_FUNCTION_H */
