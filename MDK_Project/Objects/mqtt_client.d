@@ -46,4 +46,5 @@
 .\objects\mqtt_client.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\mqtt_client.o: ..\Public\usart.h
 .\objects\mqtt_client.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\mqtt_client.o: ..\APP\beep\beep.h
 .\objects\mqtt_client.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

@@ -5,11 +5,7 @@
 #include "app_freertos.h"
 #include "wifi_function.h"
 
-/**
-  * @brief  main ������
-  * @param  ��
-  * @retval ��
-  */
+
 int main(void)
 {
 

@@ -4,6 +4,7 @@
 #include "stream_buffer.h"
 #include "wifi_function.h"
 #include "usart.h"
+#include "beep.h"
 #include <string.h>
 #include <stdio.h>
 
@@ -21,6 +22,9 @@ TaskHandle_t xMQTTTaskHandle = NULL;
 volatile uint8_t g_sensor_temp = 0;
 volatile uint8_t g_sensor_humi = 0;
 volatile float g_sensor_cpu_temp = 0.0f;
+volatile uint8_t g_sensor_light = 0;
+volatile uint8_t g_beep_state = 0;
+volatile uint8_t g_mqtt_connected = 0;
 
 // MQTT Task
 void MQTTTask(void *pvParameters);
@@ -85,9 +89,17 @@ void ProcessMQTTPacket(uint8_t *data, int len) {
         PC_Usart("Topic: %s\r\n", topic);
         PC_Usart("Payload: %s\r\n", payload);
         PC_Usart("--------------------------------\r\n");
+
+        // Check for beep command
+        if (strstr(payload, "beep=change") != NULL) {
+            g_beep_state = !g_beep_state;
+            BEEP = g_beep_state;
+            PC_Usart("BEEP State Changed to: %d\r\n", g_beep_state);
+        }
     }
     else if ((cmd & 0xF0) == 0x20) {
         PC_Usart("\r\n[MQTT] CONNACK Received\r\n");
+        g_mqtt_connected = 1;
     }
     else if ((cmd & 0xF0) == 0x90) {
         PC_Usart("\r\n[MQTT] SUBACK Received\r\n");
@@ -179,11 +191,13 @@ void MQTTTask(void *pvParameters)
                 if(ESP8266_TCP_Send(mqtt_packet, idx))
                 {
                     PC_Usart("MQTT Subscribe Sent. Waiting for messages...\r\n");
+                    g_mqtt_connected = 1;
                 }
                 else
                 {
                     PC_Usart("Subscribe Send Failed. Reconnecting TCP...\r\n");
                     tcp_connected = false;
+                    g_mqtt_connected = 0;
                     ESP8266_TCP_Disconnect();
                     vTaskDelay(pdMS_TO_TICKS(2000));
                     continue;
@@ -192,6 +206,7 @@ void MQTTTask(void *pvParameters)
             else
             {
                 PC_Usart("TCP Connect Failed. Retrying in 3s...\r\n");
+                g_mqtt_connected = 0;
                 ESP8266_Cmd("AT+CIPCLOSE", "OK", "CLOSED", 1000);
                 vTaskDelay(pdMS_TO_TICKS(3000));
                 continue;
@@ -207,14 +222,15 @@ void MQTTTask(void *pvParameters)
             {
                 last_publish_time = xTaskGetTickCount();
                 
-                char payload[64];
-                sprintf(payload, "{\"temp\":%d,\"humi\":%d,\"cpu\":%.2f}", g_sensor_temp, g_sensor_humi, g_sensor_cpu_temp);
+                char payload[128];
+                sprintf(payload, "{\"temp\":%d,\"humi\":%d,\"cpu\":%.2f,\"light\":%d,\"beep\":%d}", 
+                        g_sensor_temp, g_sensor_humi, g_sensor_cpu_temp, g_sensor_light, g_beep_state);
                 
                 int payload_len = strlen(payload);
                 int topic_len = strlen(MQTT_TOPIC);
                 int remaining_len = 2 + topic_len + payload_len; 
                 
-                char pub_packet[128];
+                char pub_packet[256];
                 int idx = 0;
                 pub_packet[idx++] = 0x30; // PUBLISH, QoS 0
                 
@@ -236,8 +252,18 @@ void MQTTTask(void *pvParameters)
                 memcpy(&pub_packet[idx], payload, payload_len);
                 idx += payload_len;
                 
-                ESP8266_TCP_Send(pub_packet, idx);
-                PC_Usart("Published: %s\r\n", payload);
+                if (ESP8266_TCP_Send(pub_packet, idx))
+                {
+                    PC_Usart("Published: %s\r\n", payload);
+                }
+                else
+                {
+                    PC_Usart("Publish Failed. Reconnecting TCP...\r\n");
+                    tcp_connected = false;
+                    g_mqtt_connected = 0;
+                    ESP8266_TCP_Disconnect();
+                    continue;
+                }
             }
 
             char ch;

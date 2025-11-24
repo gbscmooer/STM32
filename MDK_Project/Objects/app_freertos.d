@@ -52,3 +52,5 @@
 .\objects\app_freertos.o: ..\Public\SysTick.h
 .\objects\app_freertos.o: ..\APP\adc_temp\adc_temp.h
 .\objects\app_freertos.o: ..\APP\TFTLCD\tftlcd.h
+.\objects\app_freertos.o: ..\APP\lsens\lsens.h
+.\objects\app_freertos.o: ..\APP\beep\beep.h

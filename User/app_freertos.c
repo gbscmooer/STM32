@@ -11,6 +11,8 @@
 #include "dht11.h"
 #include "adc_temp.h"
 #include "tftlcd.h"
+#include "lsens.h"
+#include "beep.h"
 
 // Task handles
 TaskHandle_t xStartTaskHandle = NULL;
@@ -55,12 +57,19 @@ void StartTask(void *pvParameters)
     // Initialize Sensors & LCD
     TFTLCD_Init();
     ADC_Temp_Init();
+    Lsens_Init();
+    BEEP_Init();
+    BEEP = 0; // Ensure Beep is OFF
+    g_beep_state = 0;
     
     FRONT_COLOR = BLACK;
     LCD_ShowString(10, 50, tftlcd_data.width, tftlcd_data.height, 16, "DHT11");
     LCD_ShowString(10, 100, tftlcd_data.width, tftlcd_data.height, 16, "Temp:                 C");
     LCD_ShowString(10, 130, tftlcd_data.width, tftlcd_data.height, 16, "Humi:                 %RH");
     LCD_ShowString(10, 160, tftlcd_data.width, tftlcd_data.height, 16, "CPU Temp:             C");
+    LCD_ShowString(10, 190, tftlcd_data.width, tftlcd_data.height, 16, "Light:                ");
+    LCD_ShowString(10, 220, tftlcd_data.width, tftlcd_data.height, 16, "Beep:                 ");
+    LCD_ShowString(10, 250, tftlcd_data.width, tftlcd_data.height, 16, "MQTT: Wait...         ");
     FRONT_COLOR = RED;
     
     while(DHT11_Init())
@@ -120,6 +129,41 @@ void SensorTask(void *pvParameters)
             LCD_ShowString(130, 130, tftlcd_data.width, tftlcd_data.height, 16, humi_buf);
         } else {
             PC_Usart("DHT11 Read Failed: %d\r\n", res);
+        }
+
+        // Light Sensor
+        g_sensor_light = Lsens_Get_Val();
+        u8 light_buf[4];
+        if (g_sensor_light > 99) {
+            light_buf[0] = g_sensor_light / 100 + 0x30;
+            light_buf[1] = (g_sensor_light % 100) / 10 + 0x30;
+            light_buf[2] = g_sensor_light % 10 + 0x30;
+            light_buf[3] = '\0';
+        } else if (g_sensor_light > 9) {
+            light_buf[0] = g_sensor_light / 10 + 0x30;
+            light_buf[1] = g_sensor_light % 10 + 0x30;
+            light_buf[2] = ' ';
+            light_buf[3] = '\0';
+        } else {
+            light_buf[0] = g_sensor_light + 0x30;
+            light_buf[1] = ' ';
+            light_buf[2] = ' ';
+            light_buf[3] = '\0';
+        }
+        LCD_ShowString(130, 190, tftlcd_data.width, tftlcd_data.height, 16, light_buf);
+
+        // Beep Status
+        if (g_beep_state) {
+            LCD_ShowString(130, 220, tftlcd_data.width, tftlcd_data.height, 16, "ON ");
+        } else {
+            LCD_ShowString(130, 220, tftlcd_data.width, tftlcd_data.height, 16, "OFF");
+        }
+
+        // MQTT Status
+        if (g_mqtt_connected) {
+            LCD_ShowString(60, 250, tftlcd_data.width, tftlcd_data.height, 16, "Connected   ");
+        } else {
+            LCD_ShowString(60, 250, tftlcd_data.width, tftlcd_data.height, 16, "Disconnected");
         }
 
         // CPU Temp
