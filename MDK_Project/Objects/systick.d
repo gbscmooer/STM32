@@ -1,6 +1,4 @@
 .\objects\systick.o: ..\Public\SysTick.c
-.\objects\systick.o: ..\Public\SysTick.h
-.\objects\systick.o: ..\Public\system.h
 .\objects\systick.o: ..\User\stm32f10x.h
 .\objects\systick.o: ..\Libraries\CMSIS\core_cm3.h
 .\objects\systick.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -30,3 +28,15 @@
 .\objects\systick.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h
 .\objects\systick.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h
 .\objects\systick.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h
+.\objects\systick.o: ..\Public\SysTick.h
+.\objects\systick.o: ..\Public\system.h
+.\objects\systick.o: ..\APP\FREERTOS\include\FreeRTOS.h
+.\objects\systick.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\systick.o: ..\User\FreeRTOSConfig.h
+.\objects\systick.o: ..\APP\FREERTOS\include\projdefs.h
+.\objects\systick.o: ..\APP\FREERTOS\include\portable.h
+.\objects\systick.o: ..\APP\FREERTOS\include\deprecated_definitions.h
+.\objects\systick.o: ..\APP\FREERTOS\portable\RVDS\ARM_CM3\portmacro.h
+.\objects\systick.o: ..\APP\FREERTOS\include\mpu_wrappers.h
+.\objects\systick.o: ..\APP\FREERTOS\include\task.h
+.\objects\systick.o: ..\APP\FREERTOS\include\list.h

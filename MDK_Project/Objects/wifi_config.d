@@ -32,3 +32,12 @@
 .\objects\wifi_config.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h
 .\objects\wifi_config.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\wifi_config.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\wifi_config.o: ..\APP\FREERTOS\include\FreeRTOS.h
+.\objects\wifi_config.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\wifi_config.o: ..\User\FreeRTOSConfig.h
+.\objects\wifi_config.o: ..\APP\FREERTOS\include\projdefs.h
+.\objects\wifi_config.o: ..\APP\FREERTOS\include\portable.h
+.\objects\wifi_config.o: ..\APP\FREERTOS\include\deprecated_definitions.h
+.\objects\wifi_config.o: ..\APP\FREERTOS\portable\RVDS\ARM_CM3\portmacro.h
+.\objects\wifi_config.o: ..\APP\FREERTOS\include\mpu_wrappers.h
+.\objects\wifi_config.o: ..\APP\FREERTOS\include\stream_buffer.h

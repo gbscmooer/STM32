@@ -1,0 +1,12 @@
+.\objects\core_mqtt_state.o: ..\APP\MQTT\source\core_mqtt_state.c
+.\objects\core_mqtt_state.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\assert.h
+.\objects\core_mqtt_state.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\core_mqtt_state.o: ..\APP\MQTT\source\include\core_mqtt_state.h
+.\objects\core_mqtt_state.o: ..\APP\MQTT\source\include\core_mqtt.h
+.\objects\core_mqtt_state.o: ..\APP\MQTT\source\include\core_mqtt_serializer.h
+.\objects\core_mqtt_state.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\core_mqtt_state.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\core_mqtt_state.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\core_mqtt_state.o: ..\APP\MQTT\source\interface\transport_interface.h
+.\objects\core_mqtt_state.o: ..\APP\MQTT\source\include\core_mqtt_config_defaults.h
+.\objects\core_mqtt_state.o: ..\APP\MQTT\source\include\core_mqtt_config.h

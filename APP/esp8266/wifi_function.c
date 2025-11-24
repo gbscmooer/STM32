@@ -728,11 +728,19 @@ bool ESP8266_TCP_Send(char *data, u16 len)
 {
 	char cmd[32];
 	sprintf(cmd, "AT+CIPSEND=%d", len);
-	if(ESP8266_Cmd(cmd, ">", NULL, 2000))
+	if(ESP8266_Cmd(cmd, ">", NULL, 3000))
 	{
-		// 发送数据，不等待特定响应，因为HTTP响应可能很快也可能很慢
-		// 这里我们只确保数据发送出去
-		ESP8266_Usart("%s", data);
+		// 发送数据
+		// 使用循环逐字节发送，确保数据完整性
+		for(int i=0; i<len; i++)
+		{
+			USART_SendData(USART3, data[i]);
+			while(USART_GetFlagStatus(USART3, USART_FLAG_TC) == RESET);
+		}
+		
+		// 等待数据发送完成，ESP8266需要时间处理
+		delay_ms(500);
+		
 		return true; 
 	}
 	return false;

@@ -1,7 +1,25 @@
 特别注意：
 不要在main.c中定义函数，main中只调用其他文件中的函数，以保持代码结构清晰。请阅读readme后在做改动，改动后写入readme以便他人了解你的改动。
+APP\FREERTOS\examples\template_configuration\FreeRTOSConfig.h
 
 最新改动记录：
+
+2025-11-23 FreeRTOS与MQTT迁移：
+1. 引入FreeRTOS操作系统：
+   - 添加User/FreeRTOSConfig.h配置文件
+   - 修改User/stm32f10x_it.c，屏蔽SVC、PendSV、SysTick中断处理，交由FreeRTOS接管
+   - 修改Public/SysTick.c，使delay_ms兼容FreeRTOS调度器
+   - 调整USART3中断优先级为5（低于configMAX_SYSCALL_INTERRUPT_PRIORITY=11）
+2. 引入MQTT功能：
+   - 新增User/mqtt_client.c和User/mqtt_client.h，实现MQTT连接、订阅和消息接收
+   - 修改APP/esp8266/wifi_config.c，使用FreeRTOS StreamBuffer接收串口数据，支持MQTT流式处理
+   - 优化ESP8266_TCP_Send函数，增加发送后延时避免指令冲突
+3. 重构main.c：
+   - main函数仅负责硬件初始化和启动FreeRTOS调度器
+   - 业务逻辑迁移至User/app_freertos.c中的StartTask和MQTTTask
+   - StartTask初始化ESP8266（使能、AT测试、设置STA模式）
+   - MQTTTask自动连接WiFi、TCP、发送MQTT CONNECT和SUBSCRIBE
+   - 系统启动后订阅weather/push主题等待推送
 
 2025-11-20 重要修复：
 1. 修复printf/scanf重定向问题：

@@ -1,9 +1,11 @@
 #include "wifi_config.h"
 #include <stdio.h>
 #include <stdarg.h>
+#include "FreeRTOS.h"
+#include "stream_buffer.h"
 
 struct  STRUCT_USARTx_Fram strEsp8266_Fram_Record = { 0 };
-
+StreamBufferHandle_t xSerialStreamBuffer = NULL;
 
 
 /**
@@ -61,20 +63,31 @@ void WiFi_Config( void )
 	
 	//Usart3 NVIC 配置
   	NVIC_InitStructure.NVIC_IRQChannel = USART3_IRQn;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=0 ;//抢占优先级0
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=5 ;//抢占优先级5（低于configMAX_SYSCALL_INTERRUPT_PRIORITY）
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;		//子优先级0
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			//IRQ通道使能
 	NVIC_Init(&NVIC_InitStructure);	//根据指定的参数初始化VIC寄存器
+
+	if (xSerialStreamBuffer == NULL)
+	{
+		xSerialStreamBuffer = xStreamBufferCreate(2048, 1);
+	}
 }
 
 void USART3_IRQHandler( void )
 {	
 	char ch;
+	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
 	
 	if(USART_GetITStatus(USART3, USART_IT_RXNE) != RESET)
 	{
 		ch  = USART_ReceiveData( USART3 );
 		
+		if (xSerialStreamBuffer != NULL)
+		{
+			xStreamBufferSendFromISR(xSerialStreamBuffer, &ch, 1, &xHigherPriorityTaskWoken);
+		}
+
 		if( strEsp8266_Fram_Record .InfBit .FramLength < ( RX_BUF_MAX_LEN - 1 ) )                       //预留1个字节写结束符
 		{
 			strEsp8266_Fram_Record .Data_RX_BUF [ strEsp8266_Fram_Record .InfBit .FramLength ++ ]  = ch;
@@ -89,6 +102,8 @@ void USART3_IRQHandler( void )
 		ch = USART_ReceiveData( USART3 );                                                              //由软件序列清除中断标志位(先读USART_SR，然后读USART_DR)
 	
   }	
+  
+  portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 
 }
 
