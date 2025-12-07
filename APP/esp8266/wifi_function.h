@@ -52,6 +52,7 @@ bool        ESP8266_HTTP_Request                ( char *host, u16 port, char *pa
 bool        ESP8266_HTTP_Post                   ( char *host, u16 port, char *path, char *body, char *response, u16 max_len );
 bool        ESP8266_TCP_Connect                 ( char *ip, u16 port );
 bool        ESP8266_TCP_Send                    ( char *data, u16 len );
+bool        ESP8266_TCP_Send_MultiLink          ( u8 link_id, u8 *data, u16 len );
 bool        ESP8266_TCP_Disconnect              ( void );
 bool        Weather_Get_Data                    ( WeatherData *weather );
 void        Weather_Display                     ( WeatherData *weather );

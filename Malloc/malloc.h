@@ -14,10 +14,10 @@
 
 #define SRAMBANK 	1	//����֧�ֵ�SRAM����.	
 
-//mem1�ڴ�����趨.mem1��ȫ�����ڲ�SRAM����.
-#define MEM1_BLOCK_SIZE			32  	  						//�ڴ���СΪ32�ֽ�
-#define MEM1_MAX_SIZE			10*1024  						//�������ڴ� 10K (��4.8KB��ͼ������+��)
-#define MEM1_ALLOC_TABLE_SIZE	MEM1_MAX_SIZE/MEM1_BLOCK_SIZE 	//�ڴ����С
+//mem1内存参数设定.mem1完全处于内部SRAM里面.
+#define MEM1_BLOCK_SIZE			32  	  						//内存块大小为32字节
+#define MEM1_MAX_SIZE			22*1024  						//最大管理内存 22K (够19.2KB图像缓冲+余量)
+#define MEM1_ALLOC_TABLE_SIZE	MEM1_MAX_SIZE/MEM1_BLOCK_SIZE 	//内存表大小
 
 
 //�ڴ����������   ����ָ��

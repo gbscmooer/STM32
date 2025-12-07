@@ -7,28 +7,28 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-// È«¾Ö±äÁ¿¿ØÖÆÈÕÖ¾Êä³ö
+// È«ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½
 static bool g_wifi_log_enable = true;
 
-// ÉèÖÃÈÕÖ¾Êä³ö×´Ì¬
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½×´Ì¬
 void WiFi_Set_Log(bool enable)
 {
 	g_wifi_log_enable = enable;
 }
 
-// ÄÚ²¿ÈÕÖ¾ºê£¬ÊÜg_wifi_log_enable¿ØÖÆ
+// ï¿½Ú²ï¿½ï¿½ï¿½Ö¾ï¿½ê£¬ï¿½ï¿½g_wifi_log_enableï¿½ï¿½ï¿½ï¿½
 #define WIFI_LOG(...) if(g_wifi_log_enable) PC_Usart(__VA_ARGS__)
 
-// HTTPÏìÓ¦»º³åÇø
+// HTTPï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 static char g_weather_http_response[1024];
 
 /*
- * º¯ÊıÃû£ºESP8266_Choose
- * ÃèÊö  £ºÊ¹ÄÜ/½ûÓÃWF-ESP8266Ä£¿é
- * ÊäÈë  £ºenumChoose = ENABLE£¬Ê¹ÄÜÄ£¿é
- *         enumChoose = DISABLE£¬½ûÓÃÄ£¿é
- * ·µ»Ø  : ÎŞ
- * µ÷ÓÃ  £º±»Íâ²¿µ÷ÓÃ
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ESP8266_Choose
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½Ê¹ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½WF-ESP8266Ä£ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½enumChoose = ENABLEï¿½ï¿½Ê¹ï¿½ï¿½Ä£ï¿½ï¿½
+ *         enumChoose = DISABLEï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  : ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½â²¿ï¿½ï¿½ï¿½ï¿½
  */
 void ESP8266_Choose ( FunctionalState enumChoose )
 {
@@ -42,11 +42,11 @@ void ESP8266_Choose ( FunctionalState enumChoose )
 
 
 /*
- * º¯ÊıÃû£ºESP8266_Rst
- * ÃèÊö  £ºÖØÆôWF-ESP8266Ä£¿é
- * ÊäÈë  £ºÎŞ
- * ·µ»Ø  : ÎŞ
- * µ÷ÓÃ  £º±»ESP8266_AT_Testµ÷ÓÃ
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ESP8266_Rst
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½WF-ESP8266Ä£ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  : ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ESP8266_AT_Testï¿½ï¿½ï¿½ï¿½
  */
 void ESP8266_Rst ( void )
 {
@@ -64,11 +64,11 @@ void ESP8266_Rst ( void )
 
 
 /*
- * º¯ÊıÃû£ºESP8266_Auto_BaudRate_Test
- * ÃèÊö  £ºESP8266Ä£¿é²¨ÌØÂÊ×Ô¶¯¼ì²â
- * ÊäÈë  £ºÎŞ
- * ·µ»Ø  : ÎŞ
- * µ÷ÓÃ  £º±»Íâ²¿µ÷ÓÃ
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ESP8266_Auto_BaudRate_Test
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ESP8266Ä£ï¿½é²¨ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  : ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½â²¿ï¿½ï¿½ï¿½ï¿½
  */
 void ESP8266_Auto_BaudRate_Test ( void )
 {
@@ -76,13 +76,13 @@ void ESP8266_Auto_BaudRate_Test ( void )
 	u8 i;
 	USART_InitTypeDef USART_InitStructure;
 	
-	PC_Usart("\r\n¿ªÊ¼ESP8266²¨ÌØÂÊ×Ô¶¯¼ì²â...\r\n");
+	PC_Usart("\r\nï¿½ï¿½Ê¼ESP8266ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½...\r\n");
 	
 	for(i = 0; i < 6; i++)
 	{
-		PC_Usart("³¢ÊÔ²¨ÌØÂÊ: %d\r\n", baud_rates[i]);
+		PC_Usart("ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½: %d\r\n", baud_rates[i]);
 		
-		// ÖØĞÂÅäÖÃUSART3²¨ÌØÂÊ
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½USART3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		USART_Cmd(USART3, DISABLE);
 		USART_InitStructure.USART_BaudRate = baud_rates[i];
 		USART_InitStructure.USART_WordLength = USART_WordLength_8b;
@@ -95,18 +95,18 @@ void ESP8266_Auto_BaudRate_Test ( void )
 		
 		delay_ms(100);
 		
-		// ²âÊÔATÖ¸Áî
+		// ï¿½ï¿½ï¿½ï¿½ATÖ¸ï¿½ï¿½
 		if( ESP8266_Cmd ( "AT", "OK", NULL, 1000 ) )
 		{
-			PC_Usart("ÕÒµ½ÕıÈ·²¨ÌØÂÊ: %d\r\n", baud_rates[i]);
+			PC_Usart("ï¿½Òµï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: %d\r\n", baud_rates[i]);
 			return;
 		}
 		
 		delay_ms(500);
 	}
 	
-	PC_Usart("Î´ÕÒµ½Æ¥ÅäµÄ²¨ÌØÂÊ£¬Ê¹ÓÃÄ¬ÈÏ115200\r\n");
-	// ÉèÖÃ»ØÄ¬ÈÏ²¨ÌØÂÊ115200
+	PC_Usart("Î´ï¿½Òµï¿½Æ¥ï¿½ï¿½Ä²ï¿½ï¿½ï¿½ï¿½Ê£ï¿½Ê¹ï¿½ï¿½Ä¬ï¿½ï¿½115200\r\n");
+	// ï¿½ï¿½ï¿½Ã»ï¿½Ä¬ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½115200
 	USART_Cmd(USART3, DISABLE);
 	USART_InitStructure.USART_BaudRate = 115200;
 	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
@@ -120,11 +120,11 @@ void ESP8266_Auto_BaudRate_Test ( void )
 
 
 /*
- * º¯ÊıÃû£ºESP8266_AT_Test
- * ÃèÊö  £º¶ÔWF-ESP8266Ä£¿é½øĞĞAT²âÊÔÆô¶¯
- * ÊäÈë  £ºÎŞ
- * ·µ»Ø  : ÎŞ
- * µ÷ÓÃ  £º±»Íâ²¿µ÷ÓÃ
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ESP8266_AT_Test
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½WF-ESP8266Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ATï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  : ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½â²¿ï¿½ï¿½ï¿½ï¿½
  */
 void ESP8266_AT_Test ( void )
 {
@@ -134,37 +134,37 @@ void ESP8266_AT_Test ( void )
 	
 	delay_ms ( 1000 ); 
 	
-	PC_Usart("\r\n¿ªÊ¼ESP8266 AT²âÊÔ...\r\n");
+	PC_Usart("\r\nï¿½ï¿½Ê¼ESP8266 ATï¿½ï¿½ï¿½ï¿½...\r\n");
 	
 	while ( ! ESP8266_Cmd ( "AT", "OK", NULL, 1000 ) ) 
 	{
 		retry_count++;
-		PC_Usart("AT²âÊÔÊ§°Ü£¬ÖØÊÔµÚ%d´Î...\r\n", retry_count);
+		PC_Usart("ATï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½Ôµï¿½%dï¿½ï¿½...\r\n", retry_count);
 		ESP8266_Rst ();
-		delay_ms(2000);  // Ôö¼ÓÖØÆôºóµÄÑÓÊ±
+		delay_ms(2000);  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±
 		
-		if(retry_count >= 5)  // ÏŞÖÆÖØÊÔ´ÎÊı
+		if(retry_count >= 5)  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½
 		{
-			PC_Usart("ESP8266Ä£¿éÎŞÏìÓ¦£¬Çë¼ì²éÓ²¼şÁ¬½ÓºÍ²¨ÌØÂÊÉèÖÃ£¡\r\n");
+			PC_Usart("ESP8266Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ï¿½ï¿½ï¿½ÓºÍ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½\r\n");
 			break;
 		}
 	}
 	
 	if(retry_count < 5)
-		PC_Usart("ESP8266 AT²âÊÔ³É¹¦£¡\r\n");
+		PC_Usart("ESP8266 ATï¿½ï¿½ï¿½Ô³É¹ï¿½ï¿½ï¿½\r\n");
 
 }
 
 
 /*
- * º¯ÊıÃû£ºESP8266_Cmd
- * ÃèÊö  £º¶ÔWF-ESP8266Ä£¿é·¢ËÍATÖ¸Áî
- * ÊäÈë  £ºcmd£¬´ı·¢ËÍµÄÖ¸Áî
- *         reply1£¬reply2£¬ÆÚ´ıµÄÏìÓ¦£¬ÎªNULL±í²»ĞèÏìÓ¦£¬Á½ÕßÎª»òÂß¼­¹ØÏµ
- *         waittime£¬µÈ´ıÏìÓ¦µÄÊ±¼ä
- * ·µ»Ø  : 1£¬Ö¸Áî·¢ËÍ³É¹¦
- *         0£¬Ö¸Áî·¢ËÍÊ§°Ü
- * µ÷ÓÃ  £º±»Íâ²¿µ÷ÓÃ
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ESP8266_Cmd
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½WF-ESP8266Ä£ï¿½é·¢ï¿½ï¿½ATÖ¸ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½cmdï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Íµï¿½Ö¸ï¿½ï¿½
+ *         reply1ï¿½ï¿½reply2ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ÎªNULLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ß¼ï¿½ï¿½ï¿½Ïµ
+ *         waittimeï¿½ï¿½ï¿½È´ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Ê±ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  : 1ï¿½ï¿½Ö¸ï¿½î·¢ï¿½Í³É¹ï¿½
+ *         0ï¿½ï¿½Ö¸ï¿½î·¢ï¿½ï¿½Ê§ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½â²¿ï¿½ï¿½ï¿½ï¿½
  */
 bool ESP8266_Cmd ( char * cmd, char * reply1, char * reply2, u32 waittime )
 {    
@@ -174,33 +174,33 @@ bool ESP8266_Cmd ( char * cmd, char * reply1, char * reply2, u32 waittime )
 	u16 last_length = 0;
 	u8 stable_count = 0;
 	
-	// ÃüÁîÇ°¶ÌÔİÑÓ³Ù£¬±ÜÃâÖ¸Áî¹ıÃÜ
+	// ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½Ó³Ù£ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½
 	delay_ms(300);
 	
-	// Çå³ı½ÓÊÕ»º³åÇø
-	strEsp8266_Fram_Record .InfBit .FramLength = 0;               //´ÓĞÂ¿ªÊ¼½ÓÊÕĞÂµÄÊı¾İ°ü
-	strEsp8266_Fram_Record .InfBit .FramFinishFlag = 0;           //Çå³ı½ÓÊÕÍê³É±êÖ¾
-	memset(strEsp8266_Fram_Record .Data_RX_BUF, 0, RX_BUF_MAX_LEN); //Çå¿Õ½ÓÊÕ»º³åÇø
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ»ï¿½ï¿½ï¿½ï¿½ï¿½
+	strEsp8266_Fram_Record .InfBit .FramLength = 0;               //ï¿½ï¿½ï¿½Â¿ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½İ°ï¿½
+	strEsp8266_Fram_Record .InfBit .FramFinishFlag = 0;           //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É±ï¿½Ö¾
+	memset(strEsp8266_Fram_Record .Data_RX_BUF, 0, RX_BUF_MAX_LEN); //ï¿½ï¿½Õ½ï¿½ï¿½Õ»ï¿½ï¿½ï¿½ï¿½ï¿½
 
-	WIFI_LOG ("\r\n[·¢ËÍATÖ¸Áî]: %s\r\n", cmd);  // ÏÔÊ¾·¢ËÍµÄÖ¸Áî
+	WIFI_LOG ("\r\n[ï¿½ï¿½ï¿½ï¿½ATÖ¸ï¿½ï¿½]: %s\r\n", cmd);  // ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Íµï¿½Ö¸ï¿½ï¿½
 	ESP8266_Usart ( "%s\r\n", cmd );
 
-	if ( ( reply1 == 0 ) && ( reply2 == 0 ) )                      //²»ĞèÒª½ÓÊÕÊı¾İ
+	if ( ( reply1 == 0 ) && ( reply2 == 0 ) )                      //ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		return true;
 	
-	// ¸Ä½ø£ºÑ­»·¼ì²éÊÇ·ñÊÕµ½ÆÚÍûµÄÏìÓ¦
+	// ï¿½Ä½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦
 	start_time = 0;
 	while(start_time < waittime)
 	{
-		delay_ms(50);  // Ã¿50ms¼ì²éÒ»´Î
+		delay_ms(50);  // Ã¿50msï¿½ï¿½ï¿½Ò»ï¿½ï¿½
 		start_time += 50;
 		
-		// ÁÙÊ±Ìí¼Ó½áÊø·ûÒÔ±ãstrstr²éÕÒ
+		// ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½strstrï¿½ï¿½ï¿½ï¿½
 		if(strEsp8266_Fram_Record.InfBit.FramLength > 0)
 		{
 			strEsp8266_Fram_Record.Data_RX_BUF[strEsp8266_Fram_Record.InfBit.FramLength] = '\0';
 			
-			// ¼ì²éÊÇ·ñÊÕµ½ÆÚÍûµÄÏìÓ¦
+			// ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦
 			if((reply1 && strstr(strEsp8266_Fram_Record.Data_RX_BUF, reply1)) || 
 			   (reply2 && strstr(strEsp8266_Fram_Record.Data_RX_BUF, reply2)))
 			{
@@ -208,18 +208,18 @@ bool ESP8266_Cmd ( char * cmd, char * reply1, char * reply2, u32 waittime )
 				break;
 			}
 			
-			// ¼ì²éÊÇ·ñbusy
+			// ï¿½ï¿½ï¿½ï¿½Ç·ï¿½busy
 			if(strstr(strEsp8266_Fram_Record.Data_RX_BUF, "busy"))
 			{
-				WIFI_LOG ("[¾¯¸æ]: ESP8266Ä£¿éÃ¦Âµ£¬µÈ´ı2ÃëºóÖØÊÔ...\r\n");
+				WIFI_LOG ("[ï¿½ï¿½ï¿½ï¿½]: ESP8266Ä£ï¿½ï¿½Ã¦Âµï¿½ï¿½ï¿½È´ï¿½2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½...\r\n");
 				delay_ms(2000);
-				// Çå³ı»º³åÇø²¢ÖØĞÂ·¢ËÍ
+				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½
 				strEsp8266_Fram_Record .InfBit .FramLength = 0;
 				strEsp8266_Fram_Record .InfBit .FramFinishFlag = 0;
 				memset(strEsp8266_Fram_Record .Data_RX_BUF, 0, RX_BUF_MAX_LEN);
 				
 				ESP8266_Usart ( "%s\r\n", cmd );
-				start_time = 0; // ÖØÖÃ¼ÆÊ±Æ÷
+				start_time = 0; // ï¿½ï¿½ï¿½Ã¼ï¿½Ê±ï¿½ï¿½
 				continue;
 			}
 		}
@@ -227,7 +227,7 @@ bool ESP8266_Cmd ( char * cmd, char * reply1, char * reply2, u32 waittime )
 	
 	strEsp8266_Fram_Record .Data_RX_BUF [ strEsp8266_Fram_Record .InfBit .FramLength ]  = '\0';
 
-	// ÌØÊâ´¦ÀíCWLAPÃüÁîµÄÊä³ö£¬ÌáÈ¡Ó¢ÎÄWiFiÃû³Æ
+	// ï¿½ï¿½ï¿½â´¦ï¿½ï¿½CWLAPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡Ó¢ï¿½ï¿½WiFiï¿½ï¿½ï¿½ï¿½
 	if(strstr(cmd, "CWLAP")) 
 	{
 		char *ptr;
@@ -237,11 +237,11 @@ bool ESP8266_Cmd ( char * cmd, char * reply1, char * reply2, u32 waittime )
 		bool is_ascii;
 		u8 wifi_count = 0;
 		
-		// ÏÈÏÔÊ¾Ô­Ê¼Êı¾İ³¤¶ÈÓÃÓÚµ÷ÊÔ
-		WIFI_LOG ("[½ÓÊÕÊı¾İ³¤¶È]: %d×Ö½Ú\r\n", strEsp8266_Fram_Record .InfBit .FramLength);
+		// ï¿½ï¿½ï¿½ï¿½Ê¾Ô­Ê¼ï¿½ï¿½ï¿½İ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½
+		WIFI_LOG ("[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ³ï¿½ï¿½ï¿½]: %dï¿½Ö½ï¿½\r\n", strEsp8266_Fram_Record .InfBit .FramLength);
 		
-		WIFI_LOG ("[É¨Ãèµ½µÄWiFiÍøÂç]:\r\n");
-		// ²éÕÒ²¢ÏÔÊ¾Ó¢ÎÄWiFiÃû³Æ
+		WIFI_LOG ("[É¨ï¿½èµ½ï¿½ï¿½WiFiï¿½ï¿½ï¿½ï¿½]:\r\n");
+		// ï¿½ï¿½ï¿½Ò²ï¿½ï¿½ï¿½Ê¾Ó¢ï¿½ï¿½WiFiï¿½ï¿½ï¿½ï¿½
 		ptr = strEsp8266_Fram_Record .Data_RX_BUF;
 		while((ptr = strstr(ptr, "+CWLAP:")) != NULL)
 		{
@@ -252,11 +252,11 @@ bool ESP8266_Cmd ( char * cmd, char * reply1, char * reply2, u32 waittime )
 				ssid_end = strchr(ssid_start, '"');
 				if(ssid_end)
 				{
-					// ¼ì²éÊÇ·ñÎªÓ¢ÎÄ/Êı×ÖWiFiÃû³Æ
+					// ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ÎªÓ¢ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½WiFiï¿½ï¿½ï¿½ï¿½
 					is_ascii = true;
 					for(c = ssid_start; c < ssid_end; c++)
 					{
-						if(*c < 32 || *c > 126)  // ·ÇASCII×Ö·û
+						if(*c < 32 || *c > 126)  // ï¿½ï¿½ASCIIï¿½Ö·ï¿½
 						{
 							is_ascii = false;
 							break;
@@ -275,13 +275,13 @@ bool ESP8266_Cmd ( char * cmd, char * reply1, char * reply2, u32 waittime )
 		}
 		if(wifi_count == 0)
 		{
-			WIFI_LOG ("  Î´·¢ÏÖÓ¢ÎÄÃû³ÆµÄWiFiÍøÂç\r\n");
-			WIFI_LOG ("  (¿ÉÄÜ¶¼ÊÇÖĞÎÄÃû³Æ»òÉ¨Ãè³¬Ê±)\r\n");
+			WIFI_LOG ("  Î´ï¿½ï¿½ï¿½ï¿½Ó¢ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½WiFiï¿½ï¿½ï¿½ï¿½\r\n");
+			WIFI_LOG ("  (ï¿½ï¿½ï¿½Ü¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ»ï¿½É¨ï¿½è³¬Ê±)\r\n");
 		}
 	}
 	else
 	{
-		WIFI_LOG ("[ESP8266»Ø¸´]: %s\r\n", strEsp8266_Fram_Record .Data_RX_BUF);
+		WIFI_LOG ("[ESP8266ï¿½Ø¸ï¿½]: %s\r\n", strEsp8266_Fram_Record .Data_RX_BUF);
 	}
   
 	return found;
@@ -290,12 +290,12 @@ bool ESP8266_Cmd ( char * cmd, char * reply1, char * reply2, u32 waittime )
 
 
 /*
- * º¯ÊıÃû£ºESP8266_Net_Mode_Choose
- * ÃèÊö  £ºÑ¡ÔñWF-ESP8266Ä£¿éµÄ¹¤×÷Ä£Ê½
- * ÊäÈë  £ºenumMode£¬¹¤×÷Ä£Ê½
- * ·µ»Ø  : 1£¬Ñ¡Ôñ³É¹¦
- *         0£¬Ñ¡ÔñÊ§°Ü
- * µ÷ÓÃ  £º±»Íâ²¿µ÷ÓÃ
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ESP8266_Net_Mode_Choose
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½Ñ¡ï¿½ï¿½WF-ESP8266Ä£ï¿½ï¿½Ä¹ï¿½ï¿½ï¿½Ä£Ê½
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½enumModeï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½
+ * ï¿½ï¿½ï¿½ï¿½  : 1ï¿½ï¿½Ñ¡ï¿½ï¿½É¹ï¿½
+ *         0ï¿½ï¿½Ñ¡ï¿½ï¿½Ê§ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½â²¿ï¿½ï¿½ï¿½ï¿½
  */
 bool ESP8266_Net_Mode_Choose ( ENUM_Net_ModeTypeDef enumMode )
 {
@@ -317,27 +317,27 @@ bool ESP8266_Net_Mode_Choose ( ENUM_Net_ModeTypeDef enumMode )
 }
 
 /*
- * º¯ÊıÃû£ºESP8266_Scan_AP
- * ÃèÊö  £ºÉ¨ÃèÖÜÎ§µÄWiFiÍøÂç
- * ÊäÈë  £ºÎŞ
- * ·µ»Ø  : ÎŞ
- * µ÷ÓÃ  £º±»Íâ²¿µ÷ÓÃ
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ESP8266_Scan_AP
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½É¨ï¿½ï¿½ï¿½ï¿½Î§ï¿½ï¿½WiFiï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  : ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½â²¿ï¿½ï¿½ï¿½ï¿½
  */
 void ESP8266_Scan_AP ( void )
 {
-	PC_Usart("¿ªÊ¼É¨ÃèWiFiÍøÂç£¨Ô¤¼ÆĞèÒª10-15Ãë£©...\r\n");
-	delay_ms(3000);  // É¨ÃèÇ°µÈ´ı3Ãë£¬ÈÃESP8266ÍêÈ«¾ÍĞ÷
-	ESP8266_Cmd ( "AT+CWLAP", "OK", NULL, 15000 );  // µÈ´ı15ÃëÉ¨ÃèÍê³É
+	PC_Usart("ï¿½ï¿½Ê¼É¨ï¿½ï¿½WiFiï¿½ï¿½ï¿½ç£¨Ô¤ï¿½ï¿½ï¿½ï¿½Òª10-15ï¿½ë£©...\r\n");
+	delay_ms(3000);  // É¨ï¿½ï¿½Ç°ï¿½È´ï¿½3ï¿½ë£¬ï¿½ï¿½ESP8266ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½
+	ESP8266_Cmd ( "AT+CWLAP", "OK", NULL, 15000 );  // ï¿½È´ï¿½15ï¿½ï¿½É¨ï¿½ï¿½ï¿½ï¿½ï¿½
 }
 
 /*
- * º¯ÊıÃû£ºESP8266_JoinAP
- * ÃèÊö  £ºWF-ESP8266Ä£¿éÁ¬½ÓÍâ²¿WiFi
- * ÊäÈë  £ºpSSID£¬WiFiÃû³Æ×Ö·û´®
- *       £ºpPassWord£¬WiFiÃÜÂë×Ö·û´®
- * ·µ»Ø  : 1£¬Á¬½Ó³É¹¦
- *         0£¬Á¬½ÓÊ§°Ü
- * µ÷ÓÃ  £º±»Íâ²¿µ÷ÓÃ
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ESP8266_JoinAP
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½WF-ESP8266Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â²¿WiFi
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½pSSIDï¿½ï¿½WiFiï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+ *       ï¿½ï¿½pPassWordï¿½ï¿½WiFiï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  : 1ï¿½ï¿½ï¿½ï¿½ï¿½Ó³É¹ï¿½
+ *         0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½â²¿ï¿½ï¿½ï¿½ï¿½
  */
 bool ESP8266_JoinAP ( char * pSSID, char * pPassWord )
 {
@@ -346,29 +346,29 @@ bool ESP8266_JoinAP ( char * pSSID, char * pPassWord )
 
 	sprintf ( cCmd, "AT+CWJAP=\"%s\",\"%s\"", pSSID, pPassWord );
 	
-	PC_Usart("\r\nÕıÔÚÁ¬½ÓWiFi: %s...\r\n", pSSID);
+	PC_Usart("\r\nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½WiFi: %s...\r\n", pSSID);
 	
-	// Á¬½ÓÇ°¶îÍâÑÓ³Ù£¬È·±£Ä£¿é¿ÕÏĞ
+	// ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½Ó³Ù£ï¿½È·ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½ï¿½
 	delay_ms(500);
 	
-	// Ôö¼ÓµÈ´ıÊ±¼äµ½10Ãë£¬ÒòÎªWiFiÁ¬½Ó¿ÉÄÜĞèÒª¸ü³¤Ê±¼ä
+	// ï¿½ï¿½ï¿½ÓµÈ´ï¿½Ê±ï¿½äµ½10ï¿½ë£¬ï¿½ï¿½ÎªWiFiï¿½ï¿½ï¿½Ó¿ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
 	result = ESP8266_Cmd ( cCmd, "OK", "WIFI GOT IP", 10000 );
 	
 	if(result) 
 	{
-		PC_Usart("? WiFiÁ¬½Ó³É¹¦£¡\r\n");
-		// ²é¿´»ñµÃµÄIPµØÖ·
+		PC_Usart("? WiFiï¿½ï¿½ï¿½Ó³É¹ï¿½ï¿½ï¿½\r\n");
+		// ï¿½é¿´ï¿½ï¿½Ãµï¿½IPï¿½ï¿½Ö·
 		delay_ms(1000);
 		ESP8266_Cmd ( "AT+CIFSR", "OK", NULL, 2000 );
 	}
 	else
 	{
-		PC_Usart("? WiFiÁ¬½ÓÊ§°Ü£¡\r\n");
-		PC_Usart("¿ÉÄÜµÄÔ­Òò£º\r\n");
-		PC_Usart("1. WiFiÃÜÂë´íÎó\r\n");
-		PC_Usart("2. WiFiÃû³Æ°üº¬ÌØÊâ×Ö·û\r\n");
-		PC_Usart("3. ĞÅºÅÇ¿¶È²»¹»\r\n");
-		PC_Usart("4. Æµ¶Î²»Ö§³Ö(ESP8266Ö»Ö§³Ö2.4GHz)\r\n");
+		PC_Usart("? WiFiï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½\r\n");
+		PC_Usart("ï¿½ï¿½ï¿½Üµï¿½Ô­ï¿½ï¿½\r\n");
+		PC_Usart("1. WiFiï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\r\n");
+		PC_Usart("2. WiFiï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½\r\n");
+		PC_Usart("3. ï¿½Åºï¿½Ç¿ï¿½È²ï¿½ï¿½ï¿½\r\n");
+		PC_Usart("4. Æµï¿½Î²ï¿½Ö§ï¿½ï¿½(ESP8266Ö»Ö§ï¿½ï¿½2.4GHz)\r\n");
 	}
 	
 	return result;
@@ -377,14 +377,14 @@ bool ESP8266_JoinAP ( char * pSSID, char * pPassWord )
 
 
 /*
- * º¯ÊıÃû£ºESP8266_BuildAP
- * ÃèÊö  £ºWF-ESP8266Ä£¿é´´½¨WiFiÈÈµã
- * ÊäÈë  £ºpSSID£¬WiFiÃû³Æ×Ö·û´®
- *       £ºpPassWord£¬WiFiÃÜÂë×Ö·û´®
- *       £ºenunPsdMode£¬WiFi¼ÓÃÜ·½Ê½´úºÅ×Ö·û´®
- * ·µ»Ø  : 1£¬´´½¨³É¹¦
- *         0£¬´´½¨Ê§°Ü
- * µ÷ÓÃ  £º±»Íâ²¿µ÷ÓÃ
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ESP8266_BuildAP
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½WF-ESP8266Ä£ï¿½é´´ï¿½ï¿½WiFiï¿½Èµï¿½
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½pSSIDï¿½ï¿½WiFiï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+ *       ï¿½ï¿½pPassWordï¿½ï¿½WiFiï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+ *       ï¿½ï¿½enunPsdModeï¿½ï¿½WiFiï¿½ï¿½ï¿½Ü·ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  : 1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½
+ *         0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½â²¿ï¿½ï¿½ï¿½ï¿½
  */
 bool ESP8266_BuildAP ( char * pSSID, char * pPassWord, char * enunPsdMode )
 {
@@ -398,12 +398,12 @@ bool ESP8266_BuildAP ( char * pSSID, char * pPassWord, char * enunPsdMode )
 
 
 /*
- * º¯ÊıÃû£ºESP8266_Enable_MultipleId
- * ÃèÊö  £ºWF-ESP8266Ä£¿éÆô¶¯¶àÁ¬½Ó
- * ÊäÈë  £ºenumEnUnvarnishTx£¬ÅäÖÃÊÇ·ñ¶àÁ¬½Ó
- * ·µ»Ø  : 1£¬ÅäÖÃ³É¹¦
- *         0£¬ÅäÖÃÊ§°Ü
- * µ÷ÓÃ  £º±»Íâ²¿µ÷ÓÃ
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ESP8266_Enable_MultipleId
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½WF-ESP8266Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½enumEnUnvarnishTxï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  : 1ï¿½ï¿½ï¿½ï¿½ï¿½Ã³É¹ï¿½
+ *         0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½â²¿ï¿½ï¿½ï¿½ï¿½
  */
 bool ESP8266_Enable_MultipleId ( FunctionalState enumEnUnvarnishTx )
 {
@@ -417,15 +417,15 @@ bool ESP8266_Enable_MultipleId ( FunctionalState enumEnUnvarnishTx )
 
 
 /*
- * º¯ÊıÃû£ºESP8266_Link_Server
- * ÃèÊö  £ºWF-ESP8266Ä£¿éÁ¬½ÓÍâ²¿·şÎñÆ÷
- * ÊäÈë  £ºenumE£¬ÍøÂçĞ­Òé
- *       £ºip£¬·şÎñÆ÷IP×Ö·û´®
- *       £ºComNum£¬·şÎñÆ÷¶Ë¿Ú×Ö·û´®
- *       £ºid£¬Ä£¿éÁ¬½Ó·şÎñÆ÷µÄID
- * ·µ»Ø  : 1£¬Á¬½Ó³É¹¦
- *         0£¬Á¬½ÓÊ§°Ü
- * µ÷ÓÃ  £º±»Íâ²¿µ÷ÓÃ
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ESP8266_Link_Server
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½WF-ESP8266Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â²¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½enumEï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ­ï¿½ï¿½
+ *       ï¿½ï¿½ipï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IPï¿½Ö·ï¿½ï¿½ï¿½
+ *       ï¿½ï¿½ComNumï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¿ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+ *       ï¿½ï¿½idï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½ï¿½Ó·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ID
+ * ï¿½ï¿½ï¿½ï¿½  : 1ï¿½ï¿½ï¿½ï¿½ï¿½Ó³É¹ï¿½
+ *         0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½â²¿ï¿½ï¿½ï¿½ï¿½
  */
 bool ESP8266_Link_Server ( ENUM_NetPro_TypeDef enumE, char * ip, char * ComNum, ENUM_ID_NO_TypeDef id)
 {
@@ -451,24 +451,24 @@ bool ESP8266_Link_Server ( ENUM_NetPro_TypeDef enumE, char * ip, char * ComNum, 
   else
 	  sprintf ( cCmd, "AT+CIPSTART=%s", cStr );
 
-	PC_Usart("\r\nÕıÔÚÁ¬½Ó·şÎñÆ÷ %s:%s...\r\n", ip, ComNum);
+	PC_Usart("\r\nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó·ï¿½ï¿½ï¿½ï¿½ï¿½ %s:%s...\r\n", ip, ComNum);
 
-	// Ôö¼ÓµÈ´ıÊ±¼äµ½10Ãë£¬²¢µÈ´ıÕıÈ·µÄÏìÓ¦
+	// ï¿½ï¿½ï¿½ÓµÈ´ï¿½Ê±ï¿½äµ½10ï¿½ë£¬ï¿½ï¿½ï¿½È´ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½Ó¦
 	result = ESP8266_Cmd ( cCmd, "CONNECT", "OK", 10000 );
 	
 	if(result) 
 	{
-		PC_Usart("? TCPÁ¬½Ó³É¹¦£¡\r\n");
+		PC_Usart("? TCPï¿½ï¿½ï¿½Ó³É¹ï¿½ï¿½ï¿½\r\n");
 	}
 	else
 	{
-		PC_Usart("? TCPÁ¬½ÓÊ§°Ü£¡\r\n");
-		PC_Usart("¿ÉÄÜµÄÔ­Òò£º\r\n");
-		PC_Usart("1. ·şÎñÆ÷IPµØÖ·²»ÕıÈ·\r\n");
-		PC_Usart("2. ·şÎñÆ÷¶Ë¿ÚÎ´¿ª·Å\r\n");
-		PC_Usart("3. ·À»ğÇ½×èÖ¹Á¬½Ó\r\n");
-		PC_Usart("4. ÍøÂç²»Í¨\r\n");
-		PC_Usart("5. ·şÎñÆ÷Î´Æô¶¯\r\n");
+		PC_Usart("? TCPï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½\r\n");
+		PC_Usart("ï¿½ï¿½ï¿½Üµï¿½Ô­ï¿½ï¿½\r\n");
+		PC_Usart("1. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IPï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½È·\r\n");
+		PC_Usart("2. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¿ï¿½Î´ï¿½ï¿½ï¿½ï¿½\r\n");
+		PC_Usart("3. ï¿½ï¿½ï¿½ï¿½Ç½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½\r\n");
+		PC_Usart("4. ï¿½ï¿½ï¿½ç²»Í¨\r\n");
+		PC_Usart("5. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½\r\n");
 	}
 	
 	return result;
@@ -477,14 +477,14 @@ bool ESP8266_Link_Server ( ENUM_NetPro_TypeDef enumE, char * ip, char * ComNum, 
 
 
 /*
- * º¯ÊıÃû£ºESP8266_StartOrShutServer
- * ÃèÊö  £ºWF-ESP8266Ä£¿é¿ªÆô»ò¹Ø±Õ·şÎñÆ÷Ä£Ê½
- * ÊäÈë  £ºenumMode£¬¿ªÆô/¹Ø±Õ
- *       £ºpPortNum£¬·şÎñÆ÷¶Ë¿ÚºÅ×Ö·û´®
- *       £ºpTimeOver£¬·şÎñÆ÷³¬Ê±Ê±¼ä×Ö·û´®£¬µ¥Î»£ºÃë
- * ·µ»Ø  : 1£¬²Ù×÷³É¹¦
- *         0£¬²Ù×÷Ê§°Ü
- * µ÷ÓÃ  £º±»Íâ²¿µ÷ÓÃ
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ESP8266_StartOrShutServer
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½WF-ESP8266Ä£ï¿½é¿ªï¿½ï¿½ï¿½ï¿½Ø±Õ·ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½enumModeï¿½ï¿½ï¿½ï¿½ï¿½ï¿½/ï¿½Ø±ï¿½
+ *       ï¿½ï¿½pPortNumï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¿Úºï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+ *       ï¿½ï¿½pTimeOverï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±Ê±ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  : 1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½
+ *         0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½â²¿ï¿½ï¿½ï¿½ï¿½
  */
 bool ESP8266_StartOrShutServer ( FunctionalState enumMode, char * pPortNum, char * pTimeOver )
 {
@@ -511,12 +511,12 @@ bool ESP8266_StartOrShutServer ( FunctionalState enumMode, char * pPortNum, char
 
 
 /*
- * º¯ÊıÃû£ºESP8266_UnvarnishSend
- * ÃèÊö  £ºÅäÖÃWF-ESP8266Ä£¿é½øÈëÍ¸´«·¢ËÍ
- * ÊäÈë  £ºÎŞ
- * ·µ»Ø  : 1£¬ÅäÖÃ³É¹¦
- *         0£¬ÅäÖÃÊ§°Ü
- * µ÷ÓÃ  £º±»Íâ²¿µ÷ÓÃ
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ESP8266_UnvarnishSend
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½WF-ESP8266Ä£ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  : 1ï¿½ï¿½ï¿½ï¿½ï¿½Ã³É¹ï¿½
+ *         0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½â²¿ï¿½ï¿½ï¿½ï¿½
  */
 bool ESP8266_UnvarnishSend ( void )
 {
@@ -528,15 +528,15 @@ bool ESP8266_UnvarnishSend ( void )
 
 
 /*
- * º¯ÊıÃû£ºESP8266_SendString
- * ÃèÊö  £ºWF-ESP8266Ä£¿é·¢ËÍ×Ö·û´®
- * ÊäÈë  £ºenumEnUnvarnishTx£¬ÉùÃ÷ÊÇ·ñÒÑÊ¹ÄÜÁËÍ¸´«Ä£Ê½
- *       £ºpStr£¬Òª·¢ËÍµÄ×Ö·û´®
- *       £ºulStrLength£¬Òª·¢ËÍµÄ×Ö·û´®µÄ×Ö½ÚÊı
- *       £ºucId£¬ÄÄ¸öID·¢ËÍµÄ×Ö·û´®
- * ·µ»Ø  : 1£¬·¢ËÍ³É¹¦
- *         0£¬·¢ËÍÊ§°Ü
- * µ÷ÓÃ  £º±»Íâ²¿µ÷ÓÃ
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ESP8266_SendString
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½WF-ESP8266Ä£ï¿½é·¢ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½enumEnUnvarnishTxï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ï¿½Ä£Ê½
+ *       ï¿½ï¿½pStrï¿½ï¿½Òªï¿½ï¿½ï¿½Íµï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+ *       ï¿½ï¿½ulStrLengthï¿½ï¿½Òªï¿½ï¿½ï¿½Íµï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½
+ *       ï¿½ï¿½ucIdï¿½ï¿½ï¿½Ä¸ï¿½IDï¿½ï¿½ï¿½Íµï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  : 1ï¿½ï¿½ï¿½ï¿½ï¿½Í³É¹ï¿½
+ *         0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½â²¿ï¿½ï¿½ï¿½ï¿½
  */
 bool ESP8266_SendString ( FunctionalState enumEnUnvarnishTx, char * pStr, u32 ulStrLength, ENUM_ID_NO_TypeDef ucId )
 {
@@ -566,11 +566,11 @@ bool ESP8266_SendString ( FunctionalState enumEnUnvarnishTx, char * pStr, u32 ul
 
 
 /*
- * º¯ÊıÃû£ºESP8266_ReceiveString
- * ÃèÊö  £ºWF-ESP8266Ä£¿é½ÓÊÕ×Ö·û´®
- * ÊäÈë  £ºenumEnUnvarnishTx£¬ÉùÃ÷ÊÇ·ñÒÑÊ¹ÄÜÁËÍ¸´«Ä£Ê½
- * ·µ»Ø  : ½ÓÊÕµ½µÄ×Ö·û´®Ê×µØÖ·
- * µ÷ÓÃ  £º±»Íâ²¿µ÷ÓÃ
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ESP8266_ReceiveString
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½WF-ESP8266Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½enumEnUnvarnishTxï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ï¿½Ä£Ê½
+ * ï¿½ï¿½ï¿½ï¿½  : ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½×µï¿½Ö·
+ * ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½â²¿ï¿½ï¿½ï¿½ï¿½
  */
 char * ESP8266_ReceiveString ( FunctionalState enumEnUnvarnishTx )
 {
@@ -615,17 +615,17 @@ void ESP8266_StaTcpClient_ApTcpServer(void)
 
 bool WiFi_Connect_Default(void)
 {
-	WIFI_LOG("\r\n=== ³¢ÊÔÁ¬½ÓÄ¬ÈÏWiFi ===\r\n");
+	WIFI_LOG("\r\n=== ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½WiFi ===\r\n");
 	WIFI_LOG("SSID: %s\r\n", macUser_ESP8266_ApSsid);
 	
 	if(ESP8266_JoinAP(macUser_ESP8266_ApSsid, macUser_ESP8266_ApPwd))
 	{
-		WIFI_LOG("? Ä¬ÈÏWiFiÁ¬½Ó³É¹¦\r\n");
+		WIFI_LOG("? Ä¬ï¿½ï¿½WiFiï¿½ï¿½ï¿½Ó³É¹ï¿½\r\n");
 		return true;
 	}
 	else
 	{
-		WIFI_LOG("? Ä¬ÈÏWiFiÁ¬½ÓÊ§°Ü\r\n");
+		WIFI_LOG("? Ä¬ï¿½ï¿½WiFiï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½\r\n");
 		return false;
 	}
 }
@@ -636,10 +636,10 @@ bool WiFi_Connect_Menu(void)
 	
 	while(1)
 	{
-		PC_Usart("\r\n=== WiFiÁ¬½ÓÊ§°Ü´¦Àí²Ëµ¥ ===\r\n");
-		PC_Usart("1. ÖØĞÂÁ¬½ÓÄ¬ÈÏWiFi\r\n");
-		PC_Usart("2. É¨Ãè²¢Á¬½ÓÆäËûWiFi\r\n");
-		PC_Usart("ÇëÊäÈëÑ¡Ïî(1»ò2): ");
+		PC_Usart("\r\n=== WiFiï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü´ï¿½ï¿½ï¿½ï¿½Ëµï¿½ ===\r\n");
+		PC_Usart("1. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½WiFi\r\n");
+		PC_Usart("2. É¨ï¿½è²¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½WiFi\r\n");
+		PC_Usart("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½(1ï¿½ï¿½2): ");
 		
 		choice = USART1_GetChar();
 		PC_Usart("%c\r\n", choice);
@@ -653,13 +653,13 @@ bool WiFi_Connect_Menu(void)
 		}
 		else if(choice == '2')
 		{
-			PC_Usart("\r\n=== É¨Ãè¿ÉÓÃWiFiÍøÂç ===\r\n");
+			PC_Usart("\r\n=== É¨ï¿½ï¿½ï¿½ï¿½ï¿½WiFiï¿½ï¿½ï¿½ï¿½ ===\r\n");
 			ESP8266_Cmd("AT+CWLAP", "OK", NULL, 15000);
 			
-			PC_Usart("\r\nÇëÊäÈëÒªÁ¬½ÓµÄWiFiĞÅÏ¢\r\n");
-			PC_Usart("¸ñÊ½: WiFiÃû³Æ,ÃÜÂë\r\n");
-			PC_Usart("ÀıÈç: TP-LINK_5G,12345678\r\n");
-			PC_Usart("ÇëÊäÈë(ÒÔ»Ø³µ½áÊø): ");
+			PC_Usart("\r\nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½Óµï¿½WiFiï¿½ï¿½Ï¢\r\n");
+			PC_Usart("ï¿½ï¿½Ê½: WiFiï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½\r\n");
+			PC_Usart("ï¿½ï¿½ï¿½ï¿½: TP-LINK_5G,12345678\r\n");
+			PC_Usart("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½Ô»Ø³ï¿½ï¿½ï¿½ï¿½ï¿½): ");
 			
 			char input[100] = {0};
 			u8 idx = 0;
@@ -693,17 +693,17 @@ bool WiFi_Connect_Menu(void)
 				
 				if(ESP8266_JoinAP(ssid, pwd))
 				{
-					PC_Usart("? WiFiÁ¬½Ó³É¹¦\r\n");
+					PC_Usart("? WiFiï¿½ï¿½ï¿½Ó³É¹ï¿½\r\n");
 					return true;
 				}
 				else
 				{
-					PC_Usart("? WiFiÁ¬½ÓÊ§°Ü\r\n");
+					PC_Usart("? WiFiï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½\r\n");
 				}
 			}
 			else
 			{
-				PC_Usart("? ¸ñÊ½´íÎó\r\n");
+				PC_Usart("? ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½\r\n");
 			}
 		}
 	}
@@ -730,15 +730,37 @@ bool ESP8266_TCP_Send(char *data, u16 len)
 	sprintf(cmd, "AT+CIPSEND=%d", len);
 	if(ESP8266_Cmd(cmd, ">", NULL, 3000))
 	{
-		// ·¢ËÍÊı¾İ
-		// Ê¹ÓÃÑ­»·Öğ×Ö½Ú·¢ËÍ£¬È·±£Êı¾İÍêÕûĞÔ
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// Ê¹ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½Ö½Ú·ï¿½ï¿½Í£ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		for(int i=0; i<len; i++)
 		{
 			USART_SendData(USART3, data[i]);
 			while(USART_GetFlagStatus(USART3, USART_FLAG_TC) == RESET);
 		}
 		
-		// µÈ´ıÊı¾İ·¢ËÍÍê³É£¬ESP8266ĞèÒªÊ±¼ä´¦Àí
+		// ï¿½È´ï¿½ï¿½ï¿½ï¿½İ·ï¿½ï¿½ï¿½ï¿½ï¿½É£ï¿½ESP8266ï¿½ï¿½ÒªÊ±ï¿½ä´¦ï¿½ï¿½
+		delay_ms(500);
+		
+		return true; 
+	}
+	return false;
+}
+
+// å¤šè¿æ¥æ¨¡å¼å‘é€æ•°æ®ï¼ˆæŒ‡å®šè¿æ¥IDï¼‰
+bool ESP8266_TCP_Send_MultiLink(u8 link_id, u8 *data, u16 len)
+{
+	char cmd[32];
+	sprintf(cmd, "AT+CIPSEND=%d,%d", link_id, len);
+	if(ESP8266_Cmd(cmd, ">", NULL, 3000))
+	{
+		// å‘é€æ•°æ®
+		for(int i=0; i<len; i++)
+		{
+			USART_SendData(USART3, data[i]);
+			while(USART_GetFlagStatus(USART3, USART_FLAG_TC) == RESET);
+		}
+		
+		// ç­‰å¾…æ•°æ®å‘é€å®Œæˆ
 		delay_ms(500);
 		
 		return true; 
@@ -748,16 +770,16 @@ bool ESP8266_TCP_Send(char *data, u16 len)
 
 bool ESP8266_TCP_Disconnect(void)
 {
-	WIFI_LOG("\r\nÕıÔÚ¹Ø±ÕTCPÁ¬½Ó...\r\n");
+	WIFI_LOG("\r\nï¿½ï¿½ï¿½Ú¹Ø±ï¿½TCPï¿½ï¿½ï¿½ï¿½...\r\n");
 	
 	if(ESP8266_Cmd("AT+CIPCLOSE", "OK", "CLOSED", 2000))
 	{
-		WIFI_LOG("? TCPÁ¬½ÓÒÑ¹Ø±Õ\r\n");
+		WIFI_LOG("? TCPï¿½ï¿½ï¿½ï¿½ï¿½Ñ¹Ø±ï¿½\r\n");
 		return true;
 	}
 	else
 	{
-		WIFI_LOG("? ¹Ø±ÕTCPÁ¬½ÓÊ§°Ü\r\n");
+		WIFI_LOG("? ï¿½Ø±ï¿½TCPï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½\r\n");
 		return false;
 	}
 }
@@ -767,8 +789,8 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 	char http_request[512];
 	u16 len;
 	
-	WIFI_LOG("\r\n=== ·¢ËÍHTTPÇëÇó ===\r\n");
-	WIFI_LOG("Ä¿±ê: http://%s:%d%s\r\n", host, port, path);
+	WIFI_LOG("\r\n=== ï¿½ï¿½ï¿½ï¿½HTTPï¿½ï¿½ï¿½ï¿½ ===\r\n");
+	WIFI_LOG("Ä¿ï¿½ï¿½: http://%s:%d%s\r\n", host, port, path);
 	
 	if(!ESP8266_TCP_Connect(host, port))
 	{
@@ -784,7 +806,7 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 		path, host);
 	
 	len = strlen(http_request);
-	WIFI_LOG("·¢ËÍHTTPÇëÇó (%d×Ö½Ú):\r\n%s\r\n", len, http_request);
+	WIFI_LOG("ï¿½ï¿½ï¿½ï¿½HTTPï¿½ï¿½ï¿½ï¿½ (%dï¿½Ö½ï¿½):\r\n%s\r\n", len, http_request);
 	
 	strEsp8266_Fram_Record.InfBit.FramLength = 0;
 	strEsp8266_Fram_Record.InfBit.FramFinishFlag = 0;
@@ -793,13 +815,13 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 	
 	if(!ESP8266_TCP_Send(http_request, len))
 	{
-		WIFI_LOG("? ·¢ËÍHTTPÇëÇóÊ§°Ü\r\n");
+		WIFI_LOG("? ï¿½ï¿½ï¿½ï¿½HTTPï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½\r\n");
 		ESP8266_TCP_Disconnect();
 		return false;
 	}
 	
-	WIFI_LOG("? HTTPÇëÇóÒÑ·¢ËÍ\r\n");
-	WIFI_LOG("µÈ´ı·şÎñÆ÷ÏìÓ¦...\r\n");
+	WIFI_LOG("? HTTPï¿½ï¿½ï¿½ï¿½ï¿½Ñ·ï¿½ï¿½ï¿½\r\n");
+	WIFI_LOG("ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦...\r\n");
 	
 	u8 retry = 0;
 	bool got_data = false;
@@ -822,7 +844,7 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 				if(strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "+IPD") ||
 				   strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "HTTP/"))
 				{
-					WIFI_LOG("? ¿ªÊ¼½ÓÊÕÊı¾İ (%d×Ö½Ú)...\r\n", strEsp8266_Fram_Record.InfBit.FramLength);
+					WIFI_LOG("? ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (%dï¿½Ö½ï¿½)...\r\n", strEsp8266_Fram_Record.InfBit.FramLength);
 					got_data = true;
 					last_len = strEsp8266_Fram_Record.InfBit.FramLength;
 				}
@@ -835,7 +857,7 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 				stable_cnt++;
 				if(stable_cnt >= 5)
 				{
-					WIFI_LOG("? Êı¾İ½ÓÊÕÎÈ¶¨ (%d×Ö½Ú)\r\n", last_len);
+					WIFI_LOG("? ï¿½ï¿½ï¿½İ½ï¿½ï¿½ï¿½ï¿½È¶ï¿½ (%dï¿½Ö½ï¿½)\r\n", last_len);
 					break;
 				}
 			}
@@ -847,7 +869,7 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 			
 			if(strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "CLOSED"))
 			{
-				 WIFI_LOG("? ¼ì²âµ½Á¬½Ó¹Ø±Õ£¬½ÓÊÕ½áÊø\r\n");
+				 WIFI_LOG("? ï¿½ï¿½âµ½ï¿½ï¿½ï¿½Ó¹Ø±Õ£ï¿½ï¿½ï¿½ï¿½Õ½ï¿½ï¿½ï¿½\r\n");
 				 break;
 			}
 		}
@@ -857,7 +879,7 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 	
 	if(!got_data && retry >= 50)
 	{
-		WIFI_LOG("? µÈ´ı³¬Ê±£¡\r\n");
+		WIFI_LOG("? ï¿½È´ï¿½ï¿½ï¿½Ê±ï¿½ï¿½\r\n");
 		ESP8266_TCP_Disconnect();
 		return false;
 	}
@@ -897,17 +919,17 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 		memcpy(response, http_start, copy_len);
 		response[copy_len] = '\0';
 		
-		WIFI_LOG("? ½ÓÊÕµ½HTTPÏìÓ¦ (%d×Ö½Ú)\r\n", copy_len);
+		WIFI_LOG("? ï¿½ï¿½ï¿½Õµï¿½HTTPï¿½ï¿½Ó¦ (%dï¿½Ö½ï¿½)\r\n", copy_len);
 		
 		if(closed_ptr != NULL)
 		{
-			WIFI_LOG("? Á¬½ÓÒÑÓÉ·şÎñÆ÷¹Ø±Õ\r\n");
+			WIFI_LOG("? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø±ï¿½\r\n");
 		}
 		else
 		{
 			if(strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "CLOSED"))
 			{
-				WIFI_LOG("? ¼ì²âµ½CLOSED\r\n");
+				WIFI_LOG("? ï¿½ï¿½âµ½CLOSED\r\n");
 			}
 			else
 			{
@@ -919,37 +941,37 @@ bool ESP8266_HTTP_Request(char *host, u16 port, char *path, char *response, u16 
 	}
 	else
 	{
-		WIFI_LOG("? Î´½ÓÊÕµ½ÏìÓ¦\r\n");
+		WIFI_LOG("? Î´ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½Ó¦\r\n");
 		ESP8266_TCP_Disconnect();
 		return false;
 	}
 }
 
 /**
-  * @brief  ESP8266_HTTP_Post ·¢ËÍHTTP POSTÇëÇó²¢½ÓÊÕÏìÓ¦
-  * @param  host£º·şÎñÆ÷ÓòÃû»òIP
-  * @param  port£º·şÎñÆ÷¶Ë¿Ú£¬Í¨³£80
-  * @param  path£ºÇëÇóÂ·¾¶
-  * @param  body£ºPOSTÇëÇóÌå
-  * @param  response£º´æ´¢ÏìÓ¦µÄ»º³åÇø
-  * @param  max_len£º»º³åÇø×î´ó³¤¶È
-  * @retval true£ºÇëÇó³É¹¦£¬false£ºÇëÇóÊ§°Ü
+  * @brief  ESP8266_HTTP_Post ï¿½ï¿½ï¿½ï¿½HTTP POSTï¿½ï¿½ï¿½ó²¢½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦
+  * @param  hostï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IP
+  * @param  portï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¿Ú£ï¿½Í¨ï¿½ï¿½80
+  * @param  pathï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½
+  * @param  bodyï¿½ï¿½POSTï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  * @param  responseï¿½ï¿½ï¿½æ´¢ï¿½ï¿½Ó¦ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½
+  * @param  max_lenï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó³¤¶ï¿½
+  * @retval trueï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½falseï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
   */
 bool ESP8266_HTTP_Post(char *host, u16 port, char *path, char *body, char *response, u16 max_len)
 {
-	char http_request[1024]; // Ôö¼Ó»º³åÇø´óĞ¡ÒÔÈİÄÉbody
+	char http_request[1024]; // ï¿½ï¿½ï¿½Ó»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½body
 	u16 len;
 	
-	WIFI_LOG("\r\n=== ·¢ËÍHTTP POSTÇëÇó ===\r\n");
-	WIFI_LOG("Ä¿±ê: http://%s:%d%s\r\n", host, port, path);
+	WIFI_LOG("\r\n=== ï¿½ï¿½ï¿½ï¿½HTTP POSTï¿½ï¿½ï¿½ï¿½ ===\r\n");
+	WIFI_LOG("Ä¿ï¿½ï¿½: http://%s:%d%s\r\n", host, port, path);
 	
-	// 1. Á¬½ÓTCP·şÎñÆ÷
+	// 1. ï¿½ï¿½ï¿½ï¿½TCPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if(!ESP8266_TCP_Connect(host, port))
 	{
 		return false;
 	}
 	
-	// 2. ¹¹ÔìHTTP POSTÇëÇó
+	// 2. ï¿½ï¿½ï¿½ï¿½HTTP POSTï¿½ï¿½ï¿½ï¿½
 	sprintf(http_request, 
 		"POST %s HTTP/1.1\r\n"
 		"Host: %s\r\n"
@@ -962,51 +984,51 @@ bool ESP8266_HTTP_Post(char *host, u16 port, char *path, char *body, char *respo
 		path, host, strlen(body), body);
 	
 	len = strlen(http_request);
-	WIFI_LOG("·¢ËÍHTTPÇëÇó (%d×Ö½Ú):\r\n%s\r\n", len, http_request);
+	WIFI_LOG("ï¿½ï¿½ï¿½ï¿½HTTPï¿½ï¿½ï¿½ï¿½ (%dï¿½Ö½ï¿½):\r\n%s\r\n", len, http_request);
 	
-	// 3. Çå¿Õ½ÓÊÕ»º³åÇø×¼±¸½ÓÊÕHTTPÏìÓ¦
+	// 3. ï¿½ï¿½Õ½ï¿½ï¿½Õ»ï¿½ï¿½ï¿½ï¿½ï¿½×¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½HTTPï¿½ï¿½Ó¦
 	strEsp8266_Fram_Record.InfBit.FramLength = 0;
 	strEsp8266_Fram_Record.InfBit.FramFinishFlag = 0;
 	memset(strEsp8266_Fram_Record.Data_RX_BUF, 0, RX_BUF_MAX_LEN);
 	delay_ms(100);
 	
-	// 4. ·¢ËÍHTTPÇëÇó
+	// 4. ï¿½ï¿½ï¿½ï¿½HTTPï¿½ï¿½ï¿½ï¿½
 	if(!ESP8266_TCP_Send(http_request, len))
 	{
-		WIFI_LOG("? ·¢ËÍHTTPÇëÇóÊ§°Ü\r\n");
+		WIFI_LOG("? ï¿½ï¿½ï¿½ï¿½HTTPï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½\r\n");
 		ESP8266_TCP_Disconnect();
 		return false;
 	}
 	
-	WIFI_LOG("? HTTPÇëÇóÒÑ·¢ËÍ\r\n");
+	WIFI_LOG("? HTTPï¿½ï¿½ï¿½ï¿½ï¿½Ñ·ï¿½ï¿½ï¿½\r\n");
 	
-	// 5. µÈ´ı²¢½ÓÊÕÏìÓ¦
-	WIFI_LOG("µÈ´ı·şÎñÆ÷ÏìÓ¦...\r\n");
+	// 5. ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦
+	WIFI_LOG("ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦...\r\n");
 	u8 retry = 0;
 	bool got_data = false;
 	u16 last_len = 0;
 	u8 stable_cnt = 0;
 	
-	while(retry < 50)  // ×î¶àµÈ´ı10Ãë
+	while(retry < 50)  // ï¿½ï¿½ï¿½È´ï¿½10ï¿½ï¿½
 	{
 		delay_ms(200);
 		
-		// È·±£×Ö·û´®½áÊø·û
+		// È·ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		if(strEsp8266_Fram_Record.InfBit.FramLength > 0)
 		{
 			strEsp8266_Fram_Record.Data_RX_BUF[strEsp8266_Fram_Record.InfBit.FramLength] = '\0';
 		}
 		
-		// Èç¹û»¹Ã»ÊÕµ½Êı¾İ
+		// ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½
 		if(!got_data)
 		{
 			if(strEsp8266_Fram_Record.InfBit.FramLength > 10)
 			{
-				// ¼ì²éÊÇ·ñ°üº¬+IPD»òHTTPÏìÓ¦Í·
+				// ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½+IPDï¿½ï¿½HTTPï¿½ï¿½Ó¦Í·
 				if(strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "+IPD") ||
 				   strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "HTTP/"))
 				{
-					WIFI_LOG("? ¿ªÊ¼½ÓÊÕÊı¾İ (%d×Ö½Ú)...\r\n", strEsp8266_Fram_Record.InfBit.FramLength);
+					WIFI_LOG("? ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (%dï¿½Ö½ï¿½)...\r\n", strEsp8266_Fram_Record.InfBit.FramLength);
 					got_data = true;
 					last_len = strEsp8266_Fram_Record.InfBit.FramLength;
 				}
@@ -1014,14 +1036,14 @@ bool ESP8266_HTTP_Post(char *host, u16 port, char *path, char *body, char *respo
 		}
 		else
 		{
-			// ÒÑÊÕµ½Êı¾İ£¬¼ì²éÊÇ·ñÎÈ¶¨
+			// ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½İ£ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½È¶ï¿½
 			if(strEsp8266_Fram_Record.InfBit.FramLength == last_len)
 			{
 				stable_cnt++;
-				// Á¬Ğø5´Î(1Ãë)³¤¶È²»±ä£¬ÈÏÎª½ÓÊÕÍê³É
+				// ï¿½ï¿½ï¿½ï¿½5ï¿½ï¿½(1ï¿½ï¿½)ï¿½ï¿½ï¿½È²ï¿½ï¿½ä£¬ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				if(stable_cnt >= 5)
 				{
-					WIFI_LOG("? Êı¾İ½ÓÊÕÎÈ¶¨ (%d×Ö½Ú)\r\n", last_len);
+					WIFI_LOG("? ï¿½ï¿½ï¿½İ½ï¿½ï¿½ï¿½ï¿½È¶ï¿½ (%dï¿½Ö½ï¿½)\r\n", last_len);
 					break;
 				}
 			}
@@ -1031,10 +1053,10 @@ bool ESP8266_HTTP_Post(char *host, u16 port, char *path, char *body, char *respo
 				stable_cnt = 0;
 			}
 			
-			// ¼ì²éÊÇ·ñ°üº¬ CLOSED (·şÎñÆ÷Ö÷¶¯¹Ø±ÕÁ¬½Ó)
+			// ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ CLOSED (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½)
 			if(strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "CLOSED"))
 			{
-				 WIFI_LOG("? ¼ì²âµ½Á¬½Ó¹Ø±Õ£¬½ÓÊÕ½áÊø\r\n");
+				 WIFI_LOG("? ï¿½ï¿½âµ½ï¿½ï¿½ï¿½Ó¹Ø±Õ£ï¿½ï¿½ï¿½ï¿½Õ½ï¿½ï¿½ï¿½\r\n");
 				 break;
 			}
 		}
@@ -1044,21 +1066,21 @@ bool ESP8266_HTTP_Post(char *host, u16 port, char *path, char *body, char *respo
 	
 	if(!got_data && retry >= 50)
 	{
-		WIFI_LOG("? µÈ´ı³¬Ê±£¡\r\n");
+		WIFI_LOG("? ï¿½È´ï¿½ï¿½ï¿½Ê±ï¿½ï¿½\r\n");
 		ESP8266_TCP_Disconnect();
 		return false;
 	}
 	
-	// 6. ´¦ÀíÏìÓ¦Êı¾İ
+	// 6. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½
 	if(got_data && strEsp8266_Fram_Record.InfBit.FramLength > 0)
 	{
 		char *http_start = NULL;
 		char *closed_ptr = NULL;
 		
-		// È·±£½áÊø·û
+		// È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		strEsp8266_Fram_Record.Data_RX_BUF[strEsp8266_Fram_Record.InfBit.FramLength] = '\0';
 		
-		// È¥³ıÄ©Î²µÄ CLOSED
+		// È¥ï¿½ï¿½Ä©Î²ï¿½ï¿½ CLOSED
 		closed_ptr = strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "CLOSED");
 		if(closed_ptr)
 		{
@@ -1066,7 +1088,7 @@ bool ESP8266_HTTP_Post(char *host, u16 port, char *path, char *body, char *respo
 			strEsp8266_Fram_Record.InfBit.FramLength = closed_ptr - (char*)strEsp8266_Fram_Record.Data_RX_BUF;
 		}
 		
-		// ²éÕÒHTTPÏìÓ¦µÄ¿ªÊ¼Î»ÖÃ
+		// ï¿½ï¿½ï¿½ï¿½HTTPï¿½ï¿½Ó¦ï¿½Ä¿ï¿½Ê¼Î»ï¿½ï¿½
 		http_start = strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "HTTP/");
 		if(http_start == NULL)
 		{
@@ -1078,7 +1100,7 @@ bool ESP8266_HTTP_Post(char *host, u16 port, char *path, char *body, char *respo
 			http_start = (char*)strEsp8266_Fram_Record.Data_RX_BUF;
 		}
 		
-		// ¼ÆËãÊµ¼ÊHTTPÊı¾İ³¤¶È
+		// ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½HTTPï¿½ï¿½ï¿½İ³ï¿½ï¿½ï¿½
 		u16 http_len = strlen(http_start);
 		u16 copy_len = http_len;
 		if(copy_len > max_len - 1)
@@ -1089,17 +1111,17 @@ bool ESP8266_HTTP_Post(char *host, u16 port, char *path, char *body, char *respo
 		memcpy(response, http_start, copy_len);
 		response[copy_len] = '\0';
 		
-		WIFI_LOG("? ½ÓÊÕµ½HTTPÏìÓ¦ (%d×Ö½Ú)\r\n", copy_len);
+		WIFI_LOG("? ï¿½ï¿½ï¿½Õµï¿½HTTPï¿½ï¿½Ó¦ (%dï¿½Ö½ï¿½)\r\n", copy_len);
 		
 		if(closed_ptr != NULL)
 		{
-			WIFI_LOG("? Á¬½ÓÒÑÓÉ·şÎñÆ÷¹Ø±Õ\r\n");
+			WIFI_LOG("? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø±ï¿½\r\n");
 		}
 		else
 		{
 			if(strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "CLOSED"))
 			{
-				WIFI_LOG("? ¼ì²âµ½CLOSED\r\n");
+				WIFI_LOG("? ï¿½ï¿½âµ½CLOSED\r\n");
 			}
 			else
 			{
@@ -1111,20 +1133,20 @@ bool ESP8266_HTTP_Post(char *host, u16 port, char *path, char *body, char *respo
 	}
 	else
 	{
-		WIFI_LOG("? Î´½ÓÊÕµ½ÏìÓ¦\r\n");
+		WIFI_LOG("? Î´ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½Ó¦\r\n");
 		ESP8266_TCP_Disconnect();
 		return false;
 	}
 }
 
 /**
-  * @brief  Weather_Get_Data »ñÈ¡ÌìÆøÊı¾İ
-  * @param  weather£º´æ´¢ÌìÆøÊı¾İµÄ½á¹¹ÌåÖ¸Õë
-  * @retval true£º»ñÈ¡³É¹¦£¬false£º»ñÈ¡Ê§°Ü
+  * @brief  Weather_Get_Data ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  * @param  weatherï¿½ï¿½ï¿½æ´¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İµÄ½á¹¹ï¿½ï¿½Ö¸ï¿½ï¿½
+  * @retval trueï¿½ï¿½ï¿½ï¿½È¡ï¿½É¹ï¿½ï¿½ï¿½falseï¿½ï¿½ï¿½ï¿½È¡Ê§ï¿½ï¿½
   */
 bool Weather_Get_Data(WeatherData *weather)
 {
-	// Ê¹ÓÃÈ«¾Ö»º³åÇø´úÌæÕ»±äÁ¿
+	// Ê¹ï¿½ï¿½È«ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ»ï¿½ï¿½ï¿½ï¿½
 	// char http_response[2048]; 
 	char *json_start;
 	cJSON *root = NULL;
@@ -1132,7 +1154,7 @@ bool Weather_Get_Data(WeatherData *weather)
 	cJSON *item = NULL;
 	bool result = false;
 	
-	// ³õÊ¼»¯ÌìÆøÊı¾İ
+	// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	weather->valid = false;
 	memset(weather->location, 0, sizeof(weather->location));
 	memset(weather->temperature, 0, sizeof(weather->temperature));
@@ -1141,22 +1163,22 @@ bool Weather_Get_Data(WeatherData *weather)
 	memset(weather->description, 0, sizeof(weather->description));
 	memset(weather->last_update, 0, sizeof(weather->last_update));
 	
-	WIFI_LOG("\r\n=== »ñÈ¡ÌìÆøÊı¾İ ===\r\n");
+	WIFI_LOG("\r\n=== ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ===\r\n");
 	
-	// Ö±½ÓÊ¹ÓÃIPµØÖ·£¬±ÜÃâÓòÃû½âÎöÑÓ³Ù
-	// ·şÎñÆ÷IP: 47.83.221.161
+	// Ö±ï¿½ï¿½Ê¹ï¿½ï¿½IPï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó³ï¿½
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IP: 47.83.221.161
 	if(!ESP8266_HTTP_Request("47.83.221.161", 80, "/api/weather/", g_weather_http_response, sizeof(g_weather_http_response)))
 	{
-		WIFI_LOG("? HTTPÇëÇóÊ§°Ü\r\n");
+		WIFI_LOG("? HTTPï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½\r\n");
 		return false;
 	}
 	
-	// ²éÕÒJSONÊı¾İÆğÊ¼Î»ÖÃ£¨Ìø¹ıHTTPÍ·£©
+	// ï¿½ï¿½ï¿½ï¿½JSONï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼Î»ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½HTTPÍ·ï¿½ï¿½
 	json_start = strstr(g_weather_http_response, "\r\n\r\n");
 	if(json_start != NULL)
 	{
-		json_start += 4;  // Ìø¹ı \r\n\r\n
-		// ÔÙ´ÎÈ·ÈÏÊÇ·ñÒÔ { ¿ªÍ·
+		json_start += 4;  // ï¿½ï¿½ï¿½ï¿½ \r\n\r\n
+		// ï¿½Ù´ï¿½È·ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ { ï¿½ï¿½Í·
 		char *real_json_start = strchr(json_start, '{');
 		if(real_json_start != NULL)
 		{
@@ -1170,62 +1192,62 @@ bool Weather_Get_Data(WeatherData *weather)
 	
 	if(json_start == NULL)
 	{
-		WIFI_LOG("? Î´ÕÒµ½JSONÊı¾İ\r\n");
+		WIFI_LOG("? Î´ï¿½Òµï¿½JSONï¿½ï¿½ï¿½ï¿½\r\n");
 		return false;
 	}
 	
-	// ²éÕÒJSON½áÊøÎ»ÖÃ£¨×îºóÒ»¸ö }£©
+	// ï¿½ï¿½ï¿½ï¿½JSONï¿½ï¿½ï¿½ï¿½Î»ï¿½Ã£ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ }ï¿½ï¿½
 	char *json_end = strrchr(json_start, '}');
 	if(json_end != NULL)
 	{
-		*(json_end + 1) = '\0'; // ½Ø¶ÏºóĞøÀ¬»øÊı¾İ
+		*(json_end + 1) = '\0'; // ï¿½Ø¶Ïºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	}
 	else
 	{
-		WIFI_LOG("? Î´ÕÒµ½JSON½áÊø·û\r\n");
-		// ³¢ÊÔ¼ÌĞø½âÎö£¬Ò²ĞíÖ»ÊÇÈ±ÉÙ½áÊø·û
+		WIFI_LOG("? Î´ï¿½Òµï¿½JSONï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\r\n");
+		// ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½Ö»ï¿½ï¿½È±ï¿½Ù½ï¿½ï¿½ï¿½ï¿½ï¿½
 	}
 	
-	WIFI_LOG("½âÎöJSONÊı¾İ...\r\n");
-	WIFI_LOG("´ı½âÎöµÄJSONÄÚÈİ:\r\n%s\r\n", json_start); // ´òÓ¡ÍêÕûJSONÄÚÈİÒÔ±ãµ÷ÊÔ
+	WIFI_LOG("ï¿½ï¿½ï¿½ï¿½JSONï¿½ï¿½ï¿½ï¿½...\r\n");
+	WIFI_LOG("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½JSONï¿½ï¿½ï¿½ï¿½:\r\n%s\r\n", json_start); // ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½JSONï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½
 	
-	// ½âÎöJSON
+	// ï¿½ï¿½ï¿½ï¿½JSON
 	root = cJSON_Parse(json_start);
 	if(root == NULL)
 	{
-		WIFI_LOG("? JSON½âÎöÊ§°Ü\r\n");
+		WIFI_LOG("? JSONï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½\r\n");
 		const char *error_ptr = cJSON_GetErrorPtr();
 		if(error_ptr != NULL)
 		{
-			WIFI_LOG("´íÎóÎ»ÖÃ: %s\r\n", error_ptr);
+			WIFI_LOG("ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½: %s\r\n", error_ptr);
 		}
 		return false;
 	}
 	
-	// ¼ì²éstatus×Ö¶Î
+	// ï¿½ï¿½ï¿½statusï¿½Ö¶ï¿½
 	item = cJSON_GetObjectItem(root, "status");
 	if(item != NULL && cJSON_IsString(item))
 	{
 		if(strcmp(item->valuestring, "success") != 0)
 		{
-			// ·şÎñÆ÷·µ»Ø´íÎó×´Ì¬
-			WIFI_LOG("? API·µ»Ø´íÎó×´Ì¬: %s\r\n", item->valuestring);
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø´ï¿½ï¿½ï¿½×´Ì¬
+			WIFI_LOG("? APIï¿½ï¿½ï¿½Ø´ï¿½ï¿½ï¿½×´Ì¬: %s\r\n", item->valuestring);
 			
-			// ³¢ÊÔ»ñÈ¡´íÎóÏûÏ¢
+			// ï¿½ï¿½ï¿½Ô»ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 			cJSON *msg_item = cJSON_GetObjectItem(root, "msg");
 			if(msg_item != NULL && cJSON_IsString(msg_item))
 			{
-				// ³¢ÊÔ¼ì²âÌØ¶¨µÄUTF-8´íÎóĞÅÏ¢ "ÉÏÓÎ·şÎñÆ÷²»¿ÉÓÃ"
-				// Ê¹ÓÃÊ®Áù½øÖÆÆ¥ÅäÒÔ±ÜÃâ±àÂëÎÊÌâ: \xE4\xB8\x8A\xE6\xB8\xB8 (ÉÏÓÎ)
+				// ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½ï¿½UTF-8ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ "ï¿½ï¿½ï¿½Î·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"
+				// Ê¹ï¿½ï¿½Ê®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: \xE4\xB8\x8A\xE6\xB8\xB8 (ï¿½ï¿½ï¿½ï¿½)
 				if(strstr(msg_item->valuestring, "\xE4\xB8\x8A\xE6\xB8\xB8") != NULL || 
 				   strstr(msg_item->valuestring, "unavailable") != NULL)
 				{
-					WIFI_LOG("ÌáÊ¾: ÉÏÓÎ·şÎñÆ÷²»¿ÉÓÃ£¬ÇëÉÔºóÖØÊÔ\r\n");
+					WIFI_LOG("ï¿½ï¿½Ê¾: ï¿½ï¿½ï¿½Î·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½Ôºï¿½ï¿½ï¿½ï¿½ï¿½\r\n");
 				}
 				else
 				{
-					// ÆäËû´íÎóĞÅÏ¢£¬Ö±½Ó´òÓ¡£¨¿ÉÄÜ°üº¬UTF-8×Ö·ûµ¼ÖÂÂÒÂë£©
-					WIFI_LOG("´íÎóĞÅÏ¢(UTF-8): %s\r\n", msg_item->valuestring);
+					// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Ö±ï¿½Ó´ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½ï¿½Ü°ï¿½ï¿½ï¿½UTF-8ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£©
+					WIFI_LOG("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢(UTF-8): %s\r\n", msg_item->valuestring);
 				}
 			}
 			
@@ -1235,21 +1257,21 @@ bool Weather_Get_Data(WeatherData *weather)
 	}
 	else
 	{
-		WIFI_LOG("? Î´ÕÒµ½status×Ö¶Î»ò¸ñÊ½´íÎó\r\n");
+		WIFI_LOG("? Î´ï¿½Òµï¿½statusï¿½Ö¶Î»ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½\r\n");
 		cJSON_Delete(root);
 		return false;
 	}
 	
-	// »ñÈ¡data¶ÔÏó
+	// ï¿½ï¿½È¡dataï¿½ï¿½ï¿½ï¿½
 	data = cJSON_GetObjectItem(root, "data");
 	if(data == NULL)
 	{
-		WIFI_LOG("? Î´ÕÒµ½data×Ö¶Î\r\n");
+		WIFI_LOG("? Î´ï¿½Òµï¿½dataï¿½Ö¶ï¿½\r\n");
 		cJSON_Delete(root);
 		return false;
 	}
 	
-	// ÌáÈ¡¸÷¸ö×Ö¶Î
+	// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ö¶ï¿½
 	item = cJSON_GetObjectItem(data, "location");
 	if(item != NULL && cJSON_IsString(item))
 	{
@@ -1289,151 +1311,151 @@ bool Weather_Get_Data(WeatherData *weather)
 	weather->valid = true;
 	result = true;
 	
-	WIFI_LOG("? ÌìÆøÊı¾İ½âÎö³É¹¦\r\n");
+	WIFI_LOG("? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ½ï¿½ï¿½ï¿½ï¿½É¹ï¿½\r\n");
 	
-	// ÊÍ·ÅJSON¶ÔÏó
+	// ï¿½Í·ï¿½JSONï¿½ï¿½ï¿½ï¿½
 	cJSON_Delete(root);
 	
 	return result;
 }
 
 /**
-  * @brief  Weather_Display ÏÔÊ¾ÌìÆøÊı¾İ
-  * @param  weather£ºÌìÆøÊı¾İ½á¹¹ÌåÖ¸Õë
-  * @retval ÎŞ
+  * @brief  Weather_Display ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  * @param  weatherï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ½á¹¹ï¿½ï¿½Ö¸ï¿½ï¿½
+  * @retval ï¿½ï¿½
   */
 void Weather_Display(WeatherData *weather)
 {
 	if(!weather->valid)
 	{
-		PC_Usart("\r\n[ÌìÆøÊı¾İÎŞĞ§]\r\n");
+		PC_Usart("\r\n[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ§]\r\n");
 		return;
 	}
 	
-	PC_Usart("\r\n¨X¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨[\r\n");
-	PC_Usart("¨U      ÌìÆøĞÅÏ¢ÏÔÊ¾              ¨U\r\n");
-	PC_Usart("¨d¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨g\r\n");
-	PC_Usart("¨U Î»ÖÃ: %-24s ¨U\r\n", weather->location);
-	PC_Usart("¨U ÎÂ¶È: %-24s ¨U\r\n", weather->temperature);
-	PC_Usart("¨U Êª¶È: %-24s ¨U\r\n", weather->humidity);
-	PC_Usart("¨U ÌìÆø: %-24s ¨U\r\n", weather->weather);
-	PC_Usart("¨U ÃèÊö: %-24s ¨U\r\n", weather->description);
-	PC_Usart("¨d¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨g\r\n");
-	PC_Usart("¨U ¸üĞÂ: %-24s ¨U\r\n", weather->last_update);
-	PC_Usart("¨^¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨a\r\n");
+	PC_Usart("\r\nï¿½Xï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½[\r\n");
+	PC_Usart("ï¿½U      ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Ê¾              ï¿½U\r\n");
+	PC_Usart("ï¿½dï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½g\r\n");
+	PC_Usart("ï¿½U Î»ï¿½ï¿½: %-24s ï¿½U\r\n", weather->location);
+	PC_Usart("ï¿½U ï¿½Â¶ï¿½: %-24s ï¿½U\r\n", weather->temperature);
+	PC_Usart("ï¿½U Êªï¿½ï¿½: %-24s ï¿½U\r\n", weather->humidity);
+	PC_Usart("ï¿½U ï¿½ï¿½ï¿½ï¿½: %-24s ï¿½U\r\n", weather->weather);
+	PC_Usart("ï¿½U ï¿½ï¿½ï¿½ï¿½: %-24s ï¿½U\r\n", weather->description);
+	PC_Usart("ï¿½dï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½g\r\n");
+	PC_Usart("ï¿½U ï¿½ï¿½ï¿½ï¿½: %-24s ï¿½U\r\n", weather->last_update);
+	PC_Usart("ï¿½^ï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½a\r\n");
 }
 
 /**
-  * @brief  ESP8266_Simple_TCP_Test ¼òµ¥TCPÁ¬½Ó²âÊÔ
-  * @param  ÎŞ
-  * @retval ²âÊÔ½á¹ûËµÃ÷×Ö·û´®
-  * @note   ÓÃÓÚÕï¶ÏTCPÁ¬½ÓºÍÊı¾İ½ÓÊÕÎÊÌâ
+  * @brief  ESP8266_Simple_TCP_Test ï¿½ï¿½TCPï¿½ï¿½ï¿½Ó²ï¿½ï¿½ï¿½
+  * @param  ï¿½ï¿½
+  * @retval ï¿½ï¿½ï¿½Ô½ï¿½ï¿½Ëµï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+  * @note   ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½TCPï¿½ï¿½ï¿½Óºï¿½ï¿½ï¿½ï¿½İ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   */
 void ESP8266_Simple_TCP_Test(void)
 {
 	char cmd[64];
 	
-	PC_Usart("\r\n¨X¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨[\r\n");
-	PC_Usart("¨U    ESP8266 TCPÁ¬½ÓÕï¶Ï²âÊÔ           ¨U\r\n");
-	PC_Usart("¨^¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨a\r\n");
+	PC_Usart("\r\nï¿½Xï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½[\r\n");
+	PC_Usart("ï¿½U    ESP8266 TCPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï²ï¿½ï¿½ï¿½           ï¿½U\r\n");
+	PC_Usart("ï¿½^ï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½Tï¿½a\r\n");
 	
-	// 1. ¹Ø±Õ¾ÉÁ¬½Ó
-	PC_Usart("\r\n[1] ¹Ø±Õ¾ÉÁ¬½Ó...\r\n");
+	// 1. å…³é—­æ‰€æœ‰ç°æœ‰è¿æ¥
+	PC_Usart("\r\n[1] å…³é—­ç°æœ‰è¿æ¥...\r\n");
 	ESP8266_Cmd("AT+CIPCLOSE", "OK", "CLOSED", 1000);
 	delay_ms(500);
 	
-	// 2. ÉèÖÃµ¥Á¬½ÓÄ£Ê½
-	PC_Usart("\r\n[2] ÉèÖÃµ¥Á¬½ÓÄ£Ê½...\r\n");
+	// 2. è®¾ç½®å•è¿æ¥æ¨¡å¼ï¼ˆESP8266å›ºä»¶ä¸æ”¯æŒå¤šè¿æ¥è¯­æ³•ï¼‰
+	PC_Usart("\r\n[2] è®¾ç½®å•è¿æ¥æ¨¡å¼...\r\n");
 	if(!ESP8266_Cmd("AT+CIPMUX=0", "OK", NULL, 1000))
 	{
-		PC_Usart("? ÉèÖÃµ¥Á¬½ÓÄ£Ê½Ê§°Ü\r\n");
+		PC_Usart("? è®¾ç½®å•è¿æ¥æ¨¡å¼å¤±è´¥\r\n");
 		return;
 	}
 	delay_ms(500);
 	
-	// 3. Á¬½Ó·şÎñÆ÷
-	PC_Usart("\r\n[3] Á¬½Ó·şÎñÆ÷ 47.83.221.161:80...\r\n");
+	// 3. ï¿½ï¿½ï¿½Ó·ï¿½ï¿½ï¿½ï¿½ï¿½
+	PC_Usart("\r\n[3] ï¿½ï¿½ï¿½Ó·ï¿½ï¿½ï¿½ï¿½ï¿½ 47.83.221.161:80...\r\n");
 	sprintf(cmd, "AT+CIPSTART=\"TCP\",\"47.83.221.161\",80");
 	if(!ESP8266_Cmd(cmd, "CONNECT", "OK", 10000))
 	{
-		PC_Usart("? TCPÁ¬½ÓÊ§°Ü\r\n");
+		PC_Usart("? TCPï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½\r\n");
 		return;
 	}
 	delay_ms(1000);
 	
-	// 4. ¼ì²éÁ¬½Ó×´Ì¬
-	PC_Usart("\r\n[4] ¼ì²éÁ¬½Ó×´Ì¬...\r\n");
+	// 4. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬
+	PC_Usart("\r\n[4] ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬...\r\n");
 	ESP8266_Cmd("AT+CIPSTATUS", "OK", NULL, 1000);
 	delay_ms(500);
 	
-	// 5. ¹¹Ôì¼òµ¥HTTPÇëÇó
-	PC_Usart("\r\n[5] ·¢ËÍHTTPÇëÇó...\r\n");
+	// 5. ï¿½ï¿½ï¿½ï¿½ï¿½HTTPï¿½ï¿½ï¿½ï¿½
+	PC_Usart("\r\n[5] ï¿½ï¿½ï¿½ï¿½HTTPï¿½ï¿½ï¿½ï¿½...\r\n");
 	char http_req[] = "GET /api/weather/ HTTP/1.1\r\nHost: 47.83.221.161\r\nConnection: close\r\n\r\n";
 	u16 req_len = strlen(http_req);
 	
 	sprintf(cmd, "AT+CIPSEND=%d", req_len);
 	if(!ESP8266_Cmd(cmd, ">", NULL, 2000))
 	{
-		PC_Usart("? ½øÈë·¢ËÍÄ£Ê½Ê§°Ü\r\n");
+		PC_Usart("? ï¿½ï¿½ï¿½ë·¢ï¿½ï¿½Ä£Ê½Ê§ï¿½ï¿½\r\n");
 		ESP8266_Cmd("AT+CIPCLOSE", "OK", NULL, 1000);
 		return;
 	}
 	
-	// 6. ·¢ËÍÊı¾İ
-	PC_Usart("\r\n[6] ·¢ËÍÊı¾İ...\r\n");
-	PC_Usart("ÇëÇóÄÚÈİ:\r\n%s\r\n", http_req);
+	// 6. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	PC_Usart("\r\n[6] ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½...\r\n");
+	PC_Usart("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:\r\n%s\r\n", http_req);
 	
-	// Çå¿Õ»º³åÇø
+	// ï¿½ï¿½Õ»ï¿½ï¿½ï¿½ï¿½ï¿½
 	strEsp8266_Fram_Record.InfBit.FramLength = 0;
 	memset(strEsp8266_Fram_Record.Data_RX_BUF, 0, RX_BUF_MAX_LEN);
 	
 	ESP8266_Usart("%s", http_req);
 	delay_ms(500);
 	
-	// 7. µÈ´ıÏìÓ¦
-	PC_Usart("\r\n[7] µÈ´ıÏìÓ¦ (10Ãë)...\r\n");
+	// 7. ï¿½È´ï¿½ï¿½ï¿½Ó¦
+	PC_Usart("\r\n[7] ï¿½È´ï¿½ï¿½ï¿½Ó¦ (10ï¿½ï¿½)...\r\n");
 	u8 wait_count = 0;
-	while(wait_count < 50)  // 50 x 200ms = 10Ãë
+	while(wait_count < 50)  // 50 x 200ms = 10ï¿½ï¿½
 	{
 		delay_ms(200);
 		
 		if(strEsp8266_Fram_Record.InfBit.FramLength > 0)
 		{
-			PC_Usart("\r\n? ÊÕµ½Êı¾İ£¡³¤¶È: %d ×Ö½Ú\r\n", strEsp8266_Fram_Record.InfBit.FramLength);
-			PC_Usart("\r\n½ÓÊÕµ½µÄÔ­Ê¼Êı¾İ:\r\n");
-			PC_Usart("©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤\r\n");
+			PC_Usart("\r\n? ï¿½Õµï¿½ï¿½ï¿½ï¿½İ£ï¿½ï¿½ï¿½ï¿½ï¿½: %d ï¿½Ö½ï¿½\r\n", strEsp8266_Fram_Record.InfBit.FramLength);
+			PC_Usart("\r\nï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½Ô­Ê¼ï¿½ï¿½ï¿½ï¿½:\r\n");
+			PC_Usart("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\r\n");
 			
-			// ÏÔÊ¾Ç°500×Ö½Ú
+			// ï¿½ï¿½Ê¾Ç°500ï¿½Ö½ï¿½
 			if(strEsp8266_Fram_Record.InfBit.FramLength > 500)
 			{
 				char preview[501];
 				memcpy(preview, strEsp8266_Fram_Record.Data_RX_BUF, 500);
 				preview[500] = '\0';
-				PC_Usart("%s\r\n...(Êı¾İ¹ı³¤£¬½öÏÔÊ¾Ç°500×Ö½Ú)\r\n", preview);
+				PC_Usart("%s\r\n...(ï¿½ï¿½ï¿½İ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Ç°500ï¿½Ö½ï¿½)\r\n", preview);
 			}
 			else
 			{
 				PC_Usart("%s\r\n", strEsp8266_Fram_Record.Data_RX_BUF);
 			}
-			PC_Usart("©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤\r\n");
+			PC_Usart("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\r\n");
 			
-			// ·ÖÎöÊı¾İ¸ñÊ½
-			PC_Usart("\r\n[Êı¾İ¸ñÊ½·ÖÎö]\r\n");
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ¸ï¿½Ê½
+			PC_Usart("\r\n[ï¿½ï¿½ï¿½İ¸ï¿½Ê½ï¿½ï¿½ï¿½ï¿½]\r\n");
 			if(strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "+IPD"))
 			{
-				PC_Usart("? °üº¬ +IPD Ç°×º\r\n");
+				PC_Usart("? ï¿½ï¿½ï¿½ï¿½ +IPD Ç°×º\r\n");
 			}
 			if(strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "HTTP/"))
 			{
-				PC_Usart("? °üº¬ HTTP ÏìÓ¦Í·\r\n");
+				PC_Usart("? ï¿½ï¿½ï¿½ï¿½ HTTP ï¿½ï¿½Ó¦Í·\r\n");
 			}
 			if(strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "{"))
 			{
-				PC_Usart("? °üº¬ JSON Êı¾İ\r\n");
+				PC_Usart("? ï¿½ï¿½ï¿½ï¿½ JSON ï¿½ï¿½ï¿½ï¿½\r\n");
 			}
 			if(strstr((char*)strEsp8266_Fram_Record.Data_RX_BUF, "SEND OK"))
 			{
-				PC_Usart("? °üº¬ SEND OK È·ÈÏ\r\n");
+				PC_Usart("? ï¿½ï¿½ï¿½ï¿½ SEND OK È·ï¿½ï¿½\r\n");
 			}
 			
 			break;
@@ -1442,7 +1464,7 @@ void ESP8266_Simple_TCP_Test(void)
 		wait_count++;
 		if(wait_count % 5 == 0)
 		{
-			PC_Usart("  µÈ´ı... %dÃë (ÒÑÊÕµ½%d×Ö½Ú)\r\n", 
+			PC_Usart("  ï¿½È´ï¿½... %dï¿½ï¿½ (ï¿½ï¿½ï¿½Õµï¿½%dï¿½Ö½ï¿½)\r\n", 
 				wait_count / 5 * 2, 
 				strEsp8266_Fram_Record.InfBit.FramLength);
 		}
@@ -1450,25 +1472,25 @@ void ESP8266_Simple_TCP_Test(void)
 	
 	if(wait_count >= 50)
 	{
-		PC_Usart("\r\n? µÈ´ı³¬Ê±£¬Î´ÊÕµ½ÏìÓ¦\r\n");
-		PC_Usart("¿ÉÄÜÔ­Òò:\r\n");
-		PC_Usart("  1. ·şÎñÆ÷Î´ÏìÓ¦\r\n");
-		PC_Usart("  2. ESP8266¹Ì¼şÎÊÌâ\r\n");
-		PC_Usart("  3. USART3ÖĞ¶ÏÎ´Õı³£¹¤×÷\r\n");
-		PC_Usart("  4. ÍøÂçÁ¬½ÓÒÑ¶Ï¿ª\r\n");
+		PC_Usart("\r\n? ï¿½È´ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Î´ï¿½Õµï¿½ï¿½ï¿½Ó¦\r\n");
+		PC_Usart("ï¿½ï¿½ï¿½ï¿½Ô­ï¿½ï¿½:\r\n");
+		PC_Usart("  1. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½Ó¦\r\n");
+		PC_Usart("  2. ESP8266ï¿½Ì¼ï¿½ï¿½ï¿½ï¿½ï¿½\r\n");
+		PC_Usart("  3. USART3ï¿½Ğ¶ï¿½Î´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\r\n");
+		PC_Usart("  4. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¶Ï¿ï¿½\r\n");
 	}
 	
-	// 8. ¹Ø±ÕÁ¬½Ó
-	PC_Usart("\r\n[8] ¹Ø±ÕÁ¬½Ó...\r\n");
+	// 8. ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½
+	PC_Usart("\r\n[8] ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½...\r\n");
 	ESP8266_Cmd("AT+CIPCLOSE", "OK", "CLOSED", 2000);
 	
-	PC_Usart("\r\n²âÊÔÍê³É£¡\r\n");
+	PC_Usart("\r\nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É£ï¿½\r\n");
 }
 
 /**
-  * @brief  Weather_Update_Location ¸üĞÂÎ»ÖÃĞÅÏ¢
-  * @param  ÎŞ
-  * @retval true£º¸üĞÂ³É¹¦£¬false£º¸üĞÂÊ§°Ü
+  * @brief  Weather_Update_Location ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½Ï¢
+  * @param  ï¿½ï¿½
+  * @retval trueï¿½ï¿½ï¿½ï¿½ï¿½Â³É¹ï¿½ï¿½ï¿½falseï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
   */
 bool Weather_Update_Location(void)
 {
@@ -1478,38 +1500,38 @@ bool Weather_Update_Location(void)
 	cJSON *root = NULL;
 	cJSON *item = NULL;
 	
-	WIFI_LOG("\r\n=== ¿ªÊ¼¸üĞÂÎ»ÖÃĞÅÏ¢ ===\r\n");
+	WIFI_LOG("\r\n=== ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½Ï¢ ===\r\n");
 	
-	// 1. »ñÈ¡±¾»úIP
-	WIFI_LOG("1. »ñÈ¡±¾»úIPµØÖ·...\r\n");
+	// 1. ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½IP
+	WIFI_LOG("1. ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½IPï¿½ï¿½Ö·...\r\n");
 	ESP8266_Cmd("AT+CIFSR", "OK", NULL, 2000);
 	
-	// 2. »ñÈ¡Î»ÖÃĞÅÏ¢
-	WIFI_LOG("2. ´Óip-api.com»ñÈ¡Î»ÖÃĞÅÏ¢...\r\n");
+	// 2. ï¿½ï¿½È¡Î»ï¿½ï¿½ï¿½ï¿½Ï¢
+	WIFI_LOG("2. ï¿½ï¿½ip-api.comï¿½ï¿½È¡Î»ï¿½ï¿½ï¿½ï¿½Ï¢...\r\n");
 	
-	// Ê¹ÓÃÈ«¾Ö»º³åÇø
+	// Ê¹ï¿½ï¿½È«ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½
 	if(!ESP8266_HTTP_Request("ip-api.com", 80, "/json/", g_weather_http_response, sizeof(g_weather_http_response)))
 	{
-		WIFI_LOG("? »ñÈ¡Î»ÖÃĞÅÏ¢Ê§°Ü\r\n");
+		WIFI_LOG("? ï¿½ï¿½È¡Î»ï¿½ï¿½ï¿½ï¿½Ï¢Ê§ï¿½ï¿½\r\n");
 		return false;
 	}
 	
-	// ½âÎöJSON
+	// ï¿½ï¿½ï¿½ï¿½JSON
 	json_start = strstr(g_weather_http_response, "{");
 	if(json_start == NULL)
 	{
-		WIFI_LOG("? Î´ÕÒµ½JSONÊı¾İ\r\n");
+		WIFI_LOG("? Î´ï¿½Òµï¿½JSONï¿½ï¿½ï¿½ï¿½\r\n");
 		return false;
 	}
 	
 	root = cJSON_Parse(json_start);
 	if(root == NULL)
 	{
-		WIFI_LOG("? JSON½âÎöÊ§°Ü\r\n");
+		WIFI_LOG("? JSONï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½\r\n");
 		return false;
 	}
 	
-	// ÌáÈ¡city, lat, lon
+	// ï¿½ï¿½È¡city, lat, lon
 	item = cJSON_GetObjectItem(root, "city");
 	if(item != NULL && cJSON_IsString(item))
 	{
@@ -1530,26 +1552,26 @@ bool Weather_Update_Location(void)
 	
 	cJSON_Delete(root);
 	
-	WIFI_LOG("»ñÈ¡µ½µÄÎ»ÖÃ: City=%s, Lat=%.4f, Lon=%.4f\r\n", city, lat, lon);
+	WIFI_LOG("ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½: City=%s, Lat=%.4f, Lon=%.4f\r\n", city, lat, lon);
 	
 	if(strlen(city) == 0)
 	{
-		WIFI_LOG("? Î»ÖÃĞÅÏ¢ÎŞĞ§\r\n");
+		WIFI_LOG("? Î»ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Ğ§\r\n");
 		return false;
 	}
 	
-	// 3. ÉÏ±¨Î»ÖÃĞÅÏ¢
-	WIFI_LOG("3. ÉÏ±¨Î»ÖÃĞÅÏ¢µ½·şÎñÆ÷...\r\n");
+	// 3. ï¿½Ï±ï¿½Î»ï¿½ï¿½ï¿½ï¿½Ï¢
+	WIFI_LOG("3. ï¿½Ï±ï¿½Î»ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½...\r\n");
 	char body[256];
 	sprintf(body, "{\"city\": \"%s\", \"lat\": %.4f, \"lon\": %.4f}", city, lat, lon);
 	
-	// ·şÎñÆ÷IP: 47.83.221.161
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IP: 47.83.221.161
 	if(!ESP8266_HTTP_Post("47.83.221.161", 80, "/api/weather/location", body, g_weather_http_response, sizeof(g_weather_http_response)))
 	{
-		WIFI_LOG("? ÉÏ±¨Î»ÖÃĞÅÏ¢Ê§°Ü\r\n");
+		WIFI_LOG("? ï¿½Ï±ï¿½Î»ï¿½ï¿½ï¿½ï¿½Ï¢Ê§ï¿½ï¿½\r\n");
 		return false;
 	}
 	
-	WIFI_LOG("? Î»ÖÃĞÅÏ¢¸üĞÂÍê³É\r\n");
+	WIFI_LOG("? Î»ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\r\n");
 	return true;
 }

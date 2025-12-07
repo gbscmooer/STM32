@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\STM32weather.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\STM32weather.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sun Dec 07 16:33:52 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sun Dec 07 17:40:16 2025
 <BR><P>
 <H3>Maximum Stack Usage =        848 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -738,7 +738,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> app_freertos.o(i.StartTask)
 </UL>
-<P><STRONG><a name="[91]"></a>Camera_Capture_Gray</STRONG> (Thumb, 256 bytes, Stack size 32 bytes, camera_capture.o(i.Camera_Capture_Gray))
+<P><STRONG><a name="[91]"></a>Camera_Capture_Gray</STRONG> (Thumb, 232 bytes, Stack size 32 bytes, camera_capture.o(i.Camera_Capture_Gray))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = Camera_Capture_Gray &rArr; RGB565_to_Gray
 </UL>
 <BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RGB565_to_Gray
@@ -1015,13 +1015,13 @@ Global Symbols
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Init
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_IO_OUT
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_IO_IN
-<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_Init
 <LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_SDA_OUT
 <LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_SDA_IN
 <LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_Init
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLK_init_ON
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OV7670_Init
 <LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TFTLCD_GPIO_Init
+<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_Init
 </UL>
 
 <P><STRONG><a name="[d9]"></a>GPIO_PinRemapConfig</STRONG> (Thumb, 138 bytes, Stack size 20 bytes, stm32f10x_gpio.o(i.GPIO_PinRemapConfig))
@@ -1221,7 +1221,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTask
 </UL>
 
-<P><STRONG><a name="[4f]"></a>MQTTTask</STRONG> (Thumb, 1982 bytes, Stack size 536 bytes, mqtt_client.o(i.MQTTTask))
+<P><STRONG><a name="[4f]"></a>MQTTTask</STRONG> (Thumb, 1950 bytes, Stack size 536 bytes, mqtt_client.o(i.MQTTTask))
 <BR><BR>[Stack]<UL><LI>Max Depth = 848<LI>Call Chain = MQTTTask &rArr; ProcessMQTTPacket &rArr; vTaskDelay &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WiFi_Connect_Default
@@ -1359,11 +1359,11 @@ Global Symbols
 <LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WiFi_Config
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Init
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Temp_Init
-<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_Init
 <LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_Init
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CLK_init_ON
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OV7670_Init
 <LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TFTLCD_GPIO_Init
+<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_Init
 </UL>
 
 <P><STRONG><a name="[79]"></a>RCC_APB2PeriphResetCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_APB2PeriphResetCmd))
@@ -1812,7 +1812,6 @@ Global Symbols
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ESP8266_JoinAP
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ESP8266_Cmd
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ESP8266_AT_Test
-<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Camera_Init
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Camera_Capture_Gray
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HTTP_Upload_Image
@@ -1824,6 +1823,7 @@ Global Symbols
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTask
 <LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SensorTask
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CameraTask
+<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[152]"></a>__c89printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0printf), UNUSED)
@@ -2143,9 +2143,9 @@ Global Symbols
 <LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvAddNewTaskToReadyList
 </UL>
 <BR>[Called By]<UL><LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvCreateIdleTasks
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;App_Start
 <LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MQTT_Client_Init
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTask
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;App_Start
 </UL>
 
 <P><STRONG><a name="[137]"></a>xTaskGenericNotify</STRONG> (Thumb, 330 bytes, Stack size 40 bytes, tasks.o(i.xTaskGenericNotify))

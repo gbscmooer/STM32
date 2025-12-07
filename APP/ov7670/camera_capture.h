@@ -3,11 +3,11 @@
 
 #include "system.h"
 
-// 压缩后的图像尺寸（8位灰度）
-// 优化为80×60，足够AI人物检测（90%+识别率），传输快4倍
-#define CAMERA_WIDTH  80
-#define CAMERA_HEIGHT 60
-#define CAMERA_GRAY_SIZE (CAMERA_WIDTH * CAMERA_HEIGHT)  // 4800字节
+// OV7670原生分辨率（8位灰度）
+// QQVGA 160×120，无采样失真，95%+ AI识别率
+#define CAMERA_WIDTH  160
+#define CAMERA_HEIGHT 120
+#define CAMERA_GRAY_SIZE (CAMERA_WIDTH * CAMERA_HEIGHT)  // 19200字节
 
 // 函数声明
 u8 Camera_Init(void);

@@ -12,7 +12,7 @@ import sys
 # MQTT配置
 MQTT_BROKER = "47.83.221.161"
 MQTT_PORT = 1883
-MQTT_TOPIC_CONTROL = "stm32/control"
+MQTT_TOPIC_CONTROL = "weather/update"  # 统一主题：与服务器和STM32一致
 
 def on_connect(client, userdata, flags, rc):
     if rc == 0:
@@ -42,26 +42,32 @@ def test_beep_command():
         
         time.sleep(2)  # 等待连接建立
         
-        # 发送beep=change命令
+        # 多次发送beep=change命令（连续5次，每次间隔2秒）
         print(f"\n发送命令到主题: {MQTT_TOPIC_CONTROL}")
         print(f"Payload: beep=change")
+        print("\n连续发送5次，确保STM32收到...")
         
-        result = client.publish(MQTT_TOPIC_CONTROL, "beep=change", qos=1)
+        for i in range(5):
+            result = client.publish(MQTT_TOPIC_CONTROL, "beep=change", qos=1)
+            
+            if result.rc == mqtt.MQTT_ERR_SUCCESS:
+                print(f"  [{i+1}/5] 命令发送成功！")
+            else:
+                print(f"  [{i+1}/5] 发送失败，错误码: {result.rc}")
+            
+            time.sleep(2)  # 间隔2秒
         
-        if result.rc == mqtt.MQTT_ERR_SUCCESS:
-            print("✓ 命令发送成功！")
-            print("\n请观察STM32串口输出，应该看到：")
-            print("  1. [MQTT Recv] XX bytes")
-            print("  2. MQTT Message Received")
-            print("  3. Topic: stm32/control")
-            print("  4. Payload: beep=change")
-            print("  5. >>> MQTT BEEP COMMAND DETECTED <<<")
-            print("  6. 蜂鸣器应该响0.5秒")
-        else:
-            print(f"✗ 发送失败，错误码: {result.rc}")
+        print("\n✓ 所有命令已发送")
+        print("\n请观察STM32串口输出，应该看到：")
+        print("  1. [MQTT Recv] XX bytes")
+        print("  2. MQTT Message Received")
+        print("  3. Topic: stm32/control")
+        print("  4. Payload: beep=change")
+        print("  5. >>> MQTT BEEP COMMAND DETECTED <<<")
+        print("  6. 蜂鸣器应该响0.5秒")
         
         # 等待消息发送完成
-        time.sleep(2)
+        time.sleep(3)
         
         # 断开连接
         client.loop_stop()

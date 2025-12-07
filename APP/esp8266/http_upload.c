@@ -24,7 +24,7 @@ static u8 HTTP_Connect(void)
     
     if(ESP8266_Cmd(cmd, "OK", "ERROR", 5000))
     {
-        PC_Usart("HTTP TCP connection established\r\n");
+        PC_Usart("HTTP TCP connection established (ID=1)\r\n");
         return 0;
     }
     else

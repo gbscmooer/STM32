@@ -104,19 +104,19 @@ u8 Camera_Capture_Gray(u8* gray_buffer, u16 buffer_size)
         return 1;
     }
     
-    PC_Usart("Starting camera capture (80x60 grayscale from 160x120)...\r\n");
+    PC_Usart("Starting camera capture (160x120 native QQVGA)...\r\n");
     
     // 等待帧开始（VSYNC: 0->1）
     while(OV7670_VSYNC == 0);
     while(OV7670_VSYNC == 1);  // 等待VSYNC变为0（帧开始）
     
-    // 从160x120下采样到80x60（隔行隔列采样）
-    for(i = 0; i < 120; i++)  // OV7670实际输出120行
+    // 直接读取160×120（OV7670原生QQVGA输出）
+    for(i = 0; i < 120; i++)  // 120行
     {
         // 等待行开始（HREF: 0->1）
         while(OV7670_HREF == 0);
         
-        for(j = 0; j < 160; j++)  // OV7670实际输出160列
+        for(j = 0; j < 160; j++)  // 160列
         {
             // 读取高8位
             while(OV7670_PCLK == 0);  // 等待PCLK上升沿
@@ -131,12 +131,8 @@ u8 Camera_Capture_Gray(u8* gray_buffer, u16 buffer_size)
             color |= GPIOC->IDR & 0xFF;  // 读取数据
             while(OV7670_PCLK == 1);  // 等待PCLK下降沿
             
-            // 隔行隔列采样（每隔一行一列取一个像素）
-            if((i % 2 == 0) && (j % 2 == 0))
-            {
-                // 转换为灰度并存储
-                gray_buffer[pixel_index++] = RGB565_to_Gray(color);
-            }
+            // 直接转换为灰度并存储（无采样）
+            gray_buffer[pixel_index++] = RGB565_to_Gray(color);
         }
         
         // 等待行结束（HREF: 1->0）

@@ -73,8 +73,8 @@ I (..\APP\FREERTOS\include\deprecated_definitions.h)(0x68F8972E)
 I (..\APP\FREERTOS\portable\RVDS\ARM_CM3\portmacro.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\mpu_wrappers.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\stream_buffer.h)(0x68F8972E)
-F (..\APP\esp8266\wifi_function.c)(0x69351799)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\wifi_function.o --omf_browse .\objects\wifi_function.crf --depend .\objects\wifi_function.d)
-I (..\APP\esp8266\wifi_function.h)(0x69351799)
+F (..\APP\esp8266\wifi_function.c)(0x693549EC)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\wifi_function.o --omf_browse .\objects\wifi_function.crf --depend .\objects\wifi_function.d)
+I (..\APP\esp8266\wifi_function.h)(0x693549EC)
 I (..\Public\system.h)(0x69351EE6)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
@@ -660,7 +660,7 @@ I (..\APP\TFTLCD\font.h)(0x5D6C6A34)
 I (..\Public\usart.h)(0x692311C0)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
 I (..\Public\SysTick.h)(0x691C0FA7)
-F (..\APP\esp8266\http_upload.c)(0x69353BE8)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\http_upload.o --omf_browse .\objects\http_upload.crf --depend .\objects\http_upload.d)
+F (..\APP\esp8266\http_upload.c)(0x693549EC)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\http_upload.o --omf_browse .\objects\http_upload.crf --depend .\objects\http_upload.d)
 I (..\APP\esp8266\http_upload.h)(0x69351D26)
 I (..\Public\system.h)(0x69351EE6)
 I (..\User\stm32f10x.h)(0x691EB3A6)
@@ -691,7 +691,7 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
-I (..\APP\esp8266\wifi_function.h)(0x69351799)
+I (..\APP\esp8266\wifi_function.h)(0x693549EC)
 I (..\APP\esp8266\wifi_config.h)(0x6921581F)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEB79DE)
 I (..\Public\usart.h)(0x692311C0)
@@ -708,8 +708,8 @@ I (..\APP\FREERTOS\include\mpu_wrappers.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\task.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\list.h)(0x68F8972E)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEB79E2)
-F (..\APP\ov7670\camera_capture.c)(0x69353BE8)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\camera_capture.o --omf_browse .\objects\camera_capture.crf --depend .\objects\camera_capture.d)
-I (..\APP\ov7670\camera_capture.h)(0x693521CA)
+F (..\APP\ov7670\camera_capture.c)(0x693540A3)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\camera_capture.o --omf_browse .\objects\camera_capture.crf --depend .\objects\camera_capture.d)
+I (..\APP\ov7670\camera_capture.h)(0x693540A3)
 I (..\Public\system.h)(0x69351EE6)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
@@ -777,7 +777,7 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
 I (..\APP\ov7670\ov7670.h)(0x6932E080)
 I (..\APP\ov7670\sccb.h)(0x6932E080)
-I (..\APP\ov7670\ov7670cfg.h)(0x6932E080)
+I (..\APP\ov7670\ov7670cfg.h)(0x69354B65)
 I (..\APP\time\time.h)(0x57C5255C)
 I (..\Public\SysTick.h)(0x691C0FA7)
 I (..\Public\usart.h)(0x692311C0)
@@ -915,7 +915,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEB79E2)
 I (..\Public\usart.h)(0x692311C0)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
 F (..\Malloc\malloc.c)(0x6932E080)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\malloc.o --omf_browse .\objects\malloc.crf --depend .\objects\malloc.d)
-I (..\Malloc\malloc.h)(0x693521CA)
+I (..\Malloc\malloc.h)(0x693540A3)
 I (..\Public\system.h)(0x69351EE6)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
@@ -980,7 +980,7 @@ I (..\APP\led\led.h)(0x5DBBE45A)
 I (..\Public\usart.h)(0x692311C0)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
 I (..\User\app_freertos.h)(0x692301EA)
-I (..\APP\esp8266\wifi_function.h)(0x69351799)
+I (..\APP\esp8266\wifi_function.h)(0x693549EC)
 I (..\APP\esp8266\wifi_config.h)(0x6921581F)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEB79DE)
 F (..\User\stm32f10x_it.c)(0x6922FA30)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_it.o --omf_browse .\objects\stm32f10x_it.crf --depend .\objects\stm32f10x_it.d)
@@ -1058,7 +1058,7 @@ I (..\APP\led\led.h)(0x5DBBE45A)
 I (..\Public\usart.h)(0x692311C0)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
 I (..\APP\esp8266\wifi_config.h)(0x6921581F)
-I (..\APP\esp8266\wifi_function.h)(0x69351799)
+I (..\APP\esp8266\wifi_function.h)(0x693549EC)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEB79DE)
 I (..\User\mqtt_client.h)(0x69351D26)
 I (..\APP\dht11\dht11.h)(0x58F87BA8)
@@ -1067,10 +1067,10 @@ I (..\APP\adc_temp\adc_temp.h)(0x57D6248A)
 I (..\APP\TFTLCD\tftlcd.h)(0x64D191D4)
 I (..\APP\lsens\lsens.h)(0x691C150F)
 I (..\APP\beep\beep.h)(0x5DCA1E3C)
-I (..\APP\ov7670\camera_capture.h)(0x693521CA)
+I (..\APP\ov7670\camera_capture.h)(0x693540A3)
 I (..\APP\esp8266\http_upload.h)(0x69351D26)
-I (..\Malloc\malloc.h)(0x693521CA)
-F (..\User\mqtt_client.c)(0x69353B04)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\mqtt_client.o --omf_browse .\objects\mqtt_client.crf --depend .\objects\mqtt_client.d)
+I (..\Malloc\malloc.h)(0x693540A3)
+F (..\User\mqtt_client.c)(0x693549EC)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\mqtt_client.o --omf_browse .\objects\mqtt_client.crf --depend .\objects\mqtt_client.d)
 I (..\User\mqtt_client.h)(0x69351D26)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
 I (..\APP\FREERTOS\include\FreeRTOS.h)(0x68F8972E)
@@ -1084,7 +1084,7 @@ I (..\APP\FREERTOS\include\mpu_wrappers.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\task.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\list.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\stream_buffer.h)(0x68F8972E)
-I (..\APP\esp8266\wifi_function.h)(0x69351799)
+I (..\APP\esp8266\wifi_function.h)(0x693549EC)
 I (..\Public\system.h)(0x69351EE6)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)

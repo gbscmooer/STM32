@@ -12,7 +12,7 @@
 #define MQTT_BROKER_IP "47.83.221.161"
 #define MQTT_BROKER_PORT 1883
 #define MQTT_CLIENT_ID "STM32_Weather_Client"
-#define MQTT_TOPIC "weather/update"
+#define MQTT_TOPIC "weather/update"        // 统一主题：数据和控制都用这个
 
 // 发布间隔（毫秒）
 #define MQTT_PUBLISH_INTERVAL 10000  // 10秒发布一次（给HTTP上传留出时间窗口）
@@ -148,11 +148,11 @@ void MQTTTask(void *pvParameters)
         // Step 2: Connect TCP (retry if failed, without reconnecting WiFi)
         if (!tcp_connected)
         {
-            PC_Usart("Connecting to TCP %s:%d...\r\n", MQTT_BROKER_IP, MQTT_BROKER_PORT);
+            PC_Usart("Connecting to MQTT TCP %s:%d...\r\n", MQTT_BROKER_IP, MQTT_BROKER_PORT);
             
             if (ESP8266_TCP_Connect(MQTT_BROKER_IP, MQTT_BROKER_PORT))
             {
-                PC_Usart("TCP Connected. Sending MQTT Connect...\r\n");
+                PC_Usart("MQTT TCP Connected. Sending MQTT Connect...\r\n");
                 tcp_connected = true;
                 
                 // MQTT CONNECT Packet
@@ -186,10 +186,10 @@ void MQTTTask(void *pvParameters)
                 char temp_buf[100];
                 while(Transport_Recv(temp_buf, sizeof(temp_buf), 100) > 0);
                 
-                // Subscribe
+                // Subscribe to stm32/control
                 PC_Usart("Subscribing to %s...\r\n", MQTT_TOPIC);
                 
-                int topic_len = strlen(MQTT_TOPIC);
+                int topic_len = strlen(MQTT_TOPIC);  // 订阅stm32/control
                 remaining_len = 2 + (2 + topic_len) + 1;
                 
                 idx = 0;
@@ -270,22 +270,19 @@ void MQTTTask(void *pvParameters)
                 {
                     PC_Usart("Published: %s\r\n", payload);
                     
-                    // 发布成功后，触发相机上传任务
-                    PC_Usart("MQTT publish complete, triggering camera upload...\r\n");
-                    
-                    // 先断开MQTT连接，释放ESP8266资源
-                    PC_Usart("Disconnecting MQTT to free ESP8266...\r\n");
+                    // 快速断开MQTT释放ESP8266（单连接限制）
+                    PC_Usart("Disconnecting MQTT for HTTP upload (fast reconnect mode)...\r\n");
                     tcp_connected = false;
                     g_mqtt_connected = 0;
                     ESP8266_TCP_Disconnect();
-                    vTaskDelay(pdMS_TO_TICKS(500));  // 等待断开完成
+                    vTaskDelay(pdMS_TO_TICKS(200));  // 极速断开，仅200ms
                     
                     // 设置相机上传请求标志
                     g_camera_upload_request = 1;
                     
-                    // 等待相机任务处理完成（最多30秒）
+                    // 等待相机任务处理完成（最多60秒）
                     u16 wait_count = 0;
-                    while(g_camera_upload_request && wait_count < 3000)
+                    while(g_camera_upload_request && wait_count < 6000)
                     {
                         vTaskDelay(pdMS_TO_TICKS(10));
                         wait_count++;
@@ -301,11 +298,11 @@ void MQTTTask(void *pvParameters)
                         PC_Usart("Camera upload completed\r\n");
                     }
                     
-                    // 相机上传完成后，等待一段时间再重新连接MQTT
-                    PC_Usart("Waiting before reconnecting MQTT...\r\n");
-                    vTaskDelay(pdMS_TO_TICKS(2000));
+                    // 极速重连MQTT（200ms延迟）
+                    PC_Usart("Reconnecting MQTT immediately (fast mode)...\r\n");
+                    vTaskDelay(pdMS_TO_TICKS(200));
                     
-                    continue;  // 重新开始MQTT连接循环
+                    continue;  // 立即重新连接MQTT
                 }
                 else
                 {
