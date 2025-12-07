@@ -13,14 +13,19 @@
 #include "tftlcd.h"
 #include "lsens.h"
 #include "beep.h"
+#include "camera_capture.h"
+#include "http_upload.h"
+#include "malloc.h"
 
 // Task handles
 TaskHandle_t xStartTaskHandle = NULL;
 TaskHandle_t xSensorTaskHandle = NULL;
+TaskHandle_t xCameraTaskHandle = NULL;
 
 // Task prototypes
 void StartTask(void *pvParameters);
 void SensorTask(void *pvParameters);
+void CameraTask(void *pvParameters);
 
 void App_Start(void)
 {
@@ -80,8 +85,24 @@ void StartTask(void *pvParameters)
     }
     LCD_ShowString(130, 50, tftlcd_data.width, tftlcd_data.height, 16, "Success");
     PC_Usart("DHT11 Check OK!\r\n");
+    
+    // 初始化OV7670摄像头
+    PC_Usart("Initializing Camera...\r\n");
+    if(Camera_Init() != 0)
+    {
+        PC_Usart("Warning: Camera initialization failed, continuing without camera\r\n");
+        LCD_ShowString(10, 280, tftlcd_data.width, tftlcd_data.height, 16, "Camera: Failed");
+    }
+    else
+    {
+        PC_Usart("Camera initialized successfully\r\n");
+        LCD_ShowString(10, 280, tftlcd_data.width, tftlcd_data.height, 16, "Camera: Ready ");
+    }
 
     xTaskCreate(SensorTask, "SensorTask", 512, NULL, 3, &xSensorTaskHandle);
+    
+    // 创建相机任务（图像缓冲区使用动态分配，栈空间不需要太大）
+    xTaskCreate(CameraTask, "CameraTask", 512, NULL, 2, &xCameraTaskHandle);
 
     // Create MQTT Task
     MQTT_Client_Init();
@@ -179,5 +200,86 @@ void SensorTask(void *pvParameters)
         LCD_ShowString(130, 160, tftlcd_data.width, tftlcd_data.height, 16, cpu_temp_buf);
         
         vTaskDelay(pdMS_TO_TICKS(2000)); // Read every 2 seconds
+    }
+}
+
+/*******************************************************************************
+* 函 数 名: CameraTask
+* 功能说明: 相机图像采集和上传任务
+* 输    入: pvParameters - 任务参数（未使用）
+* 输    出: 无
+* 说    明: 该任务等待MQTT任务触发，然后采集图像并通过HTTP上传
+*           使用动态内存分配避免栈溢出
+*******************************************************************************/
+void CameraTask(void *pvParameters)
+{
+    u8* image_buffer = NULL;
+    
+    PC_Usart("Camera Task Started\r\n");
+    
+    while(1)
+    {
+        // 等待MQTT任务触发相机上传请求
+        if(g_camera_upload_request)
+        {
+            PC_Usart("\r\n========================================\r\n");
+            PC_Usart("Camera Upload Request Received\r\n");
+            PC_Usart("========================================\r\n");
+            
+            LCD_ShowString(10, 280, tftlcd_data.width, tftlcd_data.height, 16, "Camera: Capturing...");
+            
+            // 动态分配图像缓冲区（19200字节）
+            image_buffer = (u8*)mymalloc(SRAMIN, CAMERA_GRAY_SIZE);
+            
+            if(image_buffer == NULL)
+            {
+                PC_Usart("Error: Failed to allocate image buffer (%d bytes)\r\n", CAMERA_GRAY_SIZE);
+                LCD_ShowString(10, 280, tftlcd_data.width, tftlcd_data.height, 16, "Camera: Mem Error  ");
+                g_camera_upload_request = 0;  // 清除请求标志
+                vTaskDelay(pdMS_TO_TICKS(1000));
+                continue;
+            }
+            
+            PC_Usart("Image buffer allocated: %d bytes\r\n", CAMERA_GRAY_SIZE);
+            
+            // 捕获灰度图像
+            if(Camera_Capture_Gray(image_buffer, CAMERA_GRAY_SIZE) == 0)
+            {
+                PC_Usart("Image captured successfully\r\n");
+                LCD_ShowString(10, 280, tftlcd_data.width, tftlcd_data.height, 16, "Camera: Uploading...  ");
+                
+                // 通过HTTP上传图像
+                if(HTTP_Upload_Image(image_buffer, CAMERA_GRAY_SIZE) == 0)
+                {
+                    PC_Usart("Image uploaded successfully\r\n");
+                    LCD_ShowString(10, 280, tftlcd_data.width, tftlcd_data.height, 16, "Camera: Upload OK     ");
+                }
+                else
+                {
+                    PC_Usart("Image upload failed\r\n");
+                    LCD_ShowString(10, 280, tftlcd_data.width, tftlcd_data.height, 16, "Camera: Upload Failed ");
+                }
+            }
+            else
+            {
+                PC_Usart("Image capture failed\r\n");
+                LCD_ShowString(10, 280, tftlcd_data.width, tftlcd_data.height, 16, "Camera: Capture Failed");
+            }
+            
+            // 释放图像缓冲区
+            myfree(SRAMIN, image_buffer);
+            image_buffer = NULL;
+            PC_Usart("Image buffer freed\r\n");
+            
+            // 清除请求标志，通知MQTT任务完成
+            g_camera_upload_request = 0;
+            
+            PC_Usart("========================================\r\n");
+            PC_Usart("Camera Task Cycle Complete\r\n");
+            PC_Usart("========================================\r\n\r\n");
+        }
+        
+        // 短暂延时，避免CPU占用过高
+        vTaskDelay(pdMS_TO_TICKS(100));
     }
 }

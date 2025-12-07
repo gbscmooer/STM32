@@ -54,3 +54,6 @@
 .\objects\app_freertos.o: ..\APP\TFTLCD\tftlcd.h
 .\objects\app_freertos.o: ..\APP\lsens\lsens.h
 .\objects\app_freertos.o: ..\APP\beep\beep.h
+.\objects\app_freertos.o: ..\APP\ov7670\camera_capture.h
+.\objects\app_freertos.o: ..\APP\esp8266\http_upload.h
+.\objects\app_freertos.o: ..\Malloc\malloc.h

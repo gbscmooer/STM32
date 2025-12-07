@@ -1,5 +1,5 @@
 Dependencies for Project 'STM32weather', Target 'Target 1': (DO NOT MODIFY !)
-F (..\Libraries\CMSIS\system_stm32f10x.c)(0x4D783CB0)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\system_stm32f10x.o --omf_browse .\objects\system_stm32f10x.crf --depend .\objects\system_stm32f10x.d)
+F (..\Libraries\CMSIS\system_stm32f10x.c)(0x4D783CB0)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\system_stm32f10x.o --omf_browse .\objects\system_stm32f10x.crf --depend .\objects\system_stm32f10x.d)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
@@ -28,12 +28,12 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
-F (..\Libraries\CMSIS\core_cm3.c)(0x4C0C587E)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\core_cm3.o --omf_browse .\objects\core_cm3.crf --depend .\objects\core_cm3.d)
+F (..\Libraries\CMSIS\core_cm3.c)(0x4C0C587E)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\core_cm3.o --omf_browse .\objects\core_cm3.crf --depend .\objects\core_cm3.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
-F (..\Libraries\CMSIS\startup_stm32f10x_hd.s)(0x69206A24)(--cpu Cortex-M3 -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 528" --pd "STM32F10X_HD SETA 1"--list .\listings\startup_stm32f10x_hd.lst --xref -o .\objects\startup_stm32f10x_hd.o --depend .\objects\startup_stm32f10x_hd.d)
-F (..\APP\esp8266\wifi_config.c)(0x692311C0)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\wifi_config.o --omf_browse .\objects\wifi_config.crf --depend .\objects\wifi_config.d)
+F (..\Libraries\CMSIS\startup_stm32f10x_hd.s)(0x69351799)(--cpu Cortex-M3 -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 528" --pd "STM32F10X_HD SETA 1"--list .\listings\startup_stm32f10x_hd.lst --xref -o .\objects\startup_stm32f10x_hd.o --depend .\objects\startup_stm32f10x_hd.d)
+F (..\APP\esp8266\wifi_config.c)(0x69343C19)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\wifi_config.o --omf_browse .\objects\wifi_config.crf --depend .\objects\wifi_config.d)
 I (..\APP\esp8266\wifi_config.h)(0x6921581F)
-I (..\Public\system.h)(0x691C0FA7)
+I (..\Public\system.h)(0x69351EE6)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
@@ -66,16 +66,16 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5CEB79E4)
 I (..\APP\FREERTOS\include\FreeRTOS.h)(0x68F8972E)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB79E2)
-I (..\User\FreeRTOSConfig.h)(0x692311C0)
+I (..\User\FreeRTOSConfig.h)(0x69351E9F)
 I (..\APP\FREERTOS\include\projdefs.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\portable.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\deprecated_definitions.h)(0x68F8972E)
 I (..\APP\FREERTOS\portable\RVDS\ARM_CM3\portmacro.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\mpu_wrappers.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\stream_buffer.h)(0x68F8972E)
-F (..\APP\esp8266\wifi_function.c)(0x6923260C)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\wifi_function.o --omf_browse .\objects\wifi_function.crf --depend .\objects\wifi_function.d)
-I (..\APP\esp8266\wifi_function.h)(0x692151D0)
-I (..\Public\system.h)(0x691C0FA7)
+F (..\APP\esp8266\wifi_function.c)(0x69351799)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\wifi_function.o --omf_browse .\objects\wifi_function.crf --depend .\objects\wifi_function.d)
+I (..\APP\esp8266\wifi_function.h)(0x69351799)
+I (..\Public\system.h)(0x69351EE6)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
@@ -112,9 +112,9 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
 I (..\APP\esp8266\../cJSON/cJSON.h)(0x691EDE07)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB79E2)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEB79E2)
-F (..\APP\lsens\lsens.c)(0x691C150F)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\lsens.o --omf_browse .\objects\lsens.crf --depend .\objects\lsens.d)
+F (..\APP\lsens\lsens.c)(0x691C150F)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\lsens.o --omf_browse .\objects\lsens.crf --depend .\objects\lsens.d)
 I (..\APP\lsens\lsens.h)(0x691C150F)
-I (..\Public\system.h)(0x691C0FA7)
+I (..\Public\system.h)(0x69351EE6)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
@@ -144,9 +144,9 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
 I (..\Public\SysTick.h)(0x691C0FA7)
-F (..\APP\exti\exti.c)(0x5DD8EBDA)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\exti.o --omf_browse .\objects\exti.crf --depend .\objects\exti.d)
+F (..\APP\exti\exti.c)(0x5DD8EBDA)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\exti.o --omf_browse .\objects\exti.crf --depend .\objects\exti.d)
 I (..\APP\exti\exti.h)(0x57BFB094)
-I (..\Public\system.h)(0x691C0FA7)
+I (..\Public\system.h)(0x69351EE6)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
@@ -179,9 +179,9 @@ I (..\APP\led\led.h)(0x5DBBE45A)
 I (..\Public\SysTick.h)(0x691C0FA7)
 I (..\APP\key\key.h)(0x5DD8E954)
 I (..\APP\beep\beep.h)(0x5DCA1E3C)
-F (..\APP\iwdg\iwdg.c)(0x58281818)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\iwdg.o --omf_browse .\objects\iwdg.crf --depend .\objects\iwdg.d)
+F (..\APP\iwdg\iwdg.c)(0x58281818)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\iwdg.o --omf_browse .\objects\iwdg.crf --depend .\objects\iwdg.d)
 I (..\APP\iwdg\iwdg.h)(0x57CE174E)
-I (..\Public\system.h)(0x691C0FA7)
+I (..\Public\system.h)(0x69351EE6)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
@@ -210,9 +210,9 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
-F (..\APP\pwm\pwm.c)(0x5DBD7C36)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\pwm.o --omf_browse .\objects\pwm.crf --depend .\objects\pwm.d)
+F (..\APP\pwm\pwm.c)(0x5DBD7C36)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\pwm.o --omf_browse .\objects\pwm.crf --depend .\objects\pwm.d)
 I (..\APP\pwm\pwm.h)(0x5DBD7C36)
-I (..\Public\system.h)(0x691C0FA7)
+I (..\Public\system.h)(0x69351EE6)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
@@ -241,9 +241,9 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
-F (..\APP\time\time.c)(0x5DBD79C6)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\time.o --omf_browse .\objects\time.crf --depend .\objects\time.d)
+F (..\APP\time\time.c)(0x69351799)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\time.o --omf_browse .\objects\time.crf --depend .\objects\time.d)
 I (..\APP\time\time.h)(0x57C5255C)
-I (..\Public\system.h)(0x691C0FA7)
+I (..\Public\system.h)(0x69351EE6)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
@@ -273,9 +273,9 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
 I (..\APP\led\led.h)(0x5DBBE45A)
-F (..\APP\wwdg\wwdg.c)(0x691EB403)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\wwdg.o --omf_browse .\objects\wwdg.crf --depend .\objects\wwdg.d)
+F (..\APP\wwdg\wwdg.c)(0x691EB403)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\wwdg.o --omf_browse .\objects\wwdg.crf --depend .\objects\wwdg.d)
 I (..\APP\wwdg\wwdg.h)(0x57CE68D4)
-I (..\Public\system.h)(0x691C0FA7)
+I (..\Public\system.h)(0x69351EE6)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
@@ -306,9 +306,9 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
 I (..\APP\led\led.h)(0x5DBBE45A)
 I (..\Public\SysTick.h)(0x691C0FA7)
-F (..\APP\beep\beep.c)(0x5DCA22CE)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\beep.o --omf_browse .\objects\beep.crf --depend .\objects\beep.d)
+F (..\APP\beep\beep.c)(0x5DCA22CE)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\beep.o --omf_browse .\objects\beep.crf --depend .\objects\beep.d)
 I (..\APP\beep\beep.h)(0x5DCA1E3C)
-I (..\Public\system.h)(0x691C0FA7)
+I (..\Public\system.h)(0x69351EE6)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
@@ -337,9 +337,9 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
-F (..\APP\key\key.c)(0x5DD8E9B2)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\key.o --omf_browse .\objects\key.crf --depend .\objects\key.d)
+F (..\APP\key\key.c)(0x5DD8E9B2)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\key.o --omf_browse .\objects\key.crf --depend .\objects\key.d)
 I (..\APP\key\key.h)(0x5DD8E954)
-I (..\Public\system.h)(0x691C0FA7)
+I (..\Public\system.h)(0x69351EE6)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
@@ -369,9 +369,9 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
 I (..\Public\SysTick.h)(0x691C0FA7)
-F (..\APP\led\led.c)(0x5DBBE318)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\led.o --omf_browse .\objects\led.crf --depend .\objects\led.d)
+F (..\APP\led\led.c)(0x5DBBE318)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\led.o --omf_browse .\objects\led.crf --depend .\objects\led.d)
 I (..\APP\led\led.h)(0x5DBBE45A)
-I (..\Public\system.h)(0x691C0FA7)
+I (..\Public\system.h)(0x69351EE6)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
@@ -400,7 +400,7 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
-F (..\APP\MQTT\source\core_mqtt.c)(0x68F8973C)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\core_mqtt.o --omf_browse .\objects\core_mqtt.crf --depend .\objects\core_mqtt.d)
+F (..\APP\MQTT\source\core_mqtt.c)(0x68F8973C)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\core_mqtt.o --omf_browse .\objects\core_mqtt.crf --depend .\objects\core_mqtt.d)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEB79E2)
 I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x5CEB79D6)
 I (..\APP\MQTT\source\include\core_mqtt.h)(0x68F8973C)
@@ -412,7 +412,7 @@ I (..\APP\MQTT\source\interface\transport_interface.h)(0x68F8973C)
 I (..\APP\MQTT\source\include\core_mqtt_state.h)(0x68F8973C)
 I (..\APP\MQTT\source\include\core_mqtt_config_defaults.h)(0x68F8973C)
 I (..\APP\MQTT\source\include\core_mqtt_config.h)(0x6922FD5C)
-F (..\APP\MQTT\source\core_mqtt_serializer.c)(0x68F8973C)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\core_mqtt_serializer.o --omf_browse .\objects\core_mqtt_serializer.crf --depend .\objects\core_mqtt_serializer.d)
+F (..\APP\MQTT\source\core_mqtt_serializer.c)(0x68F8973C)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\core_mqtt_serializer.o --omf_browse .\objects\core_mqtt_serializer.crf --depend .\objects\core_mqtt_serializer.d)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEB79E2)
 I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x5CEB79D6)
 I (..\APP\MQTT\source\include\core_mqtt_serializer.h)(0x68F8973C)
@@ -422,7 +422,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEB79DE)
 I (..\APP\MQTT\source\interface\transport_interface.h)(0x68F8973C)
 I (..\APP\MQTT\source\include\core_mqtt_config_defaults.h)(0x68F8973C)
 I (..\APP\MQTT\source\include\core_mqtt_config.h)(0x6922FD5C)
-F (..\APP\MQTT\source\core_mqtt_state.c)(0x68F8973C)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\core_mqtt_state.o --omf_browse .\objects\core_mqtt_state.crf --depend .\objects\core_mqtt_state.d)
+F (..\APP\MQTT\source\core_mqtt_state.c)(0x68F8973C)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\core_mqtt_state.o --omf_browse .\objects\core_mqtt_state.crf --depend .\objects\core_mqtt_state.d)
 I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x5CEB79D6)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEB79E2)
 I (..\APP\MQTT\source\include\core_mqtt_state.h)(0x68F8973C)
@@ -434,11 +434,11 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEB79DE)
 I (..\APP\MQTT\source\interface\transport_interface.h)(0x68F8973C)
 I (..\APP\MQTT\source\include\core_mqtt_config_defaults.h)(0x68F8973C)
 I (..\APP\MQTT\source\include\core_mqtt_config.h)(0x6922FD5C)
-F (..\APP\FREERTOS\croutine.c)(0x68F8972E)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\croutine.o --omf_browse .\objects\croutine.crf --depend .\objects\croutine.d)
+F (..\APP\FREERTOS\croutine.c)(0x68F8972E)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\croutine.o --omf_browse .\objects\croutine.crf --depend .\objects\croutine.d)
 I (..\APP\FREERTOS\include\FreeRTOS.h)(0x68F8972E)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB79E2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
-I (..\User\FreeRTOSConfig.h)(0x692311C0)
+I (..\User\FreeRTOSConfig.h)(0x69351E9F)
 I (..\APP\FREERTOS\include\projdefs.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\portable.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\deprecated_definitions.h)(0x68F8972E)
@@ -447,12 +447,12 @@ I (..\APP\FREERTOS\include\mpu_wrappers.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\task.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\list.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\croutine.h)(0x68F8972E)
-F (..\APP\FREERTOS\event_groups.c)(0x68F8972E)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\event_groups.o --omf_browse .\objects\event_groups.crf --depend .\objects\event_groups.d)
+F (..\APP\FREERTOS\event_groups.c)(0x68F8972E)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\event_groups.o --omf_browse .\objects\event_groups.crf --depend .\objects\event_groups.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5CEB79E2)
 I (..\APP\FREERTOS\include\FreeRTOS.h)(0x68F8972E)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB79E2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
-I (..\User\FreeRTOSConfig.h)(0x692311C0)
+I (..\User\FreeRTOSConfig.h)(0x69351E9F)
 I (..\APP\FREERTOS\include\projdefs.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\portable.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\deprecated_definitions.h)(0x68F8972E)
@@ -462,25 +462,25 @@ I (..\APP\FREERTOS\include\task.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\list.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\timers.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\event_groups.h)(0x68F8972E)
-F (..\APP\FREERTOS\list.c)(0x68F8972E)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\list.o --omf_browse .\objects\list.crf --depend .\objects\list.d)
+F (..\APP\FREERTOS\list.c)(0x68F8972E)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\list.o --omf_browse .\objects\list.crf --depend .\objects\list.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5CEB79E2)
 I (..\APP\FREERTOS\include\FreeRTOS.h)(0x68F8972E)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB79E2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
-I (..\User\FreeRTOSConfig.h)(0x692311C0)
+I (..\User\FreeRTOSConfig.h)(0x69351E9F)
 I (..\APP\FREERTOS\include\projdefs.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\portable.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\deprecated_definitions.h)(0x68F8972E)
 I (..\APP\FREERTOS\portable\RVDS\ARM_CM3\portmacro.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\mpu_wrappers.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\list.h)(0x68F8972E)
-F (..\APP\FREERTOS\queue.c)(0x68F8972E)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\queue.o --omf_browse .\objects\queue.crf --depend .\objects\queue.d)
+F (..\APP\FREERTOS\queue.c)(0x68F8972E)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\queue.o --omf_browse .\objects\queue.crf --depend .\objects\queue.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5CEB79E2)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEB79E2)
 I (..\APP\FREERTOS\include\FreeRTOS.h)(0x68F8972E)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB79E2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
-I (..\User\FreeRTOSConfig.h)(0x692311C0)
+I (..\User\FreeRTOSConfig.h)(0x69351E9F)
 I (..\APP\FREERTOS\include\projdefs.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\portable.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\deprecated_definitions.h)(0x68F8972E)
@@ -489,12 +489,12 @@ I (..\APP\FREERTOS\include\mpu_wrappers.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\task.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\list.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\queue.h)(0x68F8972E)
-F (..\APP\FREERTOS\stream_buffer.c)(0x68F8972E)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stream_buffer.o --omf_browse .\objects\stream_buffer.crf --depend .\objects\stream_buffer.d)
+F (..\APP\FREERTOS\stream_buffer.c)(0x68F8972E)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stream_buffer.o --omf_browse .\objects\stream_buffer.crf --depend .\objects\stream_buffer.d)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEB79E2)
 I (..\APP\FREERTOS\include\FreeRTOS.h)(0x68F8972E)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB79E2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
-I (..\User\FreeRTOSConfig.h)(0x692311C0)
+I (..\User\FreeRTOSConfig.h)(0x69351E9F)
 I (..\APP\FREERTOS\include\projdefs.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\portable.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\deprecated_definitions.h)(0x68F8972E)
@@ -503,13 +503,13 @@ I (..\APP\FREERTOS\include\mpu_wrappers.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\task.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\list.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\stream_buffer.h)(0x68F8972E)
-F (..\APP\FREERTOS\tasks.c)(0x68F8972E)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\tasks.o --omf_browse .\objects\tasks.crf --depend .\objects\tasks.d)
+F (..\APP\FREERTOS\tasks.c)(0x68F8972E)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\tasks.o --omf_browse .\objects\tasks.crf --depend .\objects\tasks.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5CEB79E2)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEB79E2)
 I (..\APP\FREERTOS\include\FreeRTOS.h)(0x68F8972E)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB79E2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
-I (..\User\FreeRTOSConfig.h)(0x692311C0)
+I (..\User\FreeRTOSConfig.h)(0x69351E9F)
 I (..\APP\FREERTOS\include\projdefs.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\portable.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\deprecated_definitions.h)(0x68F8972E)
@@ -519,12 +519,12 @@ I (..\APP\FREERTOS\include\task.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\list.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\timers.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\stack_macros.h)(0x68F8972E)
-F (..\APP\FREERTOS\timers.c)(0x68F8972E)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\timers.o --omf_browse .\objects\timers.crf --depend .\objects\timers.d)
+F (..\APP\FREERTOS\timers.c)(0x68F8972E)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\timers.o --omf_browse .\objects\timers.crf --depend .\objects\timers.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5CEB79E2)
 I (..\APP\FREERTOS\include\FreeRTOS.h)(0x68F8972E)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB79E2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
-I (..\User\FreeRTOSConfig.h)(0x692311C0)
+I (..\User\FreeRTOSConfig.h)(0x69351E9F)
 I (..\APP\FREERTOS\include\projdefs.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\portable.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\deprecated_definitions.h)(0x68F8972E)
@@ -534,11 +534,11 @@ I (..\APP\FREERTOS\include\task.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\list.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\queue.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\timers.h)(0x68F8972E)
-F (..\APP\FREERTOS\portable\RVDS\ARM_CM3\port.c)(0x68F8972E)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\port.o --omf_browse .\objects\port.crf --depend .\objects\port.d)
+F (..\APP\FREERTOS\portable\RVDS\ARM_CM3\port.c)(0x68F8972E)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\port.o --omf_browse .\objects\port.crf --depend .\objects\port.d)
 I (..\APP\FREERTOS\include\FreeRTOS.h)(0x68F8972E)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB79E2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
-I (..\User\FreeRTOSConfig.h)(0x692311C0)
+I (..\User\FreeRTOSConfig.h)(0x69351E9F)
 I (..\APP\FREERTOS\include\projdefs.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\portable.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\deprecated_definitions.h)(0x68F8972E)
@@ -546,13 +546,13 @@ I (..\APP\FREERTOS\portable\RVDS\ARM_CM3\portmacro.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\mpu_wrappers.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\task.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\list.h)(0x68F8972E)
-F (..\APP\FREERTOS\portable\MemMang\heap_4.c)(0x68F8972E)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\heap_4.o --omf_browse .\objects\heap_4.crf --depend .\objects\heap_4.d)
+F (..\APP\FREERTOS\portable\MemMang\heap_4.c)(0x68F8972E)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\heap_4.o --omf_browse .\objects\heap_4.crf --depend .\objects\heap_4.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5CEB79E2)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEB79E2)
 I (..\APP\FREERTOS\include\FreeRTOS.h)(0x68F8972E)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB79E2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
-I (..\User\FreeRTOSConfig.h)(0x692311C0)
+I (..\User\FreeRTOSConfig.h)(0x69351E9F)
 I (..\APP\FREERTOS\include\projdefs.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\portable.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\deprecated_definitions.h)(0x68F8972E)
@@ -560,9 +560,9 @@ I (..\APP\FREERTOS\portable\RVDS\ARM_CM3\portmacro.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\mpu_wrappers.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\task.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\list.h)(0x68F8972E)
-F (..\APP\adc_temp\adc_temp.c)(0x58D227B2)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\adc_temp.o --omf_browse .\objects\adc_temp.crf --depend .\objects\adc_temp.d)
+F (..\APP\adc_temp\adc_temp.c)(0x58D227B2)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\adc_temp.o --omf_browse .\objects\adc_temp.crf --depend .\objects\adc_temp.d)
 I (..\APP\adc_temp\adc_temp.h)(0x57D6248A)
-I (..\Public\system.h)(0x691C0FA7)
+I (..\Public\system.h)(0x69351EE6)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
@@ -592,9 +592,9 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
 I (..\Public\SysTick.h)(0x691C0FA7)
-F (..\APP\dht11\dht11.c)(0x69243994)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\dht11.o --omf_browse .\objects\dht11.crf --depend .\objects\dht11.d)
+F (..\APP\dht11\dht11.c)(0x69243994)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\dht11.o --omf_browse .\objects\dht11.crf --depend .\objects\dht11.d)
 I (..\APP\dht11\dht11.h)(0x58F87BA8)
-I (..\Public\system.h)(0x691C0FA7)
+I (..\Public\system.h)(0x69351EE6)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
@@ -624,9 +624,9 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
 I (..\Public\SysTick.h)(0x691C0FA7)
-F (..\APP\TFTLCD\tftlcd.c)(0x64AE3D7C)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\tftlcd.o --omf_browse .\objects\tftlcd.crf --depend .\objects\tftlcd.d)
+F (..\APP\TFTLCD\tftlcd.c)(0x64AE3D7C)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\tftlcd.o --omf_browse .\objects\tftlcd.crf --depend .\objects\tftlcd.d)
 I (..\APP\TFTLCD\tftlcd.h)(0x64D191D4)
-I (..\Public\system.h)(0x691C0FA7)
+I (..\Public\system.h)(0x69351EE6)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
@@ -660,8 +660,293 @@ I (..\APP\TFTLCD\font.h)(0x5D6C6A34)
 I (..\Public\usart.h)(0x692311C0)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
 I (..\Public\SysTick.h)(0x691C0FA7)
-F (..\User\main.c)(0x69244D62)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
-I (..\Public\system.h)(0x691C0FA7)
+F (..\APP\esp8266\http_upload.c)(0x69353BE8)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\http_upload.o --omf_browse .\objects\http_upload.crf --depend .\objects\http_upload.d)
+I (..\APP\esp8266\http_upload.h)(0x69351D26)
+I (..\Public\system.h)(0x69351EE6)
+I (..\User\stm32f10x.h)(0x691EB3A6)
+I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\Libraries\CMSIS\system_stm32f10x.h)(0x4D783CAA)
+I (..\User\stm32f10x_conf.h)(0x691C1C24)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_bkp.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_can.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_cec.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_crc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dac.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dbgmcu.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dma.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_flash.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_fsmc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_i2c.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_iwdg.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_pwr.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rtc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_sdio.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
+I (..\APP\esp8266\wifi_function.h)(0x69351799)
+I (..\APP\esp8266\wifi_config.h)(0x6921581F)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEB79DE)
+I (..\Public\usart.h)(0x692311C0)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
+I (..\Public\SysTick.h)(0x691C0FA7)
+I (..\APP\FREERTOS\include\FreeRTOS.h)(0x68F8972E)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB79E2)
+I (..\User\FreeRTOSConfig.h)(0x69351E9F)
+I (..\APP\FREERTOS\include\projdefs.h)(0x68F8972E)
+I (..\APP\FREERTOS\include\portable.h)(0x68F8972E)
+I (..\APP\FREERTOS\include\deprecated_definitions.h)(0x68F8972E)
+I (..\APP\FREERTOS\portable\RVDS\ARM_CM3\portmacro.h)(0x68F8972E)
+I (..\APP\FREERTOS\include\mpu_wrappers.h)(0x68F8972E)
+I (..\APP\FREERTOS\include\task.h)(0x68F8972E)
+I (..\APP\FREERTOS\include\list.h)(0x68F8972E)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEB79E2)
+F (..\APP\ov7670\camera_capture.c)(0x69353BE8)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\camera_capture.o --omf_browse .\objects\camera_capture.crf --depend .\objects\camera_capture.d)
+I (..\APP\ov7670\camera_capture.h)(0x693521CA)
+I (..\Public\system.h)(0x69351EE6)
+I (..\User\stm32f10x.h)(0x691EB3A6)
+I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\Libraries\CMSIS\system_stm32f10x.h)(0x4D783CAA)
+I (..\User\stm32f10x_conf.h)(0x691C1C24)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_bkp.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_can.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_cec.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_crc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dac.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dbgmcu.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dma.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_flash.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_fsmc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_i2c.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_iwdg.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_pwr.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rtc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_sdio.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
+I (..\APP\ov7670\ov7670.h)(0x6932E080)
+I (..\APP\ov7670\sccb.h)(0x6932E080)
+I (..\APP\time\time.h)(0x57C5255C)
+I (..\Public\usart.h)(0x692311C0)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEB79E2)
+F (..\APP\ov7670\ov7670.c)(0x6932E080)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\ov7670.o --omf_browse .\objects\ov7670.crf --depend .\objects\ov7670.d)
+I (..\Public\system.h)(0x69351EE6)
+I (..\User\stm32f10x.h)(0x691EB3A6)
+I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\Libraries\CMSIS\system_stm32f10x.h)(0x4D783CAA)
+I (..\User\stm32f10x_conf.h)(0x691C1C24)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_bkp.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_can.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_cec.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_crc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dac.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dbgmcu.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dma.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_flash.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_fsmc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_i2c.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_iwdg.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_pwr.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rtc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_sdio.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
+I (..\APP\ov7670\ov7670.h)(0x6932E080)
+I (..\APP\ov7670\sccb.h)(0x6932E080)
+I (..\APP\ov7670\ov7670cfg.h)(0x6932E080)
+I (..\APP\time\time.h)(0x57C5255C)
+I (..\Public\SysTick.h)(0x691C0FA7)
+I (..\Public\usart.h)(0x692311C0)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
+F (..\APP\ov7670\sccb.c)(0x6932E080)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\sccb.o --omf_browse .\objects\sccb.crf --depend .\objects\sccb.d)
+I (..\Public\system.h)(0x69351EE6)
+I (..\User\stm32f10x.h)(0x691EB3A6)
+I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\Libraries\CMSIS\system_stm32f10x.h)(0x4D783CAA)
+I (..\User\stm32f10x_conf.h)(0x691C1C24)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_bkp.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_can.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_cec.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_crc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dac.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dbgmcu.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dma.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_flash.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_fsmc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_i2c.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_iwdg.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_pwr.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rtc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_sdio.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
+I (..\APP\ov7670\sccb.h)(0x6932E080)
+I (..\Public\SysTick.h)(0x691C0FA7)
+F (..\APP\flash\flash.c)(0x6932E080)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\flash.o --omf_browse .\objects\flash.crf --depend .\objects\flash.d)
+I (..\APP\flash\flash.h)(0x693518DF)
+I (..\Public\system.h)(0x69351EE6)
+I (..\User\stm32f10x.h)(0x691EB3A6)
+I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\Libraries\CMSIS\system_stm32f10x.h)(0x4D783CAA)
+I (..\User\stm32f10x_conf.h)(0x691C1C24)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_bkp.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_can.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_cec.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_crc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dac.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dbgmcu.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dma.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_flash.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_fsmc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_i2c.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_iwdg.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_pwr.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rtc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_sdio.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
+I (..\APP\spi\spi.h)(0x6932E080)
+I (..\Public\SysTick.h)(0x691C0FA7)
+I (..\Public\usart.h)(0x692311C0)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
+F (..\APP\spi\spi.c)(0x6932E080)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\spi.o --omf_browse .\objects\spi.crf --depend .\objects\spi.d)
+I (..\APP\spi\spi.h)(0x6932E080)
+I (..\Public\system.h)(0x69351EE6)
+I (..\User\stm32f10x.h)(0x691EB3A6)
+I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\Libraries\CMSIS\system_stm32f10x.h)(0x4D783CAA)
+I (..\User\stm32f10x_conf.h)(0x691C1C24)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_bkp.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_can.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_cec.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_crc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dac.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dbgmcu.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dma.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_flash.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_fsmc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_i2c.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_iwdg.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_pwr.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rtc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_sdio.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
+F (..\APP\sd_sdio\sd_sdio.c)(0x6932E080)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\sd_sdio.o --omf_browse .\objects\sd_sdio.crf --depend .\objects\sd_sdio.d)
+I (..\APP\sd_sdio\sd_sdio.h)(0x6932E080)
+I (..\Public\system.h)(0x69351EE6)
+I (..\User\stm32f10x.h)(0x691EB3A6)
+I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\Libraries\CMSIS\system_stm32f10x.h)(0x4D783CAA)
+I (..\User\stm32f10x_conf.h)(0x691C1C24)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_bkp.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_can.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_cec.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_crc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dac.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dbgmcu.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dma.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_flash.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_fsmc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_i2c.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_iwdg.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_pwr.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rtc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_sdio.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEB79E2)
+I (..\Public\usart.h)(0x692311C0)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
+F (..\Malloc\malloc.c)(0x6932E080)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\malloc.o --omf_browse .\objects\malloc.crf --depend .\objects\malloc.d)
+I (..\Malloc\malloc.h)(0x693521CA)
+I (..\Public\system.h)(0x69351EE6)
+I (..\User\stm32f10x.h)(0x691EB3A6)
+I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
+I (..\Libraries\CMSIS\system_stm32f10x.h)(0x4D783CAA)
+I (..\User\stm32f10x_conf.h)(0x691C1C24)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_bkp.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_can.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_cec.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_crc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dac.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dbgmcu.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dma.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_flash.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_fsmc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_i2c.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_iwdg.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_pwr.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rtc.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_sdio.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
+I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
+F (..\User\main.c)(0x69343C1A)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (..\Public\system.h)(0x69351EE6)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
@@ -695,10 +980,10 @@ I (..\APP\led\led.h)(0x5DBBE45A)
 I (..\Public\usart.h)(0x692311C0)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
 I (..\User\app_freertos.h)(0x692301EA)
-I (..\APP\esp8266\wifi_function.h)(0x692151D0)
+I (..\APP\esp8266\wifi_function.h)(0x69351799)
 I (..\APP\esp8266\wifi_config.h)(0x6921581F)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEB79DE)
-F (..\User\stm32f10x_it.c)(0x6922FA30)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_it.o --omf_browse .\objects\stm32f10x_it.crf --depend .\objects\stm32f10x_it.d)
+F (..\User\stm32f10x_it.c)(0x6922FA30)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_it.o --omf_browse .\objects\stm32f10x_it.crf --depend .\objects\stm32f10x_it.d)
 I (..\User\stm32f10x_it.h)(0x691C1C24)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
@@ -728,12 +1013,12 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
-F (..\User\app_freertos.c)(0x692453D4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\app_freertos.o --omf_browse .\objects\app_freertos.crf --depend .\objects\app_freertos.d)
+F (..\User\app_freertos.c)(0x69351E9F)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\app_freertos.o --omf_browse .\objects\app_freertos.crf --depend .\objects\app_freertos.d)
 I (..\User\app_freertos.h)(0x692301EA)
 I (..\APP\FREERTOS\include\FreeRTOS.h)(0x68F8972E)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB79E2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
-I (..\User\FreeRTOSConfig.h)(0x692311C0)
+I (..\User\FreeRTOSConfig.h)(0x69351E9F)
 I (..\APP\FREERTOS\include\projdefs.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\portable.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\deprecated_definitions.h)(0x68F8972E)
@@ -741,7 +1026,7 @@ I (..\APP\FREERTOS\portable\RVDS\ARM_CM3\portmacro.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\mpu_wrappers.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\task.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\list.h)(0x68F8972E)
-I (..\Public\system.h)(0x691C0FA7)
+I (..\Public\system.h)(0x69351EE6)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
 I (..\Libraries\CMSIS\system_stm32f10x.h)(0x4D783CAA)
@@ -773,21 +1058,24 @@ I (..\APP\led\led.h)(0x5DBBE45A)
 I (..\Public\usart.h)(0x692311C0)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
 I (..\APP\esp8266\wifi_config.h)(0x6921581F)
-I (..\APP\esp8266\wifi_function.h)(0x692151D0)
+I (..\APP\esp8266\wifi_function.h)(0x69351799)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEB79DE)
-I (..\User\mqtt_client.h)(0x6924539F)
+I (..\User\mqtt_client.h)(0x69351D26)
 I (..\APP\dht11\dht11.h)(0x58F87BA8)
 I (..\Public\SysTick.h)(0x691C0FA7)
 I (..\APP\adc_temp\adc_temp.h)(0x57D6248A)
 I (..\APP\TFTLCD\tftlcd.h)(0x64D191D4)
 I (..\APP\lsens\lsens.h)(0x691C150F)
 I (..\APP\beep\beep.h)(0x5DCA1E3C)
-F (..\User\mqtt_client.c)(0x692453C3)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\mqtt_client.o --omf_browse .\objects\mqtt_client.crf --depend .\objects\mqtt_client.d)
-I (..\User\mqtt_client.h)(0x6924539F)
+I (..\APP\ov7670\camera_capture.h)(0x693521CA)
+I (..\APP\esp8266\http_upload.h)(0x69351D26)
+I (..\Malloc\malloc.h)(0x693521CA)
+F (..\User\mqtt_client.c)(0x69353B04)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\mqtt_client.o --omf_browse .\objects\mqtt_client.crf --depend .\objects\mqtt_client.d)
+I (..\User\mqtt_client.h)(0x69351D26)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
 I (..\APP\FREERTOS\include\FreeRTOS.h)(0x68F8972E)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB79E2)
-I (..\User\FreeRTOSConfig.h)(0x692311C0)
+I (..\User\FreeRTOSConfig.h)(0x69351E9F)
 I (..\APP\FREERTOS\include\projdefs.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\portable.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\deprecated_definitions.h)(0x68F8972E)
@@ -796,8 +1084,8 @@ I (..\APP\FREERTOS\include\mpu_wrappers.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\task.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\list.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\stream_buffer.h)(0x68F8972E)
-I (..\APP\esp8266\wifi_function.h)(0x692151D0)
-I (..\Public\system.h)(0x691C0FA7)
+I (..\APP\esp8266\wifi_function.h)(0x69351799)
+I (..\Public\system.h)(0x69351EE6)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
 I (..\Libraries\CMSIS\system_stm32f10x.h)(0x4D783CAA)
@@ -831,7 +1119,7 @@ I (..\Public\usart.h)(0x692311C0)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
 I (..\APP\beep\beep.h)(0x5DCA1E3C)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEB79E2)
-F (..\APP\cJSON\cJSON.c)(0x691EDE07)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\cjson.o --omf_browse .\objects\cjson.crf --depend .\objects\cjson.d)
+F (..\APP\cJSON\cJSON.c)(0x691EDE07)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\cjson.o --omf_browse .\objects\cjson.crf --depend .\objects\cjson.d)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEB79E2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5CEB79D6)
@@ -841,8 +1129,8 @@ I (C:\Keil_v5\ARM\ARMCC\include\ctype.h)(0x5CEB79E4)
 I (C:\Keil_v5\ARM\ARMCC\include\float.h)(0x5CEB79E2)
 I (..\APP\cJSON\cJSON.h)(0x691EDE07)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB79E2)
-F (..\Public\system.c)(0x691C0FA7)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\system.o --omf_browse .\objects\system.crf --depend .\objects\system.d)
-I (..\Public\system.h)(0x691C0FA7)
+F (..\Public\system.c)(0x691C0FA7)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\system.o --omf_browse .\objects\system.crf --depend .\objects\system.d)
+I (..\Public\system.h)(0x69351EE6)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
@@ -871,7 +1159,7 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
-F (..\Public\SysTick.c)(0x69243850)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\systick.o --omf_browse .\objects\systick.crf --depend .\objects\systick.d)
+F (..\Public\SysTick.c)(0x69243850)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\systick.o --omf_browse .\objects\systick.crf --depend .\objects\systick.d)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
@@ -901,10 +1189,10 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
 I (..\Public\SysTick.h)(0x691C0FA7)
-I (..\Public\system.h)(0x691C0FA7)
+I (..\Public\system.h)(0x69351EE6)
 I (..\APP\FREERTOS\include\FreeRTOS.h)(0x68F8972E)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5CEB79E2)
-I (..\User\FreeRTOSConfig.h)(0x692311C0)
+I (..\User\FreeRTOSConfig.h)(0x69351E9F)
 I (..\APP\FREERTOS\include\projdefs.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\portable.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\deprecated_definitions.h)(0x68F8972E)
@@ -912,9 +1200,9 @@ I (..\APP\FREERTOS\portable\RVDS\ARM_CM3\portmacro.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\mpu_wrappers.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\task.h)(0x68F8972E)
 I (..\APP\FREERTOS\include\list.h)(0x68F8972E)
-F (..\Public\usart.c)(0x69206F3D)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\usart.o --omf_browse .\objects\usart.crf --depend .\objects\usart.d)
+F (..\Public\usart.c)(0x6935179A)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\usart.o --omf_browse .\objects\usart.crf --depend .\objects\usart.d)
 I (..\Public\usart.h)(0x692311C0)
-I (..\Public\system.h)(0x691C0FA7)
+I (..\Public\system.h)(0x69351EE6)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEB79E2)
@@ -944,7 +1232,7 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
-F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.c)(0x4D79EEC6)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_gpio.o --omf_browse .\objects\stm32f10x_gpio.crf --depend .\objects\stm32f10x_gpio.d)
+F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.c)(0x4D79EEC6)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_gpio.o --omf_browse .\objects\stm32f10x_gpio.crf --depend .\objects\stm32f10x_gpio.d)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x4D783BB4)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
@@ -973,7 +1261,7 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
-F (..\Libraries\STM32F10x_StdPeriph_Driver\src\misc.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\misc.o --omf_browse .\objects\misc.crf --depend .\objects\misc.d)
+F (..\Libraries\STM32F10x_StdPeriph_Driver\src\misc.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\misc.o --omf_browse .\objects\misc.crf --depend .\objects\misc.d)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
@@ -1002,7 +1290,7 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_spi.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
-F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_adc.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_adc.o --omf_browse .\objects\stm32f10x_adc.crf --depend .\objects\stm32f10x_adc.d)
+F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_adc.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_adc.o --omf_browse .\objects\stm32f10x_adc.crf --depend .\objects\stm32f10x_adc.d)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h)(0x4D783BB4)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
@@ -1031,7 +1319,7 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
-F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_bkp.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_bkp.o --omf_browse .\objects\stm32f10x_bkp.crf --depend .\objects\stm32f10x_bkp.d)
+F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_bkp.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_bkp.o --omf_browse .\objects\stm32f10x_bkp.crf --depend .\objects\stm32f10x_bkp.d)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_bkp.h)(0x4D783BB4)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
@@ -1060,7 +1348,7 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
-F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_can.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_can.o --omf_browse .\objects\stm32f10x_can.crf --depend .\objects\stm32f10x_can.d)
+F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_can.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_can.o --omf_browse .\objects\stm32f10x_can.crf --depend .\objects\stm32f10x_can.d)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_can.h)(0x4D783BB4)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
@@ -1089,7 +1377,7 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
-F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_cec.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_cec.o --omf_browse .\objects\stm32f10x_cec.crf --depend .\objects\stm32f10x_cec.d)
+F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_cec.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_cec.o --omf_browse .\objects\stm32f10x_cec.crf --depend .\objects\stm32f10x_cec.d)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_cec.h)(0x4D783BB4)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
@@ -1118,7 +1406,7 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
-F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_crc.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_crc.o --omf_browse .\objects\stm32f10x_crc.crf --depend .\objects\stm32f10x_crc.d)
+F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_crc.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_crc.o --omf_browse .\objects\stm32f10x_crc.crf --depend .\objects\stm32f10x_crc.d)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_crc.h)(0x4D783BB4)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
@@ -1147,7 +1435,7 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
-F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dac.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_dac.o --omf_browse .\objects\stm32f10x_dac.crf --depend .\objects\stm32f10x_dac.d)
+F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dac.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_dac.o --omf_browse .\objects\stm32f10x_dac.crf --depend .\objects\stm32f10x_dac.d)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dac.h)(0x4D783BB4)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
@@ -1176,7 +1464,7 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
-F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dbgmcu.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_dbgmcu.o --omf_browse .\objects\stm32f10x_dbgmcu.crf --depend .\objects\stm32f10x_dbgmcu.d)
+F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dbgmcu.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_dbgmcu.o --omf_browse .\objects\stm32f10x_dbgmcu.crf --depend .\objects\stm32f10x_dbgmcu.d)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dbgmcu.h)(0x4D783BB4)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
@@ -1205,7 +1493,7 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
-F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dma.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_dma.o --omf_browse .\objects\stm32f10x_dma.crf --depend .\objects\stm32f10x_dma.d)
+F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dma.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_dma.o --omf_browse .\objects\stm32f10x_dma.crf --depend .\objects\stm32f10x_dma.d)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dma.h)(0x4D783BB4)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
@@ -1234,7 +1522,7 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
-F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_exti.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_exti.o --omf_browse .\objects\stm32f10x_exti.crf --depend .\objects\stm32f10x_exti.d)
+F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_exti.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_exti.o --omf_browse .\objects\stm32f10x_exti.crf --depend .\objects\stm32f10x_exti.d)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_exti.h)(0x4D783BB4)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
@@ -1263,7 +1551,7 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
-F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_flash.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_flash.o --omf_browse .\objects\stm32f10x_flash.crf --depend .\objects\stm32f10x_flash.d)
+F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_flash.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_flash.o --omf_browse .\objects\stm32f10x_flash.crf --depend .\objects\stm32f10x_flash.d)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_flash.h)(0x4D783BB4)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
@@ -1292,7 +1580,7 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
-F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_fsmc.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_fsmc.o --omf_browse .\objects\stm32f10x_fsmc.crf --depend .\objects\stm32f10x_fsmc.d)
+F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_fsmc.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_fsmc.o --omf_browse .\objects\stm32f10x_fsmc.crf --depend .\objects\stm32f10x_fsmc.d)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_fsmc.h)(0x4D783BB4)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
@@ -1321,7 +1609,7 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
-F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_i2c.o --omf_browse .\objects\stm32f10x_i2c.crf --depend .\objects\stm32f10x_i2c.d)
+F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_i2c.o --omf_browse .\objects\stm32f10x_i2c.crf --depend .\objects\stm32f10x_i2c.d)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_i2c.h)(0x4D783BB4)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
@@ -1350,7 +1638,7 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
-F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_iwdg.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_iwdg.o --omf_browse .\objects\stm32f10x_iwdg.crf --depend .\objects\stm32f10x_iwdg.d)
+F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_iwdg.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_iwdg.o --omf_browse .\objects\stm32f10x_iwdg.crf --depend .\objects\stm32f10x_iwdg.d)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_iwdg.h)(0x4D783BB4)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
@@ -1379,7 +1667,7 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
-F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_pwr.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_pwr.o --omf_browse .\objects\stm32f10x_pwr.crf --depend .\objects\stm32f10x_pwr.d)
+F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_pwr.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_pwr.o --omf_browse .\objects\stm32f10x_pwr.crf --depend .\objects\stm32f10x_pwr.d)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_pwr.h)(0x4D783BB4)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
@@ -1408,7 +1696,7 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
-F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_rcc.o --omf_browse .\objects\stm32f10x_rcc.crf --depend .\objects\stm32f10x_rcc.d)
+F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_rcc.o --omf_browse .\objects\stm32f10x_rcc.crf --depend .\objects\stm32f10x_rcc.d)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x4D783BB4)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
@@ -1437,7 +1725,7 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
-F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rtc.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_rtc.o --omf_browse .\objects\stm32f10x_rtc.crf --depend .\objects\stm32f10x_rtc.d)
+F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rtc.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_rtc.o --omf_browse .\objects\stm32f10x_rtc.crf --depend .\objects\stm32f10x_rtc.d)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rtc.h)(0x4D783BB4)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
@@ -1466,7 +1754,7 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
-F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_sdio.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_sdio.o --omf_browse .\objects\stm32f10x_sdio.crf --depend .\objects\stm32f10x_sdio.d)
+F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_sdio.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_sdio.o --omf_browse .\objects\stm32f10x_sdio.crf --depend .\objects\stm32f10x_sdio.d)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_sdio.h)(0x4D783BB4)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
@@ -1495,7 +1783,7 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
-F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_spi.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_spi.o --omf_browse .\objects\stm32f10x_spi.crf --depend .\objects\stm32f10x_spi.d)
+F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_spi.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_spi.o --omf_browse .\objects\stm32f10x_spi.crf --depend .\objects\stm32f10x_spi.d)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_spi.h)(0x4D783BB4)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
@@ -1524,7 +1812,7 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
-F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_tim.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_tim.o --omf_browse .\objects\stm32f10x_tim.crf --depend .\objects\stm32f10x_tim.d)
+F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_tim.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_tim.o --omf_browse .\objects\stm32f10x_tim.crf --depend .\objects\stm32f10x_tim.d)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
@@ -1553,7 +1841,7 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_spi.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
-F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.c)(0x691EB916)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_usart.o --omf_browse .\objects\stm32f10x_usart.crf --depend .\objects\stm32f10x_usart.d)
+F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.c)(0x69351799)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_usart.o --omf_browse .\objects\stm32f10x_usart.crf --depend .\objects\stm32f10x_usart.d)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)
@@ -1582,7 +1870,7 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_spi.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4D783BB4)
-F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_wwdg.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_wwdg.o --omf_browse .\objects\stm32f10x_wwdg.crf --depend .\objects\stm32f10x_wwdg.d)
+F (..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_wwdg.c)(0x4D783BB4)(--c99 --gnu -c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork --split_sections -I ..\Libraries\CMSIS -I ..\Libraries\STM32F10x_StdPeriph_Driver\inc -I ..\Public -I ..\APP\esp8266 -I ..\User -I ..\APP\lsens -I ..\APP\exti -I ..\APP\iwdg -I ..\APP\pwm -I ..\APP\time -I ..\APP\wwdg -I ..\APP\beep -I ..\APP\key -I ..\APP\led -I ..\APP\FREERTOS\include -I ..\APP\FREERTOS\portable\RVDS\ARM_CM3 -I ..\APP\MQTT\source\include -I ..\APP\MQTT\source\interface -I ..\APP\adc_temp -I ..\APP\dht11 -I ..\APP\TFTLCD -I ..\APP\ov7670 -I ..\APP\spi -I ..\APP\flash -I ..\APP\sd_sdio -I ..\Malloc-I.\RTE\_Target_1-IC:\Users\katis\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="528" -DSTM32F10X_HD-o .\objects\stm32f10x_wwdg.o --omf_browse .\objects\stm32f10x_wwdg.crf --depend .\objects\stm32f10x_wwdg.d)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\User\stm32f10x.h)(0x691EB3A6)
 I (..\Libraries\CMSIS\core_cm3.h)(0x4D523B58)

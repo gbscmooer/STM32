@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\Libraries\CMSIS;..\Libraries\STM32F10x_StdPeriph_Driver\inc;..\Public;..\APP\esp8266;..\User;..\APP\lsens;..\APP\exti;..\APP\iwdg;..\APP\pwm;..\APP\time;..\APP\wwdg;..\APP\beep;..\APP\key;..\APP\led;..\APP\FREERTOS\include;..\APP\FREERTOS\portable\RVDS\ARM_CM3;..\APP\MQTT\source\include;..\APP\MQTT\source\interface;..\APP\adc_temp;..\APP\dht11;..\APP\TFTLCD</IncludePath>
+              <IncludePath>..\Libraries\CMSIS;..\Libraries\STM32F10x_StdPeriph_Driver\inc;..\Public;..\APP\esp8266;..\User;..\APP\lsens;..\APP\exti;..\APP\iwdg;..\APP\pwm;..\APP\time;..\APP\wwdg;..\APP\beep;..\APP\key;..\APP\led;..\APP\FREERTOS\include;..\APP\FREERTOS\portable\RVDS\ARM_CM3;..\APP\MQTT\source\include;..\APP\MQTT\source\interface;..\APP\adc_temp;..\APP\dht11;..\APP\TFTLCD;..\APP\ov7670;..\APP\spi;..\APP\flash;..\APP\sd_sdio;..\Malloc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -531,6 +531,46 @@
               <FileName>tftlcd.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\APP\TFTLCD\tftlcd.c</FilePath>
+            </File>
+            <File>
+              <FileName>http_upload.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\esp8266\http_upload.c</FilePath>
+            </File>
+            <File>
+              <FileName>camera_capture.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\ov7670\camera_capture.c</FilePath>
+            </File>
+            <File>
+              <FileName>ov7670.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\ov7670\ov7670.c</FilePath>
+            </File>
+            <File>
+              <FileName>sccb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\ov7670\sccb.c</FilePath>
+            </File>
+            <File>
+              <FileName>flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\flash\flash.c</FilePath>
+            </File>
+            <File>
+              <FileName>spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\spi\spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>sd_sdio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\sd_sdio\sd_sdio.c</FilePath>
+            </File>
+            <File>
+              <FileName>malloc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Malloc\malloc.c</FilePath>
             </File>
           </Files>
         </Group>

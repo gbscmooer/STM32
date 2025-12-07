@@ -14,6 +14,9 @@
 #define MQTT_CLIENT_ID "STM32_Weather_Client"
 #define MQTT_TOPIC "weather/update"
 
+// 发布间隔（毫秒）
+#define MQTT_PUBLISH_INTERVAL 10000  // 10秒发布一次（给HTTP上传留出时间窗口）
+
 extern StreamBufferHandle_t xSerialStreamBuffer;
 
 // Task Handle
@@ -25,6 +28,7 @@ volatile float g_sensor_cpu_temp = 0.0f;
 volatile uint8_t g_sensor_light = 0;
 volatile uint8_t g_beep_state = 0;
 volatile uint8_t g_mqtt_connected = 0;
+volatile uint8_t g_camera_upload_request = 0;  // 触发相机上传的标志
 
 // MQTT Task
 void MQTTTask(void *pvParameters);
@@ -87,14 +91,24 @@ void ProcessMQTTPacket(uint8_t *data, int len) {
         PC_Usart("\r\n--------------------------------\r\n");
         PC_Usart("MQTT Message Received\r\n");
         PC_Usart("Topic: %s\r\n", topic);
-        PC_Usart("Payload: %s\r\n", payload);
+        PC_Usart("Payload: %s (len=%d)\r\n", payload, payload_len);
         PC_Usart("--------------------------------\r\n");
+        
+        // 调试：打印payload的hex
+        PC_Usart("Payload HEX: ");
+        for(int i = 0; i < payload_len && i < 50; i++) {
+            PC_Usart("%02X ", (uint8_t)payload[i]);
+        }
+        PC_Usart("\r\n");
 
         // Check for beep command
         if (strstr(payload, "beep=change") != NULL) {
-            g_beep_state = !g_beep_state;
-            BEEP = g_beep_state;
-            PC_Usart("BEEP State Changed to: %d\r\n", g_beep_state);
+            PC_Usart(">>> MQTT BEEP COMMAND DETECTED <<<\r\n");
+            BEEP = 1;  // 打开蜂鸣器
+            vTaskDelay(pdMS_TO_TICKS(500));  // 响0.5秒
+            BEEP = 0;  // 关闭蜂鸣器
+            g_beep_state = 0;
+            PC_Usart("MQTT Beep finished\r\n");
         }
     }
     else if ((cmd & 0xF0) == 0x20) {
@@ -218,7 +232,7 @@ void MQTTTask(void *pvParameters)
         {
             // Publish Sensor Data every 5 seconds
             static TickType_t last_publish_time = 0;
-            if (xTaskGetTickCount() - last_publish_time >= pdMS_TO_TICKS(5000))
+            if (xTaskGetTickCount() - last_publish_time >= pdMS_TO_TICKS(MQTT_PUBLISH_INTERVAL))
             {
                 last_publish_time = xTaskGetTickCount();
                 
@@ -255,6 +269,43 @@ void MQTTTask(void *pvParameters)
                 if (ESP8266_TCP_Send(pub_packet, idx))
                 {
                     PC_Usart("Published: %s\r\n", payload);
+                    
+                    // 发布成功后，触发相机上传任务
+                    PC_Usart("MQTT publish complete, triggering camera upload...\r\n");
+                    
+                    // 先断开MQTT连接，释放ESP8266资源
+                    PC_Usart("Disconnecting MQTT to free ESP8266...\r\n");
+                    tcp_connected = false;
+                    g_mqtt_connected = 0;
+                    ESP8266_TCP_Disconnect();
+                    vTaskDelay(pdMS_TO_TICKS(500));  // 等待断开完成
+                    
+                    // 设置相机上传请求标志
+                    g_camera_upload_request = 1;
+                    
+                    // 等待相机任务处理完成（最多30秒）
+                    u16 wait_count = 0;
+                    while(g_camera_upload_request && wait_count < 3000)
+                    {
+                        vTaskDelay(pdMS_TO_TICKS(10));
+                        wait_count++;
+                    }
+                    
+                    if(g_camera_upload_request)
+                    {
+                        PC_Usart("Warning: Camera upload timeout\r\n");
+                        g_camera_upload_request = 0;  // 清除标志
+                    }
+                    else
+                    {
+                        PC_Usart("Camera upload completed\r\n");
+                    }
+                    
+                    // 相机上传完成后，等待一段时间再重新连接MQTT
+                    PC_Usart("Waiting before reconnecting MQTT...\r\n");
+                    vTaskDelay(pdMS_TO_TICKS(2000));
+                    
+                    continue;  // 重新开始MQTT连接循环
                 }
                 else
                 {
@@ -303,6 +354,13 @@ void MQTTTask(void *pvParameters)
                             }
                             data_len--;
                             if (data_len == 0) {
+                                // 调试：打印接收到的完整数据包（前100字节）
+                                PC_Usart("[MQTT Recv] %d bytes: ", rx_idx);
+                                for(int i = 0; i < rx_idx && i < 100; i++) {
+                                    PC_Usart("%02X ", rx_buffer[i]);
+                                }
+                                PC_Usart("\r\n");
+                                
                                 ProcessMQTTPacket(rx_buffer, rx_idx);
                                 state = 0;
                             }
